@@ -39,7 +39,8 @@
 	  :after (lambda ()
 		   (setq smex-save-file "~/.emacs.d/.smex-items")
 		   (global-set-key (kbd "M-x") 'smex)
-		   (global-set-key (kbd "M-X") 'smex-major-mode-commands)))
+		   (global-set-key (kbd "M-X") 'smex-major-mode-commands)
+		   (global-set-key (kbd "C-x C-m") 'smex)))
 
    (:name goto-last-change		; move pointer back to last change
 	  :after (lambda ()
@@ -245,6 +246,3 @@
 
 ;; auto-saves
 (setq backup-directory-alist `(("." . ,(expand-file-name "~/.emacs.d/auto-saves"))))
-
-;; Extended command shortcut
-(global-set-key (kbd "C-x C-m") 'execute-extended-command)
