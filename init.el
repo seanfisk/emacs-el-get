@@ -9,6 +9,8 @@
 ;;
 ;; This file is NOT part of GNU Emacs.
 
+(setq user-emacs-directory (expand-file-name "~/.emacs.d"))
+
 (require 'cl)				; common lisp goodies, loop
 
 (add-to-list 'load-path "~/.emacs.d/el-get/el-get")
