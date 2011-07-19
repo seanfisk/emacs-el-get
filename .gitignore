@@ -1,0 +1,6 @@
+.emacs.desktop
+.ido.last
+.smex-items
+ac-comphist.dat
+el-get/
+elpa/
