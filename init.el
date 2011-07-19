@@ -1,4 +1,4 @@
-;; emacs kicker --- kick start emacs setup
+;; Emacs kicker --- kick start emacs setup
 ;; Copyright (C) 2010 Dimitri Fontaine
 ;;
 ;; Author: Dimitri Fontaine <dim@tapoueh.org>
@@ -44,7 +44,41 @@
    (:name goto-last-change		; move pointer back to last change
 	  :after (lambda ()
 		   ;; when using AZERTY keyboard, consider C-x C-_
-		   (global-set-key (kbd "C-x C-/") 'goto-last-change)))))
+		   (global-set-key (kbd "C-x C-/") 'goto-last-change)))
+   (:name color-theme-solarized
+	  :after (lambda ()
+		   (color-theme-solarized-dark)))
+   (:name auto-indent-mode
+	  :type elpa
+	  :after (lambda ()
+		   (auto-indent-global-mode)))
+   (:name autopair
+	  :after (lambda ()
+		   (autopair-mode)))
+   (:name autopair+
+	  :type emacswiki)
+   (:name auto-complete
+	  :after (lambda ()
+		   (auto-complete-mode)))
+   (:name textmate
+	  :type git
+	  :url "git://github.com/defunkt/textmate.el.git"
+	  :load "textmate.el"
+	  :features textmate
+	  :after (lambda ()
+		   (textmate-mode)))
+   (:name rsense
+	  :type git
+	  :url "git://github.com/m2ym/rsense.git"
+	  :load-path "etc"
+	  :features rsense
+	  :after (lambda()
+		   (setq rsense-home (expand-file-name "."))))
+   (:name edit-server
+	  :features edit-server
+	  :after (lambda ()
+		   (edit-server-start)))))
+
 
 ;; now set our own packages
 (setq
@@ -53,10 +87,24 @@
    escreen            			; screen for emacs, C-\ C-h
    php-mode-improved			; if you're into php...
    switch-window			; takes over C-x o
-   auto-complete			; complete as you type with overlays
    zencoding-mode			; http://www.emacswiki.org/emacs/ZenCoding
    color-theme		                ; nice looking emacs
-   color-theme-tango))	                ; check out color-theme-solarized
+;   color-theme-tango	                ; check out color-theme-solarized
+   auto-complete-extension		; extensions for auto-complete
+   dtrt-indent				; guess indent of foreign files
+   undo-tree				; undo history in a tree
+   ruby-mode				; major mode for ruby
+;   ruby-compilation			; compile parts of ruby code
+   ruby-electric			; ruby control structure matching
+   flymake-ruby				; flymake for ruby
+;   flymake-point			; show error under cursor
+   flymake-fringe-icons			; show error icons at side
+   rvm					; rvm compatibility
+   rinari				; rails ide
+   haml-mode				; major mode for haml
+   scss-mode				; major mode for scss
+   js2-mode				; major mode for javascript
+   coffee-mode))			; major mode for coffee-script
 
 ;;
 ;; Some recipes require extra tools to be installed
@@ -164,3 +212,36 @@
   (set-frame-parameter nil 'fullscreen
 		       (if (frame-parameter nil 'fullscreen) nil 'fullboth)))
 (global-set-key [f11] 'fullscreen)
+
+;; other bindings and such
+(server-start) ; boot the emacs server for use with emacsclient
+(desktop-save-mode 1) ; save my files for next time
+
+;; auto-indent
+;(global-set-key (kbd "RET") 'newline-and-indent) ; auto-indent everything
+
+;; ruby-mode
+(defun ruby-custom ()
+  "ruby-mode-hook"
+  (local-set-key (kbd "RET") 'reindent-then-newline-and-indent)
+;  (autopair-mode)
+  ; Rsense + Autocomplete
+  (add-to-list 'ac-sources 'ac-source-rsense-method)
+  (add-to-list 'ac-sources 'ac-source-rsense-constant))
+
+(add-hook 'ruby-mode-hook '(lambda ()
+                             (ruby-custom)))
+
+;; coffee-mode
+(defun coffee-custom ()
+  "coffee-mode-hook"
+ (set (make-local-variable 'tab-width) 2)
+ (coffee-cos-mode t)) ; compile on save
+; (auto-complete-mode)
+; (autopair-mode)) 
+
+(add-hook 'coffee-mode-hook
+          '(lambda() (coffee-custom)))
+
+;; auto-saves
+(setq backup-directory-alist `(("." . ,(expand-file-name "~/.emacs.d/auto-saves"))))
