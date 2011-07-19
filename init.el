@@ -245,3 +245,6 @@
 
 ;; auto-saves
 (setq backup-directory-alist `(("." . ,(expand-file-name "~/.emacs.d/auto-saves"))))
+
+;; Extended command shortcut
+(global-set-key (kbd "C-x C-m") 'execute-extended-command)
