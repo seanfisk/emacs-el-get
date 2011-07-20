@@ -40,14 +40,6 @@
 		   (global-set-key (kbd "<C-S-down>")   'buf-move-down)
 		   (global-set-key (kbd "<C-S-left>")   'buf-move-left)
 		   (global-set-key (kbd "<C-S-right>")  'buf-move-right)))
-
-   (:name smex				; a better (ido like) M-x
-	  :after (lambda ()
-		   (setq smex-save-file "~/.emacs.d/.smex-items")
-		   (global-set-key (kbd "M-x") 'smex)
-		   (global-set-key (kbd "M-X") 'smex-major-mode-commands)
-		   (global-set-key (kbd "C-x C-m") 'smex)))
-
    (:name goto-last-change		; move pointer back to last change
 	  :after (lambda ()
 		   ;; when using AZERTY keyboard, consider C-x C-_
@@ -67,13 +59,18 @@
    (:name auto-complete
 	  :after (lambda ()
 		   (auto-complete-mode)))
-   (:name textmate
+   (:name icicles
 	  :type git
-	  :url "git://github.com/defunkt/textmate.el.git"
-	  :load "textmate.el"
-	  :features textmate
-	  :after (lambda ()
-		   (textmate-mode)))
+	  :url "git://github.com/emacsmirror/icicles.git"
+	  :load "icicles.el"
+	  :features icicles)
+   ;; (:name textmate
+   ;; 	  :type git
+   ;; 	  :url "git://github.com/defunkt/textmate.el.git"
+   ;; 	  :load "textmate.el"
+   ;; 	  :features textmate
+   ;; 	  :after (lambda ()
+   ;; 		   (textmate-mode)))
    (:name rsense
 	  :type git
 	  :url "git://github.com/m2ym/rsense.git"
@@ -122,6 +119,7 @@
   (add-to-list 'my:el-get-packages 'emacs-goodies-el)) ; the debian addons for emacs
 
 (when (el-get-executable-find "svn")
+
   (loop for p in '(psvn    		; M-x svn-status
 		   yasnippet		; powerful snippet mode
 		   )
@@ -193,22 +191,20 @@
 ;; Well the real default would be C-c C-j C-y C-c C-k.
 (define-key term-raw-map  (kbd "C-y") 'term-paste)
 
-;; use ido for minibuffer completion
-(require 'ido)
-(ido-mode t)
-(setq ido-save-directory-list-file "~/.emacs.d/.ido.last")
-(setq ido-enable-flex-matching t)
-(setq ido-use-filename-at-point 'guess)
-(setq ido-show-dot-for-dired t)
-
 ;; default key to switch buffer is C-x b, but that's not easy enough
 ;;
 ;; when you do that, to kill emacs either close its frame from the window
 ;; manager or do M-x kill-emacs.  Don't need a nice shortcut for a once a
 ;; week (or day) action.
-(global-set-key (kbd "C-x C-b") 'ido-switch-buffer)
-(global-set-key (kbd "C-x C-c") 'ido-switch-buffer)
-(global-set-key (kbd "C-x B") 'ibuffer)
+;(global-set-key (kbd "C-x C-b") 'ido-switch-buffer)
+;(global-set-key (kbd "C-x C-c") 'ido-switch-buffer)
+;(global-set-key (kbd "C-x B") 'ibuffer)
+
+;; icicles
+(icy-mode)
+(setq icicle-max-candidates 20)
+(setq icicle-incremental-completion-flag t)
+(setq icicle-top-level-when-sole-completion-flag t)
 
 ;; C-x C-j opens dired with the cursor right on the file you're editing
 (require 'dired-x)
