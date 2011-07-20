@@ -137,8 +137,8 @@
 
 ;; on to the visual settings
 (setq inhibit-splash-screen t)		; no splash screen, thanks
-(line-number-mode 1)			; have line numbers and
-(column-number-mode 1)			; column numbers in the mode line
+;(line-number-mode 1)			; have line numbers and
+;(column-number-mode 1)			; column numbers in the mode line
 
 ;; disable scrollbars
 (scroll-bar-mode -1)
@@ -148,8 +148,8 @@
     (set-face-font 'default "Monaco-13")
   (set-face-font 'default "Monospace-10"))
 
-(global-hl-line-mode)			; highlight current line
-(global-linum-mode 1)			; add line numbers on the left
+;(global-hl-line-mode)			; highlight current line
+;(global-linum-mode 1)			; add line numbers on the left
 
 ;; avoid compiz manager rendering bugs
 (add-to-list 'default-frame-alist '(alpha . 100))
