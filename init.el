@@ -57,6 +57,7 @@
    (:name autopair+
 	  :type emacswiki)
    (:name auto-complete
+
 	  :after (lambda ()
 		   (global-auto-complete-mode)))
    (:name fuzzy-match
@@ -207,12 +208,13 @@
 ;; icicles
 (ido-mode -1) ; turn off ido
 (icy-mode) ; turn on icicles
-(setq icicle-max-candidates 10)
-(setq icicle-incremental-completion-flag 1)
+;(setq icicle-incremental-completion-flag 1)
 (setq icicle-top-level-when-sole-completion-flag t)
 ;(icicle-fit-completions-window 'fit-only)
 (setq icicle-Completions-text-scale-decrease 0.0) ; don't resize when auto-completing - workaround for Aquamacs text-scale-decrease bug
-(setq icicle-TAB-completion-methods (cons 'fuzzy icicle-TAB-completion-methods)) ; use fuzzy matching by default
+(setq icicle-TAB-completion-methods (cons 'fuzzy (delete 'fuzzy icicle-TAB-completion-methods))) ; use fuzzy matching by default
+;(setq icicle-TAB-completion-methods (cons 'scatter icicle-TAB-completion-methods))
+(setq icicle-max-candidates 20)
 
 ;; Extended command shortcut
 (global-set-key (kbd "C-x C-m") 'execute-extended-command)
