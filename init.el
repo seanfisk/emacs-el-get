@@ -207,6 +207,9 @@
 ;(icicle-fit-completions-window 'fit-only)
 (setq icicle-Completions-text-scale-decrease 0.0) ; don't resize when auto-completing - workaround for Aquamacs text-scale-decrease bug
 
+;; Extended command shortcut
+(global-set-key (kbd "C-x C-m") 'execute-extended-command)
+
 ;; C-x C-j opens dired with the cursor right on the file you're editing
 (require 'dired-x)
 
