@@ -71,6 +71,9 @@
    	  :features textmate
    	  :after (lambda ()
    		   (textmate-mode)))
+   (:name anything-config
+	  :type emacswiki
+	  :features anything-config)
    (:name rsense
 	  :type git
 	  :url "git://github.com/m2ym/rsense.git"
@@ -96,6 +99,7 @@
    auto-complete-extension		; extensions for auto-complete
    dtrt-indent				; guess indent of foreign files
    undo-tree				; undo history in a tree
+   anything				; "Quicksilver for Emacs"
    ruby-mode				; major mode for ruby
    ruby-electric			; ruby control structure matching
    flymake-ruby				; flymake for ruby
