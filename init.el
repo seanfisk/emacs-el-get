@@ -232,7 +232,7 @@
 (desktop-save-mode 1) ; save my files for next time
 
 ;; auto-indent
-;(global-set-key (kbd "RET") 'newline-and-indent) ; auto-indent everything
+(global-set-key (kbd "RET") 'newline-and-indent) ; auto-indent everything
 
 ;; ruby-mode
 (defun ruby-custom ()
