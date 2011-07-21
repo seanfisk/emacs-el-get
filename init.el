@@ -64,13 +64,13 @@
 	  :url "git://github.com/emacsmirror/icicles.git"
 	  :load "icicles.el"
 	  :features icicles)
-   ;; (:name textmate
-   ;; 	  :type git
-   ;; 	  :url "git://github.com/defunkt/textmate.el.git"
-   ;; 	  :load "textmate.el"
-   ;; 	  :features textmate
-   ;; 	  :after (lambda ()
-   ;; 		   (textmate-mode)))
+   (:name textmate
+   	  :type git
+   	  :url "git://github.com/defunkt/textmate.el.git"
+   	  :load "textmate.el"
+   	  :features textmate
+   	  :after (lambda ()
+   		   (textmate-mode)))
    (:name rsense
 	  :type git
 	  :url "git://github.com/m2ym/rsense.git"
@@ -93,15 +93,13 @@
    switch-window			; takes over C-x o
    zencoding-mode			; http://www.emacswiki.org/emacs/ZenCoding
    color-theme		                ; nice looking emacs
-;   color-theme-tango	                ; check out color-theme-solarized
    auto-complete-extension		; extensions for auto-complete
    dtrt-indent				; guess indent of foreign files
    undo-tree				; undo history in a tree
    ruby-mode				; major mode for ruby
-;   ruby-compilation			; compile parts of ruby code
    ruby-electric			; ruby control structure matching
    flymake-ruby				; flymake for ruby
-;   flymake-point			; show error under cursor
+;  flymake-point			; show error under cursor, need to get this working
    flymake-fringe-icons			; show error icons at side
    rvm					; rvm compatibility
    rinari				; rails ide
@@ -201,10 +199,13 @@
 ;(global-set-key (kbd "C-x B") 'ibuffer)
 
 ;; icicles
-(icy-mode)
+(ido-mode -1) ; turn off ido
+(icy-mode) ; turn on icicles
 (setq icicle-max-candidates 20)
-(setq icicle-incremental-completion-flag t)
+(setq icicle-incremental-completion-flag 1)
 (setq icicle-top-level-when-sole-completion-flag t)
+;(icicle-fit-completions-window 'fit-only)
+(setq icicle-Completions-text-scale-decrease 0.0) ; don't resize when auto-completing - workaround for Aquamacs text-scale-decrease bug
 
 ;; C-x C-j opens dired with the cursor right on the file you're editing
 (require 'dired-x)
