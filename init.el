@@ -66,7 +66,22 @@
 	  :type git
 	  :url "git://github.com/emacsmirror/icicles.git"
 	  :load "icicles.el"
-	  :features icicles)
+	  :features icicles
+	  :after (lambda ()
+		   ;(setq icicle-incremental-completion-flag 1)
+		   (setq icicle-top-level-when-sole-completion-flag t)
+		   ;(icicle-fit-completions-window 'fit-only)
+		   (setq icicle-Completions-text-scale-decrease 0.0) ; don't resize when auto-completing - workaround for Aquamacs text-scale-decrease bug
+		   (setq icicle-TAB-completion-methods (cons 'fuzzy (delete 'fuzzy icicle-TAB-completion-methods))) ; use fuzzy matching by default
+		   ;(setq icicle-TAB-completion-methods (cons 'scatter icicle-TAB-completion-methods))
+		   (setq icicle-max-candidates 20)
+		   ))
+   (:name smex				; a better (ido like) M-x
+	  :after (lambda ()
+		   (setq smex-save-file "~/.emacs.d/.smex-items")
+		   (global-set-key (kbd "M-x") 'smex)
+		   (global-set-key (kbd "M-X") 'smex-major-mode-commands)
+		   (global-set-key (kbd "C-x C-m") 'smex)))
    (:name textmate
    	  :type git
    	  :url "git://github.com/defunkt/textmate.el.git"
@@ -196,28 +211,26 @@
 ;; Well the real default would be C-c C-j C-y C-c C-k.
 (define-key term-raw-map  (kbd "C-y") 'term-paste)
 
+;; use ido for minibuffer completion
+(require 'ido)
+(ido-mode t)
+(setq ido-save-directory-list-file "~/.emacs.d/.ido.last")
+(setq ido-enable-flex-matching t)
+(setq ido-use-filename-at-point 'guess)
+(setq ido-show-dot-for-dired t)
+
+;; turn on icicles as wel
+(icy-mode)
+
+
 ;; default key to switch buffer is C-x b, but that's not easy enough
 ;;
 ;; when you do that, to kill emacs either close its frame from the window
 ;; manager or do M-x kill-emacs.  Don't need a nice shortcut for a once a
 ;; week (or day) action.
-;(global-set-key (kbd "C-x C-b") 'ido-switch-buffer)
+(global-set-key (kbd "C-x C-b") 'ido-switch-buffer)
 ;(global-set-key (kbd "C-x C-c") 'ido-switch-buffer)
-;(global-set-key (kbd "C-x B") 'ibuffer)
-
-;; icicles
-(ido-mode -1) ; turn off ido
-(icy-mode) ; turn on icicles
-;(setq icicle-incremental-completion-flag 1)
-(setq icicle-top-level-when-sole-completion-flag t)
-;(icicle-fit-completions-window 'fit-only)
-(setq icicle-Completions-text-scale-decrease 0.0) ; don't resize when auto-completing - workaround for Aquamacs text-scale-decrease bug
-(setq icicle-TAB-completion-methods (cons 'fuzzy (delete 'fuzzy icicle-TAB-completion-methods))) ; use fuzzy matching by default
-;(setq icicle-TAB-completion-methods (cons 'scatter icicle-TAB-completion-methods))
-(setq icicle-max-candidates 20)
-
-;; Extended command shortcut
-(global-set-key (kbd "C-x C-m") 'execute-extended-command)
+(global-set-key (kbd "C-x B") 'ibuffer)
 
 ;; C-x C-j opens dired with the cursor right on the file you're editing
 (require 'dired-x)
