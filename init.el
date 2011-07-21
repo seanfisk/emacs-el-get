@@ -53,12 +53,12 @@
 		   (auto-indent-global-mode)))
    (:name autopair
 	  :after (lambda ()
-		   (autopair-mode)))
+		   (autopair-global-mode)))
    (:name autopair+
 	  :type emacswiki)
    (:name auto-complete
 	  :after (lambda ()
-		   (auto-complete-mode)))
+		   (global-auto-complete-mode)))
    (:name fuzzy-match
 	  :type emacswiki)
    (:name icicles
@@ -232,7 +232,8 @@
 (desktop-save-mode 1) ; save my files for next time
 
 ;; auto-indent
-(global-set-key (kbd "RET") 'newline-and-indent) ; auto-indent everything
+
+;(global-set-key (kbd "RET") 'newline-and-indent) ; auto-indent everything
 
 ;; ruby-mode
 (defun ruby-custom ()
