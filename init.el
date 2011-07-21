@@ -40,7 +40,13 @@
 		   (global-set-key (kbd "<C-S-down>")   'buf-move-down)
 		   (global-set-key (kbd "<C-S-left>")   'buf-move-left)
 		   (global-set-key (kbd "<C-S-right>")  'buf-move-right)))
-   (:name goto-last-change		; move pointer back to last change
+   (:name smex                          ; a better (ido like) M-x
+          :after (lambda ()
+                   (setq smex-save-file "~/.emacs.d/.smex-items")
+                   (global-set-key (kbd "M-x") 'smex)
+                   (global-set-key (kbd "M-X") 'smex-major-mode-commands)
+                   (global-set-key (kbd "C-x C-m") 'smex)))
+   (:name goto-last-change              ; move pointer back to last change
 	  :after (lambda ()
 		   ;; when using AZERTY keyboard, consider C-x C-_
 		   (global-set-key (kbd "C-x C-/") 'goto-last-change)))
@@ -57,7 +63,7 @@
    (:name autopair+
 	  :type emacswiki)
    (:name auto-complete
-
+	  
 	  :after (lambda ()
 		   (global-auto-complete-mode)))
    (:name fuzzy-match
@@ -76,12 +82,6 @@
 		   ;(setq icicle-TAB-completion-methods (cons 'scatter icicle-TAB-completion-methods))
 		   (setq icicle-max-candidates 20)
 		   ))
-   (:name smex				; a better (ido like) M-x
-	  :after (lambda ()
-		   (setq smex-save-file "~/.emacs.d/.smex-items")
-		   (global-set-key (kbd "M-x") 'smex)
-		   (global-set-key (kbd "M-X") 'smex-major-mode-commands)
-		   (global-set-key (kbd "C-x C-m") 'smex)))
    (:name textmate
    	  :type git
    	  :url "git://github.com/defunkt/textmate.el.git"
@@ -130,7 +130,8 @@
    js2-mode				; major mode for javascript
    coffee-mode				; major mode for coffee-script
    textile-mode				; major mode for textile markup
-   markdown-mode))			; major mode for markdown markup
+   markdown-mode			; major mode for markdown markup
+   ))
 
 ;;
 ;; Some recipes require extra tools to be installed
