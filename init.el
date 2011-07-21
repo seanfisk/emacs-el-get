@@ -128,7 +128,9 @@
    haml-mode				; major mode for haml
    scss-mode				; major mode for scss
    js2-mode				; major mode for javascript
-   coffee-mode))			; major mode for coffee-script
+   coffee-mode				; major mode for coffee-script
+   textile-mode				; major mode for textile markup
+   markdown-mode))			; major mode for markdown markup
 
 ;;
 ;; Some recipes require extra tools to be installed
@@ -217,6 +219,7 @@
 (setq ido-save-directory-list-file "~/.emacs.d/.ido.last")
 (setq ido-enable-flex-matching t)
 (setq ido-use-filename-at-point 'guess)
+
 (setq ido-show-dot-for-dired t)
 
 ;; turn on icicles as wel
