@@ -57,6 +57,9 @@
 	  :type elpa
 	  :after (lambda ()
 		   (auto-indent-global-mode)))
+   (:name dtrt-indent
+	  :after (lambda ()
+		   (dtrt-indent-mode)))
    (:name autopair
 	  :after (lambda ()
 		   (autopair-on)))
@@ -119,7 +122,6 @@
    zencoding-mode			; http://www.emacswiki.org/emacs/ZenCoding
    color-theme		                ; nice looking emacs
    auto-complete-extension		; extensions for auto-complete
-   dtrt-indent				; guess indent of foreign files
    anything				; "Quicksilver for Emacs"
    ruby-mode				; major mode for ruby
    ruby-electric			; ruby control structure matching
@@ -145,7 +147,7 @@
   (add-to-list 'my:el-get-packages 'emacs-goodies-el)) ; the debian addons for emacs
 
 (when (el-get-executable-find "svn")
-
+  
   (loop for p in '(psvn    		; M-x svn-status
 		   yasnippet		; powerful snippet mode
 		   )
