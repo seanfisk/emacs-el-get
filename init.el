@@ -59,13 +59,19 @@
 		   (auto-indent-global-mode)))
    (:name autopair
 	  :after (lambda ()
-		   (autopair-global-mode)))
+		   (autopair-on)))
    (:name autopair+
 	  :type emacswiki)
    (:name auto-complete
-	  
 	  :after (lambda ()
 		   (global-auto-complete-mode)))
+   (:name undo-tree
+	  :type git
+	  :url "http://www.dr-qubit.org/git/undo-tree.git"
+	  :load "undo-tree.el"
+          :features undo-tree
+	  :after (lambda ()
+		   (global-undo-tree-mode)))
    (:name fuzzy-match
 	  :type emacswiki)
    (:name icicles
@@ -90,8 +96,7 @@
    	  :after (lambda ()
    		   (textmate-mode)))
    (:name anything-config
-	  :type emacswiki
-	  :features anything-config)
+	  :type emacswiki)
    (:name rsense
 	  :type git
 	  :url "git://github.com/m2ym/rsense.git"
@@ -104,7 +109,6 @@
 	  :after (lambda ()
 		   (edit-server-start)))))
 
-
 ;; now set our own packages
 (setq
  my:el-get-packages
@@ -116,7 +120,6 @@
    color-theme		                ; nice looking emacs
    auto-complete-extension		; extensions for auto-complete
    dtrt-indent				; guess indent of foreign files
-   undo-tree				; undo history in a tree
    anything				; "Quicksilver for Emacs"
    ruby-mode				; major mode for ruby
    ruby-electric			; ruby control structure matching
