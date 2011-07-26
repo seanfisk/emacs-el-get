@@ -77,20 +77,6 @@
 		   (global-undo-tree-mode)))
    (:name fuzzy-match
 	  :type emacswiki)
-   (:name icicles
-	  :type git
-	  :url "git://github.com/emacsmirror/icicles.git"
-	  :load "icicles.el"
-	  :features icicles
-	  :after (lambda ()
-		   ;(setq icicle-incremental-completion-flag 1)
-		   (setq icicle-top-level-when-sole-completion-flag t)
-		   ;(icicle-fit-completions-window 'fit-only)
-		   (setq icicle-Completions-text-scale-decrease 0.0) ; don't resize when auto-completing - workaround for Aquamacs text-scale-decrease bug
-		   (setq icicle-TAB-completion-methods (cons 'fuzzy (delete 'fuzzy icicle-TAB-completion-methods))) ; use fuzzy matching by default
-		   ;(setq icicle-TAB-completion-methods (cons 'scatter icicle-TAB-completion-methods))
-		   (setq icicle-max-candidates 20)
-		   ))
    (:name textmate
    	  :type git
    	  :url "git://github.com/defunkt/textmate.el.git"
@@ -228,16 +214,13 @@
 
 (setq ido-show-dot-for-dired t)
 
-;; turn on icicles as well
-(icy-mode)
-
 ;; default key to switch buffer is C-x b, but that's not easy enough
 ;;
 ;; when you do that, to kill emacs either close its frame from the window
 ;; manager or do M-x kill-emacs.  Don't need a nice shortcut for a once a
 ;; week (or day) action.
 (global-set-key (kbd "C-x b") 'ido-switch-buffer)
-;(global-set-key (kbd "C-x C-c") 'ido-switch-buffer)
+(global-set-key (kbd "C-x C-c") 'ido-switch-buffer)
 (global-set-key (kbd "C-x B") 'ibuffer)
 
 ;; C-x C-j opens dired with the cursor right on the file you're editing
