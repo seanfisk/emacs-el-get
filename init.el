@@ -56,48 +56,35 @@
    (:name auto-indent-mode
 	  :type elpa
 	  :after (lambda ()
-		   (auto-indent-global-mode)))
+		   (auto-indent-global-mode t)))
    (:name dtrt-indent
 	  :after (lambda ()
-		   (dtrt-indent-mode)))
+		   (dtrt-indent-mode t)))
    (:name autopair
 	  :after (lambda ()
-		   (autopair-on)))
+		   (autopair-global-mode t)))
    (:name autopair+
 	  :type emacswiki)
    (:name auto-complete
 	  :after (lambda ()
-		   (global-auto-complete-mode)))
+		   (global-auto-complete-mode t)
+		   (add-to-list 'ac-modes 'scss-mode)))
    (:name undo-tree
 	  :type git
 	  :url "http://www.dr-qubit.org/git/undo-tree.git"
 	  :load "undo-tree.el"
           :features undo-tree
 	  :after (lambda ()
-		   (global-undo-tree-mode)))
+		   (global-undo-tree-mode t)))
    (:name fuzzy-match
 	  :type emacswiki)
-   (:name icicles
-	  :type git
-	  :url "git://github.com/emacsmirror/icicles.git"
-	  :load "icicles.el"
-	  :features icicles
-	  :after (lambda ()
-		   ;(setq icicle-incremental-completion-flag 1)
-		   (setq icicle-top-level-when-sole-completion-flag t)
-		   ;(icicle-fit-completions-window 'fit-only)
-		   (setq icicle-Completions-text-scale-decrease 0.0) ; don't resize when auto-completing - workaround for Aquamacs text-scale-decrease bug
-		   (setq icicle-TAB-completion-methods (cons 'fuzzy (delete 'fuzzy icicle-TAB-completion-methods))) ; use fuzzy matching by default
-		   ;(setq icicle-TAB-completion-methods (cons 'scatter icicle-TAB-completion-methods))
-		   (setq icicle-max-candidates 20)
-		   ))
    (:name textmate
    	  :type git
    	  :url "git://github.com/defunkt/textmate.el.git"
    	  :load "textmate.el"
    	  :features textmate
    	  :after (lambda ()
-   		   (textmate-mode)))
+   		   (textmate-mode t)))
    (:name anything-config
 	  :type emacswiki)
    (:name rsense
@@ -165,8 +152,6 @@
 
 ;; on to the visual settings
 (setq inhibit-splash-screen t)		; no splash screen, thanks
-;(line-number-mode 1)			; have line numbers and
-;(column-number-mode 1)			; column numbers in the mode line
 
 ;; disable scrollbars
 (scroll-bar-mode -1)
@@ -176,14 +161,8 @@
     (set-face-font 'default "Monaco-13")
   (set-face-font 'default "Monospace-10"))
 
-;(global-hl-line-mode)			; highlight current line
-;(global-linum-mode 1)			; add line numbers on the left
-
 ;; avoid compiz manager rendering bugs
 (add-to-list 'default-frame-alist '(alpha . 100))
-
-;; copy/paste with C-c and C-v and C-x, check out C-RET too
-(cua-mode)
 
 ;; Use the clipboard, pretty please, so that copy/paste "works"
 (setq x-select-enable-clipboard t)
@@ -193,12 +172,12 @@
 (setq windmove-wrap-around t)
 
 ; winner-mode provides C-<left> to get back to previous window layout
-(winner-mode 1)
+(winner-mode t)
 
 ;; whenever an external process changes a file underneath emacs, and there
 ;; was no unsaved changes in the corresponding buffer, just revert its
 ;; content to reflect what's on-disk.
-(global-auto-revert-mode 1)
+(global-auto-revert-mode t)
 
 ;; M-x shell is a nice shell interface to use, let's make it colorful.  If
 ;; you need a terminal emulator rather than just a shell, consider M-x term
@@ -230,16 +209,13 @@
 
 (setq ido-show-dot-for-dired t)
 
-;; turn on icicles as well
-(icy-mode)
-
 ;; default key to switch buffer is C-x b, but that's not easy enough
 ;;
 ;; when you do that, to kill emacs either close its frame from the window
 ;; manager or do M-x kill-emacs.  Don't need a nice shortcut for a once a
 ;; week (or day) action.
 (global-set-key (kbd "C-x b") 'ido-switch-buffer)
-;(global-set-key (kbd "C-x C-c") 'ido-switch-buffer)
+(global-set-key (kbd "C-x C-c") 'ido-switch-buffer)
 (global-set-key (kbd "C-x B") 'ibuffer)
 
 ;; C-x C-j opens dired with the cursor right on the file you're editing
@@ -254,34 +230,38 @@
 
 ;; other bindings and such
 (server-start) ; boot the emacs server for use with emacsclient
-(desktop-save-mode 1) ; save my files for next time
+(desktop-save-mode t) ; save my files for next time
 
-;; auto-indent
+;; auto-saves
+(setq backup-directory-alist `(("." . ,(expand-file-name "~/.emacs.d/auto-saves"))))
 
-;(global-set-key (kbd "RET") 'newline-and-indent) ; auto-indent everything
+;; bindings for modes
 
-;; ruby-mode
+;;; ruby-mode
 (defun ruby-custom ()
   "ruby-mode-hook"
   (local-set-key (kbd "RET") 'reindent-then-newline-and-indent)
-;  (autopair-mode)
   ; Rsense + Autocomplete
   (add-to-list 'ac-sources 'ac-source-rsense-method)
   (add-to-list 'ac-sources 'ac-source-rsense-constant))
 
-(add-hook 'ruby-mode-hook '(lambda ()
-                             (ruby-custom)))
+(add-hook 'ruby-mode-hook
+	  '(lambda () (ruby-custom)))
 
-;; coffee-mode
+;;; coffee-mode
 (defun coffee-custom ()
   "coffee-mode-hook"
  (set (make-local-variable 'tab-width) 2)
  (coffee-cos-mode t)) ; compile on save
-; (auto-complete-mode)
-; (autopair-mode)) 
 
 (add-hook 'coffee-mode-hook
           '(lambda() (coffee-custom)))
 
-;; auto-saves
-(setq backup-directory-alist `(("." . ,(expand-file-name "~/.emacs.d/auto-saves"))))
+;;; scss-mode
+(defun scss-custom ()
+  "scss-mode-hook"
+  (setq scss-compile-at-save nil)) ; don't do this by default
+
+(add-hook 'scss-mode-hook
+	  '(lambda () (scss-custom)))
+  
