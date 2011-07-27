@@ -62,7 +62,7 @@
 		   (dtrt-indent-mode)))
    (:name autopair
 	  :after (lambda ()
-		   (autopair-on)))
+		   (autopair-global-mode)))
    (:name autopair+
 	  :type emacswiki)
    (:name auto-complete
