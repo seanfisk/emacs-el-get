@@ -151,8 +151,6 @@
 
 ;; on to the visual settings
 (setq inhibit-splash-screen t)		; no splash screen, thanks
-;(line-number-mode 1)			; have line numbers and
-;(column-number-mode 1)			; column numbers in the mode line
 
 ;; disable scrollbars
 (scroll-bar-mode -1)
@@ -162,14 +160,8 @@
     (set-face-font 'default "Monaco-13")
   (set-face-font 'default "Monospace-10"))
 
-;(global-hl-line-mode)			; highlight current line
-;(global-linum-mode 1)			; add line numbers on the left
-
 ;; avoid compiz manager rendering bugs
 (add-to-list 'default-frame-alist '(alpha . 100))
-
-;; copy/paste with C-c and C-v and C-x, check out C-RET too
-;(cua-mode)
 
 ;; Use the clipboard, pretty please, so that copy/paste "works"
 (setq x-select-enable-clipboard t)
@@ -239,15 +231,15 @@
 (server-start) ; boot the emacs server for use with emacsclient
 (desktop-save-mode t) ; save my files for next time
 
-;; auto-indent
+;; auto-saves
+(setq backup-directory-alist `(("." . ,(expand-file-name "~/.emacs.d/auto-saves"))))
 
-;(global-set-key (kbd "RET") 'newline-and-indent) ; auto-indent everything
+;; bindings for modes
 
-;; ruby-mode
+;;; ruby-mode
 (defun ruby-custom ()
   "ruby-mode-hook"
   (local-set-key (kbd "RET") 'reindent-then-newline-and-indent)
-;  (autopair-mode)
   ; Rsense + Autocomplete
   (add-to-list 'ac-sources 'ac-source-rsense-method)
   (add-to-list 'ac-sources 'ac-source-rsense-constant))
@@ -255,16 +247,11 @@
 (add-hook 'ruby-mode-hook '(lambda ()
                              (ruby-custom)))
 
-;; coffee-mode
+;;; coffee-mode
 (defun coffee-custom ()
   "coffee-mode-hook"
  (set (make-local-variable 'tab-width) 2)
  (coffee-cos-mode t)) ; compile on save
-; (auto-complete-mode)
-; (autopair-mode)) 
 
 (add-hook 'coffee-mode-hook
           '(lambda() (coffee-custom)))
-
-;; auto-saves
-(setq backup-directory-alist `(("." . ,(expand-file-name "~/.emacs.d/auto-saves"))))
