@@ -129,7 +129,6 @@
 ;  flymake-point			; show error under cursor, need to get this working
    flymake-fringe-icons			; show error icons at side
    rvm					; rvm compatibility
-   rinari				; rails ide
    haml-mode				; major mode for haml
    scss-mode				; major mode for scss
    js2-mode				; major mode for javascript
@@ -152,6 +151,9 @@
 		   yasnippet		; powerful snippet mode
 		   )
 	do (add-to-list 'my:el-get-packages p)))
+
+(when (executable-find "rake")
+  (add-to-list 'my:el-get-packages 'rinari)); rails ide
 
 (setq my:el-get-packages
       (append
