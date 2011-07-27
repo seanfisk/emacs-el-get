@@ -244,8 +244,8 @@
   (add-to-list 'ac-sources 'ac-source-rsense-method)
   (add-to-list 'ac-sources 'ac-source-rsense-constant))
 
-(add-hook 'ruby-mode-hook '(lambda ()
-                             (ruby-custom)))
+(add-hook 'ruby-mode-hook
+	  '(lambda () (ruby-custom)))
 
 ;;; coffee-mode
 (defun coffee-custom ()
@@ -255,3 +255,12 @@
 
 (add-hook 'coffee-mode-hook
           '(lambda() (coffee-custom)))
+
+;;; scss-mode
+(defun scss-custom ()
+  "scss-mode-hook"
+  (setq scss-compile-at-save nil)) ; don't do this by default
+
+(add-hook 'scss-mode-hook
+	  '(lambda () (scss-custom)))
+  
