@@ -67,7 +67,8 @@
 	  :type emacswiki)
    (:name auto-complete
 	  :after (lambda ()
-		   (global-auto-complete-mode t)))
+		   (global-auto-complete-mode t)
+		   (add-to-list 'ac-modes 'scss-mode)))
    (:name undo-tree
 	  :type git
 	  :url "http://www.dr-qubit.org/git/undo-tree.git"
