@@ -56,25 +56,25 @@
    (:name auto-indent-mode
 	  :type elpa
 	  :after (lambda ()
-		   (auto-indent-global-mode)))
+		   (auto-indent-global-mode t)))
    (:name dtrt-indent
 	  :after (lambda ()
-		   (dtrt-indent-mode)))
+		   (dtrt-indent-mode t)))
    (:name autopair
 	  :after (lambda ()
-		   (autopair-global-mode)))
+		   (autopair-global-mode t)))
    (:name autopair+
 	  :type emacswiki)
    (:name auto-complete
 	  :after (lambda ()
-		   (global-auto-complete-mode)))
+		   (global-auto-complete-mode t)))
    (:name undo-tree
 	  :type git
 	  :url "http://www.dr-qubit.org/git/undo-tree.git"
 	  :load "undo-tree.el"
           :features undo-tree
 	  :after (lambda ()
-		   (global-undo-tree-mode)))
+		   (global-undo-tree-mode t)))
    (:name fuzzy-match
 	  :type emacswiki)
    (:name textmate
@@ -83,7 +83,7 @@
    	  :load "textmate.el"
    	  :features textmate
    	  :after (lambda ()
-   		   (textmate-mode)))
+   		   (textmate-mode t)))
    (:name anything-config
 	  :type emacswiki)
    (:name rsense
@@ -179,12 +179,12 @@
 (setq windmove-wrap-around t)
 
 ; winner-mode provides C-<left> to get back to previous window layout
-(winner-mode 1)
+(winner-mode t)
 
 ;; whenever an external process changes a file underneath emacs, and there
 ;; was no unsaved changes in the corresponding buffer, just revert its
 ;; content to reflect what's on-disk.
-(global-auto-revert-mode 1)
+(global-auto-revert-mode t)
 
 ;; M-x shell is a nice shell interface to use, let's make it colorful.  If
 ;; you need a terminal emulator rather than just a shell, consider M-x term
@@ -237,7 +237,7 @@
 
 ;; other bindings and such
 (server-start) ; boot the emacs server for use with emacsclient
-(desktop-save-mode 1) ; save my files for next time
+(desktop-save-mode t) ; save my files for next time
 
 ;; auto-indent
 
