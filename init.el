@@ -100,7 +100,6 @@
    escreen            			; screen for emacs, C-\ C-h
    switch-window			; takes over C-x o
    color-theme		                ; nice looking emacs
-   auto-complete-extension		; extensions for auto-complete
    anything				; "Quicksilver for Emacs"
    dtrt-indent				; foreign indentation detection mode
    zencoding-mode			; http://www.emacswiki.org/emacs/ZenCoding
