@@ -86,6 +86,9 @@
 	  :type emacswiki
 	  :features anything-etags+
 	  :depends anything)
+   (:name flymake-cursor
+	  :type emacswiki
+	  :features flymake-cursor)
    (:name rsense			; ruby type completion
 	  :type git
 	  :url "git://github.com/m2ym/rsense.git"
@@ -119,7 +122,6 @@
    rvm					; rvm compatibility
    ruby-electric			; ruby control structure matching
    flymake-ruby				; flymake for ruby
-   flymake-point			; show error under cursor, need to get this working
    flymake-fringe-icons			; show error icons at side
    ))
 
