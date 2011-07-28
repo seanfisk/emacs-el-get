@@ -80,7 +80,12 @@
    	  :after (lambda ()
    		   (textmate-mode t)))
    (:name anything-config		; common config for anything
-	  :type emacswiki)
+	  :type emacswiki
+	  :depends anything)
+   (:name anything-etags+		; even more etags goodness for anything
+	  :type emacswiki
+	  :features anything-etags+
+	  :depends anything)
    (:name rsense			; ruby type completion
 	  :type git
 	  :url "git://github.com/m2ym/rsense.git"
