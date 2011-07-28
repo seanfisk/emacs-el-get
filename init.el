@@ -44,49 +44,48 @@
 	  :after (lambda ()
 		   ;; when using AZERTY keyboard, consider C-x C-_
 		   (global-set-key (kbd "C-x C-/") 'goto-last-change)))
-   (:name color-theme-solarized
+   (:name color-theme-solarized		; awesome color theme
 	  :after (lambda ()
 		   (color-theme-solarized-dark)))
    (:name auto-indent-mode		; auto-indentation, should be loaded before autopair and yasnippet
-	  :type emacswiki)
-   (:name dtrt-indent
+	  :type emacswiki
+	  :features auto-indent-mode
 	  :after (lambda ()
-		   (dtrt-indent-mode t)))
-   (:name autopair
+		   (global-auto-indent-mode)))
+   (:name autopair			; automatically complete everything that comes in pairs
 	  :after (lambda ()
 		   (autopair-global-mode t)))
-   (:name autopair+
+   (:name auto-pair+			; add Textmate-like pairing to autopair
+	  :depends autopair
 	  :type emacswiki)
-   (:name auto-complete
+   (:name auto-complete			; the best auto-complete extension for emacs!
 	  :after (lambda ()
 		   (global-auto-complete-mode t)
 		   (add-to-list 'ac-modes 'scss-mode)))
-   (:name undo-tree
+   (:name undo-tree			; undo history in a tree like vim, try C-x u
 	  :type git
 	  :url "http://www.dr-qubit.org/git/undo-tree.git"
 	  :load "undo-tree.el"
           :features undo-tree
 	  :after (lambda ()
 		   (global-undo-tree-mode t)))
-   (:name fuzzy-match
-	  :type emacswiki)
-   (:name textmate
+   (:name textmate			; Textmate like extensions
    	  :type git
    	  :url "git://github.com/defunkt/textmate.el.git"
    	  :load "textmate.el"
    	  :features textmate
    	  :after (lambda ()
    		   (textmate-mode t)))
-   (:name anything-config
+   (:name anything-config		; common config for anything
 	  :type emacswiki)
-   (:name rsense
+   (:name rsense			; ruby type completion
 	  :type git
 	  :url "git://github.com/m2ym/rsense.git"
 	  :load-path "etc"
 	  :features rsense
 	  :after (lambda()
 		   (setq rsense-home (expand-file-name "."))))
-   (:name edit-server
+   (:name edit-server			; for editing through Google Chrome
 	  :features edit-server
 	  :after (lambda ()
 		   (edit-server-start)))))
@@ -96,24 +95,25 @@
  my:el-get-packages
  '(el-get				; el-get is self-hosting
    escreen            			; screen for emacs, C-\ C-h
-   php-mode-improved			; if you're into php...
    switch-window			; takes over C-x o
-   zencoding-mode			; http://www.emacswiki.org/emacs/ZenCoding
    color-theme		                ; nice looking emacs
    auto-complete-extension		; extensions for auto-complete
    anything				; "Quicksilver for Emacs"
+   dtrt-indent				; foreign indentation detection mode
+   zencoding-mode			; http://www.emacswiki.org/emacs/ZenCoding
    ruby-mode				; major mode for ruby
-   ruby-electric			; ruby control structure matching
-   flymake-ruby				; flymake for ruby
-;  flymake-point			; show error under cursor, need to get this working
-   flymake-fringe-icons			; show error icons at side
-   rvm					; rvm compatibility
+   php-mode-improved			; if you're into php...
    haml-mode				; major mode for haml
    scss-mode				; major mode for scss
    js2-mode				; major mode for javascript
    coffee-mode				; major mode for coffee-script
    textile-mode				; major mode for textile markup
    markdown-mode			; major mode for markdown markup
+   rvm					; rvm compatibility
+   ruby-electric			; ruby control structure matching
+   flymake-ruby				; flymake for ruby
+;  flymake-point			; show error under cursor, need to get this working
+   flymake-fringe-icons			; show error icons at side
    ))
 
 ;;
