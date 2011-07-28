@@ -79,9 +79,6 @@
    	  :features textmate
    	  :after (lambda ()
    		   (textmate-mode t)))
-   (:name anything-config		; common config for anything
-	  :type emacswiki
-	  :depends anything)
    (:name anything-etags+		; even more etags goodness for anything
 	  :type emacswiki
 	  :features anything-etags+
@@ -120,7 +117,7 @@
    rvm					; rvm compatibility
    ruby-electric			; ruby control structure matching
    flymake-ruby				; flymake for ruby
-;  flymake-point			; show error under cursor, need to get this working
+   flymake-point			; show error under cursor, need to get this working
    flymake-fringe-icons			; show error icons at side
    ))
 
