@@ -79,6 +79,9 @@
    	  :features textmate
    	  :after (lambda ()
    		   (textmate-mode t)))
+   (:name anything			; "Quicksilver for Emacs"
+	  :before (lambda ()
+		    (defvar org-directory ""))) ; Hack around free variable org-directory issue
    (:name anything-etags+		; even more etags goodness for anything
 	  :type emacswiki
 	  :features anything-etags+
@@ -102,7 +105,6 @@
    escreen            			; screen for emacs, C-\ C-h
    switch-window			; takes over C-x o
    color-theme		                ; nice looking emacs
-   anything				; "Quicksilver for Emacs"
    dtrt-indent				; foreign indentation detection mode
    dired+				; many extensions to dired directory browser
    zencoding-mode			; http://www.emacswiki.org/emacs/ZenCoding
