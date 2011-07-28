@@ -13,12 +13,6 @@
 
 (require 'cl)				; common lisp goodies, loop
 
-;; Add more package archives
-(setq package-archives
-      '(("original"    . "http://tromey.com/elpa/")
-        ("gnu"         . "http://elpa.gnu.org/packages/")
-        ("marmalade"   . "http://marmalade-repo.org/packages/")))
-
 (add-to-list 'load-path "~/.emacs.d/el-get/el-get")
 
 (unless (require 'el-get nil t)
