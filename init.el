@@ -156,9 +156,10 @@
 (scroll-bar-mode -1)
 
 ;; choose your own fonts, in a system dependant way
-(if (string-match "apple-darwin" system-configuration)
-    (set-face-font 'default "Monaco-13")
-  (set-face-font 'default "Monospace-10"))
+(if (window-system)
+    (if (string-match "apple-darwin" system-configuration)
+	(set-face-font 'default "Monaco-13")
+      (set-face-font 'default "Monospace-10")))
 
 ;; avoid compiz manager rendering bugs
 (add-to-list 'default-frame-alist '(alpha . 100))
