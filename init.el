@@ -65,13 +65,6 @@
 	  :after (lambda ()
 		   (global-auto-complete-mode t)
 		   (add-to-list 'ac-modes 'scss-mode)))
-   (:name undo-tree			; undo history in a tree like vim, try C-x u
-	  :type git
-	  :url "http://www.dr-qubit.org/git/undo-tree.git"
-	  :load "undo-tree.el"
-          :features undo-tree
-	  :after (lambda ()
-		   (global-undo-tree-mode t)))
    (:name textmate			; Textmate like extensions
    	  :type git
    	  :url "git://github.com/defunkt/textmate.el.git"
@@ -110,6 +103,7 @@
    color-theme		                ; nice looking emacs
    dtrt-indent				; foreign indentation detection mode
    dired+				; many extensions to dired directory browser
+   undo-tree		  		; undo history in a tree like vim, try C-x u
    zencoding-mode			; http://www.emacswiki.org/emacs/ZenCoding
    ruby-mode				; major mode for ruby
    php-mode-improved			; if you're into php...
