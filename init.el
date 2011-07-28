@@ -47,10 +47,8 @@
    (:name color-theme-solarized
 	  :after (lambda ()
 		   (color-theme-solarized-dark)))
-   (:name auto-indent-mode
-	  :type elpa
-	  :after (lambda ()
-		   (auto-indent-global-mode t)))
+   (:name auto-indent-mode		; auto-indentation, should be loaded before autopair and yasnippet
+	  :type emacswiki)
    (:name dtrt-indent
 	  :after (lambda ()
 		   (dtrt-indent-mode t)))
