@@ -45,14 +45,17 @@
 		   ;; when using AZERTY keyboard, consider C-x C-_
 		   (global-set-key (kbd "C-x C-/") 'goto-last-change)))
    (:name color-theme-solarized		; awesome color theme
+	  :depends color-theme
+	  :url "git://github.com/sellout/emacs-color-theme-solarized.git" ; https clone takes a long time for some reason - hopefully speed up clone time
 	  :after (lambda ()
 		   (color-theme-solarized-dark)))
    (:name auto-indent-mode		; auto-indentation, should be loaded before autopair and yasnippet
 	  :type emacswiki
-	  :features auto-indent-mode
-	  :after (lambda ()
-		   (global-auto-indent-mode)))
-   (:name autopair			; automatically complete everything that comes in pairs
+	  :features auto-indent-mode)
+;	  :after (lambda ()
+;		   (auto-indent-global-mode)))
+   (:name autopair			; automatically complete everything that comes in pairs, load auto-indent-mode first
+	  :depends auto-indent-mode
 	  :after (lambda ()
 		   (autopair-global-mode t)))
    (:name auto-pair+			; add Textmate-like pairing to autopair
@@ -126,11 +129,11 @@
 
 (when (el-get-executable-find "svn")
   
-  (loop for p in '(psvn    		; M-x svn-status
-		   yasnippet		; powerful snippet mode
-		   )
-	do (add-to-list 'my:el-get-packages p)))
-
+  (add-to-list 'my:el-get-packages 'psvn)
+  (add-to-list 'el-get-sources
+	       '(:name yasnippet
+		       :depends auto-indent-mode))) ; powerful snippedt mode, load auto-indent-mode first
+	       
 (when (executable-find "rake")
   (add-to-list 'my:el-get-packages 'rinari)); rails ide
 
