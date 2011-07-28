@@ -107,6 +107,7 @@
    color-theme		                ; nice looking emacs
    anything				; "Quicksilver for Emacs"
    dtrt-indent				; foreign indentation detection mode
+   dired+				; many extensions to dired directory browser
    zencoding-mode			; http://www.emacswiki.org/emacs/ZenCoding
    ruby-mode				; major mode for ruby
    php-mode-improved			; if you're into php...
