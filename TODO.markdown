@@ -9,6 +9,8 @@ TODO for Sean's Emacs Config
     * File selection with Anything
     * Tag selection with Anything
     * Create shortcuts
+* HTML
+    * Get nxHtml working correctly
 * Rails
     * Get rails setup working properly
     * Document different modes / command
