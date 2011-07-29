@@ -63,8 +63,10 @@
 	  :type emacswiki)
    (:name auto-complete			; the best auto-complete extension for emacs!
 	  :after (lambda ()
-		   (global-auto-complete-mode t)
 		   (add-to-list 'ac-modes 'scss-mode)))
+   (:name auto-complete-etags		; auto-complete source for tags
+	  :features auto-complete-etags
+	  :depends auto-complete)
    (:name textmate			; Textmate like extensions
    	  :type git
    	  :url "git://github.com/defunkt/textmate.el.git"
@@ -233,6 +235,14 @@
 
 ;; bindings for modes
 
+;;; auto-complete-mode
+
+(defun auto-complete-custom ()
+  "auto-complete-mode-hook"
+  (add-to-list 'ac-sources 'ac-source-etags))
+
+(add-hook 'auto-complete-mode-hook 'auto-complete-custom)
+
 ;;; ruby-mode
 (defun ruby-custom ()
   "ruby-mode-hook"
@@ -260,4 +270,3 @@
 
 (add-hook 'scss-mode-hook
 	  '(lambda () (scss-custom)))
-  
