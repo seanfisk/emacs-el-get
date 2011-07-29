@@ -32,8 +32,6 @@ I like a simpler install than Dimitri's Emacs Kicker...
     
 ... It's not exactly that simple. After you start Emacs once, you may have to restart it a few times before all the packages take effect.
 
-**Note: To kill Emacs in this setup, use `M-x kill-emacs` or (my preference) `C-x C-m kill-emacs`.**
-
 Customization
 -------------
 
