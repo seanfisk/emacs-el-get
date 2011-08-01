@@ -82,6 +82,7 @@
 	  :type emacswiki
 	  :features anything-etags+
 	  :depends anything)
+   (:name full-ack)			; grep replacement
    (:name flymake-cursor
 	  :type emacswiki
 	  :features flymake-cursor)
