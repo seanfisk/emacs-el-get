@@ -86,7 +86,9 @@
 	  :after (lambda ()
 		   (let ((ack-grep-executable (executable-find "ack-grep")))
 		     (when ack-grep-executable
-		       (setq ack-executable ack-grep-executable)))))
+		       (setq ack-executable ack-grep-executable)))
+		   (global-set-key (kbd "C-x a") 'ack)
+		   (global-set-key (kbd "C-x SPC") 'ack-find-file)))
    (:name flymake-cursor
 	  :type emacswiki
 	  :features flymake-cursor)
