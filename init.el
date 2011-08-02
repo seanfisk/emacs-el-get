@@ -82,7 +82,11 @@
 	  :type emacswiki
 	  :features anything-etags+
 	  :depends anything)
-   (:name full-ack)			; grep replacement
+   (:name full-ack			; grep replacement
+	  :after (lambda ()
+		   (let ((ack-grep-executable (executable-find "ack-grep")))
+		     (when ack-grep-executable
+		       (setq ack-executable ack-grep-executable)))))
    (:name flymake-cursor
 	  :type emacswiki
 	  :features flymake-cursor)
