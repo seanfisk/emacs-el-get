@@ -262,6 +262,7 @@
 ;; other bindings and such
 (server-start) ; boot the emacs server for use with emacsclient
 (desktop-save-mode t) ; save my files for next time
+(global-set-key (kbd "C-x j") 'kill-this-buffer)
 
 ;; auto-saves
 (setq backup-directory-alist `(("." . ,(expand-file-name "~/.emacs.d/auto-saves"))))
