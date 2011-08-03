@@ -5,10 +5,6 @@ TODO for Sean's Emacs Config
     * Make sure this is working correctly. Cool and useful extension.
 * Flymake
     * Get flymake-point working correctly. This is an awesome add-on.
-* Anything
-    * File selection with Anything
-    * Tag selection with Anything
-    * Create shortcuts
 * HTML
     * Get nxHtml working correctly
 * Rails
@@ -23,3 +19,7 @@ TODO for Sean's Emacs Config
     * Gotta have flymake
     * Gotta have completion with auto-complete and/or semantic (cedet)
     * Preferably work well with STL and Qt
+* Icicles
+    * Add C-n and C-p bindings instead of arrow keys
+    * Possibly get scatter to work instantly
+    * Install LaCarte
