@@ -99,7 +99,7 @@
 	  :load "undo-tree.el"
           :features undo-tree
 	  :after (lambda ()
-		   (global-undo-tree-mode)))
+		   (global-undo-tree-mode t)))
    (:name fuzzy-match
 	  :type emacswiki)
    (:name icicles
@@ -110,7 +110,7 @@
 	  :after (lambda ()
 		   (setq icicle-Completions-text-scale-decrease 0.0) ; don't resize when auto-completing - workaround for Aquamacs text-scale-decrease bug
 		   (setq icicle-incremental-completion-flag 1) ; show incremental completions immediately
-		   (setq icicle-S-TAB-completion-methods-alist (cons 'scatter (delete 'scatter icicle-TAB-completion-methods))) ; make scatter the default
+;		   (setq icicle-S-TAB-completion-methods-alist (cons 'scatter (delete 'scatter icicle-S-TAB-completion-methods-alist))) ; make scatter the default - this is not the right syntax - fix this
 ;		   (setq icicle-max-candidates 20)
 		   (global-set-key (kbd "M-.") 'icicle-find-first-tag) ; easy tag find
 		   (global-set-key (kbd "M-,") 'icicle-find-file-in-tags-table) ; easy file find
@@ -289,7 +289,7 @@
 (global-set-key (kbd "C-x C-m") 'execute-extended-command)
 
 ;; icy mode
-(icy-mode)
+(icy-mode t)
 
 ;; auto-saves
 (setq backup-directory-alist `(("." . ,(expand-file-name "~/.emacs.d/auto-saves"))))
