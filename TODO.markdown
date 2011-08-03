@@ -21,5 +21,7 @@ TODO for Sean's Emacs Config
     * Preferably work well with STL and Qt
 * Icicles
     * Add C-n and C-p bindings instead of arrow keys
-    * Possibly get scatter to work instantly
+    * Possibly get scatter to work instantly - failing that, make it
+      the default for S-TAB
     * Install LaCarte
+    * Improve \*Completions\* display
