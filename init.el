@@ -59,12 +59,12 @@
 		   (global-set-key (kbd "<C-S-down>")   'buf-move-down)
 		   (global-set-key (kbd "<C-S-left>")   'buf-move-left)
 		   (global-set-key (kbd "<C-S-right>")  'buf-move-right)))
-   (:name smex                          ; a better (ido like) M-x
-          :after (lambda ()
-                   (setq smex-save-file "~/.emacs.d/.smex-items")
-                   (global-set-key (kbd "M-x") 'smex)
-                   (global-set-key (kbd "M-X") 'smex-major-mode-commands)
-                   (global-set-key (kbd "C-x C-m") 'smex)))
+;   (:name smex                          ; a better (ido like) M-x
+;          :after (lambda ()
+;                   (setq smex-save-file "~/.emacs.d/.smex-items")
+;                   (global-set-key (kbd "M-x") 'smex)
+;                   (global-set-key (kbd "M-X") 'smex-major-mode-commands)
+;                   (global-set-key (kbd "C-x C-m") 'smex)))
    (:name goto-last-change              ; move pointer back to last change
 	  :after (lambda ()
 		   ;; when using AZERTY keyboard, consider C-x C-_
@@ -93,7 +93,29 @@
    (:name auto-complete-etags		; auto-complete source for tags
 	  :features auto-complete-etags
 	  :depends auto-complete)
-   (:name textmate			; Textmate like extensions
+   (:name undo-tree
+	  :type git
+	  :url "http://www.dr-qubit.org/git/undo-tree.git"
+	  :load "undo-tree.el"
+          :features undo-tree
+	  :after (lambda ()
+		   (global-undo-tree-mode)))
+   (:name fuzzy-match
+	  :type emacswiki)
+   (:name icicles
+	  :type git
+	  :url "git://github.com/emacsmirror/icicles.git"
+	  :load "icicles.el"
+	  :features icicles
+	  :after (lambda ()
+		   (setq icicle-Completions-text-scale-decrease 0.0) ; don't resize when auto-completing - workaround for Aquamacs text-scale-decrease bug
+		   (setq icicle-incremental-completion-flag 1) ; show incremental completions immediately
+		   (setq icicle-S-TAB-completion-methods-alist (cons 'scatter (delete 'scatter icicle-TAB-completion-methods))) ; make scatter the default
+;		   (setq icicle-max-candidates 20)
+		   (global-set-key (kbd "M-.") 'icicle-find-first-tag) ; easy tag find
+		   (global-set-key (kbd "M-,") 'icicle-find-file-in-tags-table) ; easy file find
+		   ))
+   (:name textmate
    	  :type git
    	  :url "git://github.com/defunkt/textmate.el.git"
    	  :load "textmate.el"
@@ -232,22 +254,22 @@
 (define-key term-raw-map  (kbd "C-y") 'term-paste)
 
 ;; use ido for minibuffer completion
-(require 'ido)
-(ido-mode t)
-(setq ido-save-directory-list-file "~/.emacs.d/.ido.last")
-(setq ido-enable-flex-matching t)
-(setq ido-use-filename-at-point 'guess)
+;(require 'ido)
+;(ido-mode t)
+;(setq ido-save-directory-list-file "~/.emacs.d/.ido.last")
+;(setq ido-enable-flex-matching t)
+;(setq ido-use-filename-at-point 'guess)
 
-(setq ido-show-dot-for-dired t)
+;(setq ido-show-dot-for-dired t)
 
 ;; default key to switch buffer is C-x b, but that's not easy enough
 ;;
 ;; when you do that, to kill emacs either close its frame from the window
 ;; manager or do M-x kill-emacs.  Don't need a nice shortcut for a once a
 ;; week (or day) action.
-(global-set-key (kbd "C-x b") 'ido-switch-buffer)
+;(global-set-key (kbd "C-x b") 'ido-switch-buffer)
 ;(global-set-key (kbd "C-x C-c") 'ido-switch-buffer)
-(global-set-key (kbd "C-x B") 'ibuffer)
+;(global-set-key (kbd "C-x B") 'ibuffer)
 
 ;; C-x C-j opens dired with the cursor right on the file you're editing
 (require 'dired-x)
@@ -259,10 +281,15 @@
 		       (if (frame-parameter nil 'fullscreen) nil 'fullboth)))
 (global-set-key [f11] 'fullscreen)
 
-;; other bindings and such
 (server-start) ; boot the emacs server for use with emacsclient
 (desktop-save-mode t) ; save my files for next time
-(global-set-key (kbd "C-x j") 'kill-this-buffer)
+
+;; general bindings
+(global-set-key (kbd "C-x j") 'kill-this-buffer) ; for ease
+(global-set-key (kbd "C-x C-m") 'execute-extended-command)
+
+;; icy mode
+(icy-mode)
 
 ;; auto-saves
 (setq backup-directory-alist `(("." . ,(expand-file-name "~/.emacs.d/auto-saves"))))
