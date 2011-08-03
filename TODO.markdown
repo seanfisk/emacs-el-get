@@ -23,5 +23,3 @@ TODO for Sean's Emacs Config
     * Gotta have flymake
     * Gotta have completion with auto-complete and/or semantic (cedet)
     * Preferably work well with STL and Qt
-* Icicles
-    * Possibly try to get Icicles to work well with this setup at some point
