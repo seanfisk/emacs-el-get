@@ -76,9 +76,9 @@
 		   (color-theme-solarized-dark)))
    (:name auto-indent-mode		; auto-indentation, should be loaded before autopair and yasnippet
 	  :type emacswiki
-	  :features auto-indent-mode)
-;	  :after (lambda ()
-;		   (auto-indent-global-mode)))
+	  :features auto-indent-mode
+	  :after (lambda ()
+		   (auto-indent-global-mode)))
    (:name autopair			; automatically complete everything that comes in pairs, load auto-indent-mode first
 	  :depends auto-indent-mode
 	  :after (lambda ()
@@ -311,7 +311,9 @@
   (local-set-key (kbd "RET") 'reindent-then-newline-and-indent)
   ; Rsense + Autocomplete
   (add-to-list 'ac-sources 'ac-source-rsense-method)
-  (add-to-list 'ac-sources 'ac-source-rsense-constant))
+  (add-to-list 'ac-sources 'ac-source-rsense-constant)
+  ; superceded in this mode by ruby-electric
+  (setq autopair-dont-activate t))
 
 (add-hook 'ruby-mode-hook
 	  '(lambda () (ruby-custom)))
