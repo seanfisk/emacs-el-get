@@ -112,16 +112,18 @@
 		   (setq icicle-incremental-completion-flag 1) ; show incremental completions immediately
 ;		   (setq icicle-S-TAB-completion-methods-alist (cons 'scatter (delete 'scatter icicle-S-TAB-completion-methods-alist))) ; make scatter the default - this is not the right syntax - fix this
 ;		   (setq icicle-max-candidates 20)
+		   (icy-mode t)
 		   (global-set-key (kbd "M-.") 'icicle-find-first-tag) ; easy tag find
 		   (global-set-key (kbd "M-,") 'icicle-find-file-in-tags-table) ; easy file find
 		   ))
    (:name textmate
-   	  :type git
-   	  :url "git://github.com/defunkt/textmate.el.git"
-   	  :load "textmate.el"
-   	  :features textmate
-   	  :after (lambda ()
-   		   (textmate-mode t)))
+    	  :type git
+    	  :url "git://github.com/defunkt/textmate.el.git"
+    	  :load "textmate.el"
+    	  :features textmate
+    	  :after (lambda ()
+		   (setq textmate-completing-library 'icicles)
+    		   (textmate-mode t)))
    (:name anything			; "Quicksilver for Emacs"
 	  :before (lambda ()
 		    (defvar org-directory ""))) ; Hack around free variable org-directory issue
@@ -134,8 +136,8 @@
 		   (let ((ack-grep-executable (executable-find "ack-grep")))
 		     (when ack-grep-executable
 		       (setq ack-executable ack-grep-executable)))
-		   (global-set-key (kbd "C-x a") 'ack)
-		   (global-set-key (kbd "C-x SPC") 'ack-find-file)))
+		   (global-set-key (kbd "C-x C-a") 'ack)
+		   (global-set-key (kbd "C-x a") 'ack-find-file)))
    (:name flymake-cursor
 	  :type emacswiki
 	  :features flymake-cursor)
@@ -288,8 +290,7 @@
 (global-set-key (kbd "C-x j") 'kill-this-buffer) ; for ease
 (global-set-key (kbd "C-x C-m") 'execute-extended-command)
 
-;; icy mode
-(icy-mode t)
+;; more icicles options
 
 ;; auto-saves
 (setq backup-directory-alist `(("." . ,(expand-file-name "~/.emacs.d/auto-saves"))))
