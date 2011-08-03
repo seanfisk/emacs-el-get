@@ -3,8 +3,6 @@ TODO for Sean's Emacs Config
 
 * Auto-Indent Mode
     * Make sure this is working correctly. Cool and useful extension.
-* Flymake
-    * Get flymake-point working correctly. This is an awesome add-on.
 * HTML
     * Get nxHtml working correctly
 * Rails
@@ -24,4 +22,13 @@ TODO for Sean's Emacs Config
     * Possibly get scatter to work instantly - failing that, make it
       the default for S-TAB
     * Install LaCarte
-    * Improve \*Completions\* display
+    * Improve \*Completions\* display - either smaller or at bottom,
+      or a menu
+    * Work well with full-ack and textmate-goto-file
+    * Open \*Completions\* immediately, possibly with less candidates
+* Open line
+    * Fix it
+* Ruby-electric and autopair
+    * Don't have both running at the same time
+* Flymake and undo-tree
+    * Flymake seems to destroy undo history
