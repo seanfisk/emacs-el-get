@@ -109,12 +109,14 @@
 	  :features icicles
 	  :after (lambda ()
 		   (setq icicle-Completions-text-scale-decrease 0.0) ; don't resize when auto-completing - workaround for Aquamacs text-scale-decrease bug
-		   (setq icicle-incremental-completion-flag 1) ; show incremental completions immediately
-;		   (setq icicle-S-TAB-completion-methods-alist (cons 'scatter (delete 'scatter icicle-S-TAB-completion-methods-alist))) ; make scatter the default - this is not the right syntax - fix this
-;		   (setq icicle-max-candidates 20)
+		   (setq icicle-incremental-completion-flag 1) ; show incremental completions when keys are typed
+		   (setq icicle-incremental-completion-delay 0)
+		   ;(setq icicle-S-TAB-completion-methods-alist (cons 'scatter (delete 'scatter icicle-S-TAB-completion-methods-alist))) ; make scatter the default - this is not the right syntax - fix this
+		   (setq icicle-max-candidates 20)
+                   ;(setq icicle-Completions-window-max-height 5)
+		   (setq split-width-threshold nil) ; always show icicles as a small buffer at the bottom
 		   (icy-mode t)
-		   (global-set-key (kbd "M-.") 'icicle-find-first-tag) ; easy tag find
-		   (global-set-key (kbd "M-,") 'icicle-find-file-in-tags-table) ; easy file find
+		   (define-key icicle-mode-map (kbd "C-x C-m") 'icicle-execute-extended-command)
 		   ))
    (:name textmate
     	  :type git
@@ -290,15 +292,12 @@
 (global-set-key (kbd "C-x j") 'kill-this-buffer) ; for ease
 (global-set-key (kbd "C-x C-m") 'execute-extended-command)
 
-;; more icicles options
-
 ;; auto-saves
 (setq backup-directory-alist `(("." . ,(expand-file-name "~/.emacs.d/auto-saves"))))
 
 ;; bindings for modes
 
 ;;; auto-complete-mode
-
 (defun auto-complete-custom ()
   "auto-complete-mode-hook"
   (add-to-list 'ac-sources 'ac-source-etags))
