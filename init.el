@@ -302,6 +302,7 @@
 ;;; auto-complete-mode
 (defun auto-complete-custom ()
   "auto-complete-mode-hook"
+  (local-set-key (kbd "M-/") 'auto-complete)
   (add-to-list 'ac-sources 'ac-source-etags))
 
 (add-hook 'auto-complete-mode-hook 'auto-complete-custom)
