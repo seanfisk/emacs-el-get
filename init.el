@@ -59,12 +59,12 @@
 		   (global-set-key (kbd "<C-S-down>")   'buf-move-down)
 		   (global-set-key (kbd "<C-S-left>")   'buf-move-left)
 		   (global-set-key (kbd "<C-S-right>")  'buf-move-right)))
-;   (:name smex                          ; a better (ido like) M-x
-;          :after (lambda ()
-;                   (setq smex-save-file "~/.emacs.d/.smex-items")
-;                   (global-set-key (kbd "M-x") 'smex)
-;                   (global-set-key (kbd "M-X") 'smex-major-mode-commands)
-;                   (global-set-key (kbd "C-x C-m") 'smex)))
+  (:name smex                          ; a better (ido like) M-x
+         :after (lambda ()
+                  (setq smex-save-file "~/.emacs.d/.smex-items")
+                  (global-set-key (kbd "M-x") 'smex)
+                  (global-set-key (kbd "M-X") 'smex-major-mode-commands)
+                  (global-set-key (kbd "C-x C-m") 'smex)))
    (:name goto-last-change              ; move pointer back to last change
 	  :after (lambda ()
 		   ;; when using AZERTY keyboard, consider C-x C-_
@@ -100,34 +100,13 @@
           :features undo-tree
 	  :after (lambda ()
 		   (global-undo-tree-mode t)))
-   (:name fuzzy-match
-	  :type emacswiki)
-   (:name icicles
-	  :type git
-	  :url "git://github.com/emacsmirror/icicles.git"
-	  :load "icicles.el"
-	  :features icicles
-	  :after (lambda ()
-		   (setq icicle-Completions-text-scale-decrease 0.0) ; don't resize when auto-completing - workaround for Aquamacs text-scale-decrease bug
-		   (setq icicle-incremental-completion-flag 1) ; show incremental completions when keys are typed
-		   (setq icicle-incremental-completion-delay 0)
-		   ;(setq icicle-S-TAB-completion-methods-alist (cons 'scatter (delete 'scatter icicle-S-TAB-completion-methods-alist))) ; make scatter the default - this is not the right syntax - fix this
-		   (setq icicle-max-candidates 20)
-                   ;(setq icicle-Completions-window-max-height 5)
-		   (setq split-width-threshold nil) ; always show icicles as a small buffer at the bottom
-		   (icy-mode t)
-		   (define-key icicle-mode-map (kbd "C-x C-m") 'icicle-execute-extended-command)
-		   (define-key icicle-mode-map (kbd "M-.") 'icicle-find-first-tag) ; easy tag find
-		   (define-key icicle-mode-map (kbd "M-,") 'icicle-find-file-in-tags-table) ; easy file find
-		   ))
    (:name textmate
     	  :type git
     	  :url "git://github.com/defunkt/textmate.el.git"
     	  :load "textmate.el"
     	  :features textmate
     	  :after (lambda ()
-		   (setq textmate-completing-library 'icicles)
-    		   (textmate-mode t)))
+		   (textmate-mode t)))
    (:name anything			; "Quicksilver for Emacs"
 	  :before (lambda ()
 		    (defvar org-directory ""))) ; Hack around free variable org-directory issue
@@ -260,11 +239,11 @@
 (define-key term-raw-map  (kbd "C-y") 'term-paste)
 
 ;; use ido for minibuffer completion
-;(require 'ido)
-;(ido-mode t)
-;(setq ido-save-directory-list-file "~/.emacs.d/.ido.last")
-;(setq ido-enable-flex-matching t)
-;(setq ido-use-filename-at-point 'guess)
+(require 'ido)
+(ido-mode t)
+(setq ido-save-directory-list-file "~/.emacs.d/.ido.last")
+(setq ido-enable-flex-matching t)
+(setq ido-use-filename-at-point 'guess)
 
 ;(setq ido-show-dot-for-dired t)
 
@@ -273,9 +252,9 @@
 ;; when you do that, to kill emacs either close its frame from the window
 ;; manager or do M-x kill-emacs.  Don't need a nice shortcut for a once a
 ;; week (or day) action.
-;(global-set-key (kbd "C-x b") 'ido-switch-buffer)
+(global-set-key (kbd "C-x b") 'ido-switch-buffer)
 ;(global-set-key (kbd "C-x C-c") 'ido-switch-buffer)
-;(global-set-key (kbd "C-x B") 'ibuffer)
+(global-set-key (kbd "C-x B") 'ibuffer)
 
 ;; C-x C-j opens dired with the cursor right on the file you're editing
 (require 'dired-x)
