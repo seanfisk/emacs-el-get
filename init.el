@@ -117,6 +117,8 @@
 		   (setq split-width-threshold nil) ; always show icicles as a small buffer at the bottom
 		   (icy-mode t)
 		   (define-key icicle-mode-map (kbd "C-x C-m") 'icicle-execute-extended-command)
+		   (define-key icicle-mode-map (kbd "M-.") 'icicle-find-first-tag) ; easy tag find
+		   (define-key icicle-mode-map (kbd "M-,") 'icicle-find-file-in-tags-table) ; easy file find
 		   ))
    (:name textmate
     	  :type git
@@ -194,7 +196,7 @@
   (add-to-list 'el-get-sources
 	       '(:name yasnippet
 		       :depends auto-indent-mode))) ; powerful snippedt mode, load auto-indent-mode first
-	       
+
 (when (executable-find "rake")
   (add-to-list 'my:el-get-packages 'rinari)); rails ide
 
