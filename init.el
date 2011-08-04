@@ -271,7 +271,6 @@
 
 ;; general bindings
 (global-set-key (kbd "C-x j") 'kill-this-buffer) ; for ease
-(global-set-key (kbd "C-x C-m") 'execute-extended-command)
 
 ;; auto-saves
 (setq backup-directory-alist `(("." . ,(expand-file-name "~/.emacs.d/auto-saves"))))
