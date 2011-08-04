@@ -78,7 +78,7 @@
 	  :type emacswiki
 	  :features auto-indent-mode
 	  :after (lambda ()
-		   (auto-indent-global-mode)))
+		   (auto-indent-global-mode t)))
    (:name autopair			; automatically complete everything that comes in pairs, load auto-indent-mode first
 	  :depends auto-indent-mode
 	  :after (lambda ()
