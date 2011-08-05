@@ -14,6 +14,8 @@ TODO for Sean's Emacs Config
     * Get nxHtml working correctly
 * ZSH term
     * The extended charset prompt characters should display correctly
+* Modularize the config
+    * Split into different files which get required by init.el
 * Emacs goodies
     * Get this package working again
 * Emacs code browser (ECB) and cedet
