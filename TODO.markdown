@@ -21,3 +21,5 @@ TODO for Sean's Emacs Config
     * Gotta have flymake
     * Gotta have completion with auto-complete and/or semantic (cedet)
     * Preferably work well with STL and Qt
+* Magit
+    * Get it to compile and work
