@@ -21,13 +21,3 @@ TODO for Sean's Emacs Config
     * Gotta have flymake
     * Gotta have completion with auto-complete and/or semantic (cedet)
     * Preferably work well with STL and Qt
-* Icicles
-    * Add C-n and C-p bindings instead of arrow keys
-    * Possibly get scatter to work instantly - failing that, make it
-    the default for S-TAB
-    * Install LaCarte
-    * Improve \*Completions\* display - either smaller or at bottom,
-    or a menu
-    * Work well with full-ack and textmate-goto-file
-    * Open \*Completions\* immediately, possibly with less candidates
-    
