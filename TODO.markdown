@@ -12,6 +12,8 @@ TODO for Sean's Emacs Config
     * Ensure ruby, erb, haml, sass, and coffee modes are working correctly
 * HTML
     * Get nxHtml working correctly
+* ZSH term
+    * The extended charset prompt characters should display correctly
 * Emacs goodies
     * Get this package working again
 * Emacs code browser (ECB) and cedet
