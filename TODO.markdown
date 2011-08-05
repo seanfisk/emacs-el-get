@@ -21,6 +21,8 @@ TODO for Sean's Emacs Config
     * Gotta have flymake
     * Gotta have completion with auto-complete and/or semantic (cedet)
     * Preferably work well with STL and Qt
+* Magit
+    * Get it to compile and work
 * Icicles
     * Add C-n and C-p bindings instead of arrow keys
     * Possibly get scatter to work instantly - failing that, make it
@@ -30,4 +32,5 @@ TODO for Sean's Emacs Config
     or a menu
     * Work well with full-ack and textmate-goto-file
     * Open \*Completions\* immediately, possibly with less candidates
-    
+      
+      
