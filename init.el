@@ -334,3 +334,13 @@
 
 (add-hook 'scss-mode-hook
 	  '(lambda () (scss-custom)))
+
+;;; edit-server mode
+
+(defun server-custom ()
+  (when (current-local-map)
+    (use-local-map (copy-keymap (current-local-map))))
+  (when server-buffer-clients
+    (local-set-key (kbd "C-x j") 'server-edit)))
+
+(add-hook 'server-switch-hook 'server-custom)
