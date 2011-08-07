@@ -3,8 +3,6 @@ TODO for Sean's Emacs Config
 
 * Auto-complete tags table bug
     * When you don't have a tags table it shouldn't continue to bug you about it
-* Open line
-    * Fix it
 * Rails
     * Get rails setup working properly
     * Document different modes / command
