@@ -74,6 +74,10 @@
 	  :url "git://github.com/sellout/emacs-color-theme-solarized.git" ; https clone takes a long time for some reason - hopefully speed up clone time
 	  :after (lambda ()
 		   (color-theme-solarized-dark)))
+   (:name whole-line-or-region		; use whole line when no region is present
+	  :features whole-line-or-region
+          :after (lambda ()
+		   (whole-line-or-region-mode t)))
    (:name auto-indent-mode		; auto-indentation, should be loaded before autopair and yasnippet
 	  :type emacswiki
 	  :features auto-indent-mode
