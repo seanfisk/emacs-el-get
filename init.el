@@ -145,6 +145,8 @@
 	  :depends js2-mode
 	  :after (lambda ()
 		   (setq coffee-js-mode 'js2-mode))) ; the recipe sets to javascript-mode - so reset to default - js2mode
+   (:name ruby-mode			; major mode for ruby
+	  :depends autopair) ; try not to cause problems with turning off autopair-mode later, in case ruby mode hook is activated
    (:name rsense                        ; ruby type completion
 	  :type git
 	  :url "git://github.com/m2ym/rsense.git"
@@ -173,7 +175,6 @@
    js2-mode				; major mode for javascript
    textile-mode				; major mode for textile markup
    markdown-mode			; major mode for markdown markup
-   ruby-mode                    	; major mode for ruby
    rvm					; rvm compatibility
    ruby-electric			; ruby control structure matching
    flymake-ruby				; flymake for ruby
@@ -312,7 +313,8 @@
   (add-to-list 'ac-sources 'ac-source-rsense-method)
   (add-to-list 'ac-sources 'ac-source-rsense-constant)
   ; superceded in this mode by ruby-electric
-  (setq autopair-dont-activate t))
+  (setq autopair-dont-activate t)
+  )
 
 (add-hook 'ruby-mode-hook
 	  '(lambda () (ruby-custom)))
