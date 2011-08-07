@@ -144,7 +144,7 @@
    (:name coffee-mode			; major mode for coffee-script
 	  :depends js2-mode
 	  :after (lambda ()
-		   (setq coffee-js-mode 'js2-mode))) ; the recipe sets to javascript-mode - so reset to default - js2mode 
+		   (setq coffee-js-mode 'js2-mode))) ; the recipe sets to javascript-mode - so reset to default - js2mode
    (:name rsense                        ; ruby type completion
 	  :type git
 	  :url "git://github.com/m2ym/rsense.git"
@@ -167,13 +167,13 @@
    dtrt-indent				; foreign indentation detection mode
    dired+				; many extensions to dired directory browser
    zencoding-mode			; http://www.emacswiki.org/emacs/ZenCoding
-   ruby-mode				; major mode for ruby
    php-mode-improved			; if you're into php...
    haml-mode				; major mode for haml
    scss-mode				; major mode for scss
    js2-mode				; major mode for javascript
    textile-mode				; major mode for textile markup
    markdown-mode			; major mode for markdown markup
+   ruby-mode                    	; major mode for ruby
    rvm					; rvm compatibility
    ruby-electric			; ruby control structure matching
    flymake-ruby				; flymake for ruby
