@@ -343,3 +343,7 @@
     (local-set-key (kbd "C-x j") 'server-edit)))
 
 (add-hook 'server-switch-hook 'server-custom)
+
+;; other packages in `src' directory
+(add-to-list 'load-path "~/.emacs.d/src")
+(require 'open-next-line)
