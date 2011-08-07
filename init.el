@@ -144,7 +144,11 @@
    (:name flymake-cursor
 	  :type emacswiki
 	  :features flymake-cursor)
-   (:name rsense			; ruby type completion
+   (:name coffee-mode			; major mode for coffee-script
+	  :depends js2-mode
+	  :after (lambda ()
+		   (setq coffee-js-mode 'js2-mode))) ; the recipe sets to javascript-mode - so reset to default - js2mode 
+   (:name rsense                        ; ruby type completion
 	  :type git
 	  :url "git://github.com/m2ym/rsense.git"
 	  :load-path "etc"
@@ -172,7 +176,6 @@
    haml-mode				; major mode for haml
    scss-mode				; major mode for scss
    js2-mode				; major mode for javascript
-   coffee-mode				; major mode for coffee-script
    textile-mode				; major mode for textile markup
    markdown-mode			; major mode for markdown markup
    rvm					; rvm compatibility
@@ -321,7 +324,7 @@
 ;;; coffee-mode
 (defun coffee-custom ()
   "coffee-mode-hook"
- (set (make-local-variable 'tab-width) 2)
+  (set (make-local-variable 'tab-width) 2)
  (coffee-cos-mode t)) ; compile on save
 
 (add-hook 'coffee-mode-hook
