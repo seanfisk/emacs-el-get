@@ -117,19 +117,12 @@
    (:name auto-complete-etags		; auto-complete source for tags
 	  :features auto-complete-etags
 	  :depends auto-complete)
-   (:name undo-tree
-	  :type git
-	  :url "http://www.dr-qubit.org/git/undo-tree.git"
-	  :load "undo-tree.el"
-          :features undo-tree
+   (:name undo-tree	  		; undo history in a tree like vim, try C-x u
+	  :features undo-tree
 	  :after (lambda ()
 		   (global-undo-tree-mode t)))
-   (:name textmate
-    	  :type git
-    	  :url "git://github.com/defunkt/textmate.el.git"
-    	  :load "textmate.el"
-    	  :features textmate
-    	  :after (lambda ()
+   (:name textmate			; textmate key emulation, try Command-T or Alt-T
+	  :after (lambda ()
 		   (textmate-mode t)))
    (:name anything			; "Quicksilver for Emacs"
 	  :before (lambda ()
@@ -173,7 +166,6 @@
    color-theme		                ; nice looking emacs
    dtrt-indent				; foreign indentation detection mode
    dired+				; many extensions to dired directory browser
-   undo-tree		  		; undo history in a tree like vim, try C-x u
    zencoding-mode			; http://www.emacswiki.org/emacs/ZenCoding
    ruby-mode				; major mode for ruby
    php-mode-improved			; if you're into php...
