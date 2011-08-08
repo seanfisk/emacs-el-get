@@ -24,11 +24,52 @@ This Emacs config strives to be compatible with GNU Emacs 23 (stable) on Linux a
 Install
 -------
 
-Before installing, make sure that required external packages are also installed:
+Before installing, make sure that required external packages are also installed if you'd like to use the associated el-get package:
 
-el-get package|apt package (Debian)|homebrew package (Mac OS X)
----------------------------------------------------------------
-full-ack      |ack-grep            |ack
+<table>
+  <tr>
+    <th>el-get package</th>
+    <th>apt package dependencies(Debian)</th>
+    <th>homebrew package dependencies(Mac OS X)</th>
+    <th>Ruby gem</th>
+    <th>Other</th>
+  </tr>
+  <tr>
+    <td>[full-ack](http://www.emacswiki.org/emacs/FullAck)</td>
+    <td>ack-grep ([Debian](http://packages.debian.org/search?keywords=ack-grep), [Ubuntu](http://packages.ubuntu.com/search?keywords=ack-grep))</td>
+    <td>[ack](https://github.com/mxcl/homebrew/blob/master/Library/Formula/ack.rb)</td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>[magit](http://www.emacswiki.org/emacs/Magit)</td>
+    <td>texinfo ([Debian](http://packages.debian.org/search?keywords=texinfo), [Ubuntu](http://packages.ubuntu.com/search?keywords=texinfo))</td>
+    <td>[texinfo](https://github.com/mxcl/homebrew/blob/master/Library/Formula/texinfo.rb)</td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>haml-mode</td>
+    <td></td>
+    <td></td>
+    <td>haml</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>scss-mode</td>
+    <td></td>
+    <td></td>
+    <td>sass</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>coffee-mode</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td>[nmp install coffee-script](http://jashkenas.github.com/coffee-script/)</td>
+  </tr>
+</table>
 
 I like a simpler install than Dimitri's Emacs Kicker:
 
