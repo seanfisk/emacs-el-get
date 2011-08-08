@@ -321,8 +321,7 @@
   (setq autopair-dont-activate t)
   )
 
-(add-hook 'ruby-mode-hook
-	  '(lambda () (ruby-custom)))
+(add-hook 'ruby-mode-hook 'ruby-custom)
 
 ;;; coffee-mode
 (defun coffee-custom ()
@@ -330,16 +329,14 @@
   (set (make-local-variable 'tab-width) 2)
  (coffee-cos-mode t)) ; compile on save
 
-(add-hook 'coffee-mode-hook
-          '(lambda() (coffee-custom)))
+(add-hook 'coffee-mode-hook 'coffee-custom)
 
 ;;; scss-mode
 (defun scss-custom ()
   "scss-mode-hook"
   (setq scss-compile-at-save nil)) ; don't do this by default
 
-(add-hook 'scss-mode-hook
-	  '(lambda () (scss-custom)))
+(add-hook 'scss-mode-hook 'scss-custom)
 
 ;;; edit-server mode
 
