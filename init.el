@@ -141,7 +141,11 @@
    (:name flymake-cursor
 	  :type emacswiki
 	  :features flymake-cursor)
-   (:name coffee-mode			; major mode for coffee-script
+   ;; IMPORTANT : magit requires the `makeinfo' executable from the `texinfo' package to compile!!!
+   (:name magit                         ; git meet emacs, and a binding
+          :after (lambda ()
+                   (global-set-key (kbd "C-x C-z") 'magit-status)))
+   (:name coffee-mode                   ; major mode for coffee-script
 	  :depends js2-mode
 	  :after (lambda ()
 		   (setq coffee-js-mode 'js2-mode))) ; the recipe sets to javascript-mode - so reset to default - js2mode
