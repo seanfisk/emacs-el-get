@@ -74,7 +74,6 @@ Before installing, make sure that required external packages are also installed 
     <td></td>
     <td></td>
     <td></td>
-    <td></td>
     <td><a href="http://beginrescueend.com/">rvm</a></td>
   </tr>
 </table>
