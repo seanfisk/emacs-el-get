@@ -19,18 +19,24 @@ These will be documented better later.
 Compatibility
 -------------
 
-This emacs config strives to be compatible with GNU Emacs 23 and 24 on Linux and Aquamacs 2.x and 3.x (based on GNU Emacs 23 and 24, respectively) on Mac OS X.
+This Emacs config strives to be compatible with GNU Emacs 23 (stable) on Linux and Aquamacs 2.x (based on GNU Emacs 23) on Mac OS X.
 
 Install
 -------
 
-I like a simpler install than Dimitri's Emacs Kicker...
+Before installing, make sure that required external packages are also installed:
+
+el-get package|apt package (Debian)|homebrew package (Mac OS X)
+---------------------------------------------------------------
+full-ack      |ack-grep            |ack
+
+I like a simpler install than Dimitri's Emacs Kicker:
 
     # make sure ~/.emacs.d does not exist, this should replace it
     git clone git://github.com/seanfisk/emacs.git ~/.emacs.d
     emacs
     
-... It's not exactly that simple. After you start Emacs once, you may have to restart it a few times before all the packages take effect.
+It's not exactly that simple. After you start Emacs once, you may have to restart it a few times before all the packages take effect. If you see errors, don't be worried, just restart Emacs a few times and it should work out. If it doesn't, feel free to contact me.
 
 Customization
 -------------
