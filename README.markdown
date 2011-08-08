@@ -24,7 +24,7 @@ This Emacs config strives to be compatible with GNU Emacs 23 (stable) on Linux a
 Install
 -------
 
-Before installing, make sure that required external packages are also installed if you'd like to use the associated el-get package. Listed are Apt packages for Debian and Ubuntu, Homebrew packages for Mac OS X, Ruby Gems, or other installation methods.
+Before installing, make sure that required external packages are also installed if you'd like to use the associated el-get package. Listed are Apt packages for [Debian](http://www.debian.org/distrib/packages) and [Ubuntu](http://packages.ubuntu.com/), [Homebrew](https://github.com/mxcl/homebrew) packages for Mac OS X, [Ruby Gems](http://rubygems.org/), or other installation methods.
 
 <table>
   <tr>
