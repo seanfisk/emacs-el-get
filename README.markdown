@@ -24,50 +24,58 @@ This Emacs config strives to be compatible with GNU Emacs 23 (stable) on Linux a
 Install
 -------
 
-Before installing, make sure that required external packages are also installed if you'd like to use the associated el-get package:
+Before installing, make sure that required external packages are also installed if you'd like to use the associated el-get package. Listed are Apt packages for Debian and Ubuntu, Homebrew packages for Mac OS X, Ruby Gems, or other installation methods.
 
 <table>
   <tr>
-    <th>el-get package</th>
-    <th>apt package dependencies(Debian)</th>
-    <th>homebrew package dependencies(Mac OS X)</th>
-    <th>Ruby gem</th>
-    <th>Other</th>
+    <th>el-get</th>
+    <th>apt</th>
+    <th>homebrew</th>
+    <th>gem</th>
+    <th>other</th>
   </tr>
   <tr>
-    <td>[full-ack](http://www.emacswiki.org/emacs/FullAck)</td>
-    <td>ack-grep ([Debian](http://packages.debian.org/search?keywords=ack-grep), [Ubuntu](http://packages.ubuntu.com/search?keywords=ack-grep))</td>
-    <td>[ack](https://github.com/mxcl/homebrew/blob/master/Library/Formula/ack.rb)</td>
-    <td></td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>[magit](http://www.emacswiki.org/emacs/Magit)</td>
-    <td>texinfo ([Debian](http://packages.debian.org/search?keywords=texinfo), [Ubuntu](http://packages.ubuntu.com/search?keywords=texinfo))</td>
-    <td>[texinfo](https://github.com/mxcl/homebrew/blob/master/Library/Formula/texinfo.rb)</td>
+    <td><a href="http://www.emacswiki.org/emacs/FullAck">full-ack</a></td>
+    <td>ack-grep (<a href="http://packages.debian.org/search?keywords=ack-grep">Debian</a>, <a href="http://packages.ubuntu.com/search?keywords=ack-grep">Ubuntu</a>)</td>
+    <td><a href="https://github.com/mxcl/homebrew/blob/master/Library/Formula/ack.rb">ack</a></td>
     <td></td>
     <td></td>
   </tr>
   <tr>
-    <td>haml-mode</td>
+    <td><a href="http://www.emacswiki.org/emacs/Magit">magit</a></td>
+    <td>texinfo (<a href="http://packages.debian.org/search?keywords=texinfo">Debian</a>, <a href="http://packages.ubuntu.com/search?keywords=texinfo">Ubuntu</a>)</td>
+    <td><a href="https://github.com/mxcl/homebrew/blob/master/Library/Formula/texinfo.rb">texinfo</a></td>
     <td></td>
-    <td></td>
-    <td>haml</td>
     <td></td>
   </tr>
   <tr>
-    <td>scss-mode</td>
+    <td><a href="http://www.emacswiki.org/emacs/HamlMode">haml-mode</a></td>
     <td></td>
     <td></td>
-    <td>sass</td>
+    <td><a href="http://rubygems.org/gems/haml">haml</a></td>
     <td></td>
   </tr>
   <tr>
-    <td>coffee-mode</td>
+    <td><a href="http://www.emacswiki.org/emacs/ScssMode">scss-mode</a></td>
+    <td></td>
+    <td></td>
+    <td><a href="http://rubygems.org/gems/sass">sass</a></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td><a href="http://ozmm.org/posts/coffee_mode.html">coffee-mode</a></td>
     <td></td>
     <td></td>
     <td></td>
-    <td>[nmp install coffee-script](http://jashkenas.github.com/coffee-script/)</td>
+    <td><a href="http://jashkenas.github.com/coffee-script/">nmp install coffee-script</a></td>
+  </tr>
+  <tr>
+    <td><a href="https://github.com/senny/rvm.el">rvm</a></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td><a href="http://beginrescueend.com/">rvm</a></td>
   </tr>
 </table>
 
