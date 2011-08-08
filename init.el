@@ -149,6 +149,10 @@
 	  :depends js2-mode
 	  :after (lambda ()
 		   (setq coffee-js-mode 'js2-mode))) ; the recipe sets to javascript-mode - so reset to default - js2mode
+   (:name flymake-coffee
+	  :type git
+          :url "https://github.com/purcell/flymake-coffee.git"
+	  :features flymake-coffee)
    (:name ruby-mode			; major mode for ruby
 	  :depends autopair) ; try not to cause problems with turning off autopair-mode later, in case ruby mode hook is activated
    (:name rsense                        ; ruby type completion
@@ -328,7 +332,9 @@
 (defun coffee-custom ()
   "coffee-mode-hook"
   (set (make-local-variable 'tab-width) 2)
- (coffee-cos-mode t)) ; compile on save
+  (coffee-cos-mode t) ; compile on save
+  (flymake-coffee-load) ; flymake for coffee script
+  )
 
 (add-hook 'coffee-mode-hook
           '(lambda() (coffee-custom)))
