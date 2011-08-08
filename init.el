@@ -173,6 +173,7 @@
    dtrt-indent				; foreign indentation detection mode
    dired+				; many extensions to dired directory browser
    zencoding-mode			; http://www.emacswiki.org/emacs/ZenCoding
+   nxhtml				; awesome html editing mode
    php-mode-improved			; if you're into php...
    haml-mode				; major mode for haml
    scss-mode				; major mode for scss
@@ -190,7 +191,7 @@
 ;;
 ;; Note: el-get-install requires git, so we know we have at least that.
 ;;
-;(when (el-get-executable-find "cvs")
+					;(when (el-get-executable-find "cvs")
 ;  (add-to-list 'my:el-get-packages 'emacs-goodies-el)) ; the debian addons for emacs
 
 (when (el-get-executable-find "svn")
