@@ -298,7 +298,7 @@
 (desktop-save-mode t) ; save my files for next time
 
 ;; cursor
-(blink-cursor-mode nil) ; no blinking cursor
+(blink-cursor-mode -1) ; no blinking cursor
 (setq-default x-stretch-cursor t) ; use a block cursor
 (setq-default cursor-type 'box)
 
