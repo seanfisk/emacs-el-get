@@ -95,6 +95,11 @@ As soon as you clone the repo, you should create your own branch for customizati
     
 The file that you need to edit is pretty much the only file in there, `init.el`. It should be well-commented.
 
+Notes
+-----
+
+Following the Emacs Kicker, I've changed the default shortcut for `kill-emacs` of `C-x C-c` to `ido-switch-buffer`. I've reassigned `kill-emacs` to `C-x q` to keep an easy shortcut. Of course, you can always still close Emacs with `M-x kill-emacs`.
+
 Credits
 -------
 
