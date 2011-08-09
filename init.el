@@ -299,8 +299,8 @@
 
 ;; cursor
 (blink-cursor-mode nil) ; no blinking cursor
-(setq x-stretch-cursor t) ; use a block cursor
-(setq cursor-type 'box)
+(setq-default x-stretch-cursor t) ; use a block cursor
+(setq-default cursor-type 'box)
 
 ;; auto-saves
 (setq backup-directory-alist `(("." . ,(expand-file-name "~/.emacs.d/auto-saves"))))
