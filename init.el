@@ -294,13 +294,18 @@
 (server-start) ; boot the emacs server for use with emacsclient
 (desktop-save-mode t) ; save my files for next time
 
-;; general bindings
-(global-set-key (kbd "C-x j") 'kill-this-buffer) ; for ease
+;; cursor
+(blink-cursor-mode nil) ; no blinking cursor
+(setq x-stretch-cursor t) ; use a block cursor
+(setq cursor-type 'box)
 
 ;; auto-saves
 (setq backup-directory-alist `(("." . ,(expand-file-name "~/.emacs.d/auto-saves"))))
 
-;; bindings for modes
+;; general bindings
+(global-set-key (kbd "C-x j") 'kill-this-buffer) ; for ease
+
+;; bindings and hooks for modes
 
 ;;; auto-complete-mode
 (defun auto-complete-custom ()
