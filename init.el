@@ -92,7 +92,7 @@
 		    
                     (condition-case nil (called-interactively-p 'interactive)
                       (wrong-number-of-arguments
-                                        ; Save reference to called-interactively-p in                                
+                                        ; Save reference to called-interactively-p in
                                         ; substitute-called-interactively-p                                    
                        (fset 'substitute-called-interactively-p
                              (symbol-function 'called-interactively-p))
@@ -102,7 +102,8 @@
                              (lambda (&rest args)
                                (substitute-called-interactively-p))))))
 	  :after (lambda ()
-	   	   (auto-indent-global-mode t)))
+	   	   (auto-indent-global-mode t)
+                   (add-to-list 'auto-indent-disabled-modes-list 'coffee-mode)))
    (:name autopair			; automatically complete everything that comes in pairs, load auto-indent-mode first
 	  :depends auto-indent-mode
 	  :after (lambda ()
@@ -146,7 +147,7 @@
           :after (lambda ()
                    (global-set-key (kbd "C-x C-z") 'magit-status)))
    (:name coffee-mode                   ; major mode for coffee-script
-	  :depends js2-mode
+	  :depends (js2-mode autopair)
 	  :after (lambda ()
 		   (setq coffee-js-mode 'js2-mode))) ; the recipe sets to javascript-mode - so reset to default - js2mode
    (:name ruby-mode			; major mode for ruby
