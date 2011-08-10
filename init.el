@@ -212,6 +212,11 @@
 ;; install new packages and init already installed packages
 (el-get 'sync my:el-get-packages)
 
+;; other packages in `src' directory
+(add-to-list 'load-path "~/.emacs.d/src")
+(require 'open-next-line)
+(require 'flymake-shell)
+
 ;; on to the visual settings
 (setq inhibit-splash-screen t)		; no splash screen, thanks
 
@@ -349,7 +354,6 @@
 (add-hook 'scss-mode-hook 'scss-custom)
 
 ;;; edit-server mode
-
 (defun server-custom ()
   (when (current-local-map)
     (use-local-map (copy-keymap (current-local-map))))
@@ -358,6 +362,5 @@
 
 (add-hook 'server-switch-hook 'server-custom)
 
-;; other packages in `src' directory
-(add-to-list 'load-path "~/.emacs.d/src")
-(require 'open-next-line)
+;;; sh mode
+(add-hook 'sh-mode-hook 'flymake-shell-load)
