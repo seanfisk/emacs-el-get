@@ -92,7 +92,7 @@
 		    
                     (condition-case nil (called-interactively-p 'interactive)
                       (wrong-number-of-arguments
-                                        ; Save reference to called-interactively-p in                                
+                                        ; Save reference to called-interactively-p in
                                         ; substitute-called-interactively-p                                    
                        (fset 'substitute-called-interactively-p
                              (symbol-function 'called-interactively-p))
@@ -102,7 +102,8 @@
                              (lambda (&rest args)
                                (substitute-called-interactively-p))))))
 	  :after (lambda ()
-	   	   (auto-indent-global-mode t)))
+	   	   (auto-indent-global-mode t)
+                   (add-to-list 'auto-indent-disabled-modes-list 'coffee-mode)))
    (:name autopair			; automatically complete everything that comes in pairs, load auto-indent-mode first
 	  :depends auto-indent-mode
 	  :after (lambda ()
@@ -146,7 +147,7 @@
           :after (lambda ()
                    (global-set-key (kbd "C-x C-z") 'magit-status)))
    (:name coffee-mode                   ; major mode for coffee-script
-	  :depends js2-mode
+	  :depends (js2-mode autopair)
 	  :after (lambda ()
 		   (setq coffee-js-mode 'js2-mode))) ; the recipe sets to javascript-mode - so reset to default - js2mode
    (:name flymake-coffee
@@ -216,6 +217,11 @@
 ;; install new packages and init already installed packages
 (el-get 'sync my:el-get-packages)
 
+;; other packages in `src' directory
+(add-to-list 'load-path "~/.emacs.d/src")
+(require 'open-next-line)
+(require 'flymake-shell)
+
 ;; on to the visual settings
 (setq inhibit-splash-screen t)		; no splash screen, thanks
 
@@ -282,8 +288,11 @@
 ;; manager or do M-x kill-emacs.  Don't need a nice shortcut for a once a
 ;; week (or day) action.
 (global-set-key (kbd "C-x b") 'ido-switch-buffer)
-;(global-set-key (kbd "C-x C-c") 'ido-switch-buffer)
+(global-set-key (kbd "C-x C-c") 'ido-switch-buffer)
 (global-set-key (kbd "C-x B") 'ibuffer)
+
+;; now that we've clobbered `kill-emacs', give a shortcut back
+(global-set-key (kbd "C-x q") 'kill-emacs)
 
 ;; C-x C-j opens dired with the cursor right on the file you're editing
 (require 'dired-x)
@@ -298,19 +307,26 @@
 (server-start) ; boot the emacs server for use with emacsclient
 (desktop-save-mode t) ; save my files for next time
 
-;; general bindings
-(global-set-key (kbd "C-x j") 'kill-this-buffer) ; for ease
+;; cursor
+(blink-cursor-mode -1) ; no blinking cursor
+(setq-default x-stretch-cursor t) ; use a block cursor
+(setq-default cursor-type 'box)
 
 ;; auto-saves
 (setq backup-directory-alist `(("." . ,(expand-file-name "~/.emacs.d/auto-saves"))))
 
-;; bindings for modes
+;; general bindings
+(global-set-key (kbd "C-x j") 'kill-this-buffer) ; for ease
+
+;; bindings and hooks for modes
 
 ;;; auto-complete-mode
 (defun auto-complete-custom ()
   "auto-complete-mode-hook"
   (local-set-key (kbd "M-/") 'auto-complete)
-  (add-to-list 'ac-sources 'ac-source-etags))
+  ; add a tags auto-complete source when we have a tags file
+  (when tags-file-name
+    (add-to-list 'ac-sources 'ac-source-etags)))
 
 (add-hook 'auto-complete-mode-hook 'auto-complete-custom)
 
@@ -325,8 +341,7 @@
   (setq autopair-dont-activate t)
   )
 
-(add-hook 'ruby-mode-hook
-	  '(lambda () (ruby-custom)))
+(add-hook 'ruby-mode-hook 'ruby-custom)
 
 ;;; coffee-mode
 (defun coffee-custom ()
@@ -336,19 +351,16 @@
   (flymake-coffee-load) ; flymake for coffee script
   )
 
-(add-hook 'coffee-mode-hook
-          '(lambda() (coffee-custom)))
+(add-hook 'coffee-mode-hook 'coffee-custom)
 
 ;;; scss-mode
 (defun scss-custom ()
   "scss-mode-hook"
   (setq scss-compile-at-save nil)) ; don't do this by default
 
-(add-hook 'scss-mode-hook
-	  '(lambda () (scss-custom)))
+(add-hook 'scss-mode-hook 'scss-custom)
 
 ;;; edit-server mode
-
 (defun server-custom ()
   (when (current-local-map)
     (use-local-map (copy-keymap (current-local-map))))
@@ -357,6 +369,5 @@
 
 (add-hook 'server-switch-hook 'server-custom)
 
-;; other packages in `src' directory
-(add-to-list 'load-path "~/.emacs.d/src")
-(require 'open-next-line)
+;;; sh mode
+(add-hook 'sh-mode-hook 'flymake-shell-load)
