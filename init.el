@@ -314,7 +314,9 @@
 (defun auto-complete-custom ()
   "auto-complete-mode-hook"
   (local-set-key (kbd "M-/") 'auto-complete)
-  (add-to-list 'ac-sources 'ac-source-etags))
+  ; add a tags auto-complete source when we have a tags file
+  (when tags-file-name
+    (add-to-list 'ac-sources 'ac-source-etags)))
 
 (add-hook 'auto-complete-mode-hook 'auto-complete-custom)
 
