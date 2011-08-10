@@ -212,6 +212,11 @@
 ;; install new packages and init already installed packages
 (el-get 'sync my:el-get-packages)
 
+;; other packages in `src' directory
+(add-to-list 'load-path "~/.emacs.d/src")
+(require 'open-next-line)
+(require 'flymake-shell)
+
 ;; on to the visual settings
 (setq inhibit-splash-screen t)		; no splash screen, thanks
 
@@ -314,7 +319,9 @@
 (defun auto-complete-custom ()
   "auto-complete-mode-hook"
   (local-set-key (kbd "M-/") 'auto-complete)
-  (add-to-list 'ac-sources 'ac-source-etags))
+  ; add a tags auto-complete source when we have a tags file
+  (when tags-file-name
+    (add-to-list 'ac-sources 'ac-source-etags)))
 
 (add-hook 'auto-complete-mode-hook 'auto-complete-custom)
 
@@ -347,7 +354,6 @@
 (add-hook 'scss-mode-hook 'scss-custom)
 
 ;;; edit-server mode
-
 (defun server-custom ()
   (when (current-local-map)
     (use-local-map (copy-keymap (current-local-map))))
@@ -356,6 +362,5 @@
 
 (add-hook 'server-switch-hook 'server-custom)
 
-;; other packages in `src' directory
-(add-to-list 'load-path "~/.emacs.d/src")
-(require 'open-next-line)
+;;; sh mode
+(add-hook 'sh-mode-hook 'flymake-shell-load)
