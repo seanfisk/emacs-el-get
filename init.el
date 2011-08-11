@@ -360,7 +360,7 @@
 (defun coffee-custom ()
   "coffee-mode-hook"
   (set (make-local-variable 'tab-width) 2)
-  (coffee-cos-mode t) ; compile on save
+  (coffee-cos-mode nil) ; don't compile on save by default, set this to t to do cos
   (flymake-coffee-load) ; flymake for coffee script
   )
 
@@ -369,7 +369,7 @@
 ;;; scss-mode
 (defun scss-custom ()
   "scss-mode-hook"
-  (setq scss-compile-at-save nil)) ; don't do this by default
+  (setq scss-compile-at-save nil)) ; don't do this by default, set to t to compile on save
 
 (add-hook 'scss-mode-hook 'scss-custom)
 
