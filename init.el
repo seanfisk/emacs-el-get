@@ -69,11 +69,19 @@
 	  :after (lambda ()
 		   ;; when using AZERTY keyboard, consider C-x C-_
 		   (global-set-key (kbd "C-x C-/") 'goto-last-change)))
+   
+   ;;; color themes
+   (:name color-theme
+	  :after (lambda ()
+		   (global-set-key (kbd "C-x t") 'color-theme-select)))
    (:name color-theme-solarized		; awesome color theme
 	  :depends color-theme
-	  :url "git://github.com/sellout/emacs-color-theme-solarized.git" ; https clone takes a long time for some reason - hopefully speed up clone time
-	  :after (lambda ()
-		   (color-theme-solarized-dark)))
+	  :url "git://github.com/sellout/emacs-color-theme-solarized.git") ; https clone takes a long time for some reason - hopefully speed up clone time
+   (:name color-theme-chocolate-rain
+          :features color-theme-chocolate-rain)
+   (:name color-theme-mac-classic
+          :features color-theme-mac-classic)
+   
    (:name whole-line-or-region		; use whole line when no region is present
 	  :features whole-line-or-region
           :after (lambda ()
