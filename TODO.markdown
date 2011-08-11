@@ -4,7 +4,7 @@ TODO for Sean's Emacs Config
 * Rails
     * Get rails setup working properly
     * Document different modes / command
-    * Add flymake-coffee and flymake-sass
+	* Add flymake-sass
     * Ensure ruby, erb, haml, sass, and coffee modes are working correctly
 * ZSH term
     * The extended charset prompt characters should display correctly
