@@ -248,6 +248,19 @@
   
   (add-hook 'coffee-mode-hook 'coffee-custom))
 
+;; flymake haml and sass
+(when (or (executable-find "haml") (executable-find "sass"))
+  (push
+   '(:name flymake-haml
+	   :type git
+           :url "git://github.com/purcell/flymake-haml.git"
+	   :features flymake-haml
+	   :after (lambda ()
+		    (when (executable-find "sass")
+		      (add-hook 'sass-mode-hook 'flymake-sass-load))
+		    (when (executable-find "haml")
+		      (add-hook 'haml-mode-hook 'flymake-haml-load))))
+   el-get-sources))
 
 ;; ack - grep replacement
 (when (or (executable-find "ack") (executable-find "ack-grep"))
