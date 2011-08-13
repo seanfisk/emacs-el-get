@@ -285,7 +285,7 @@
     (if (string-match "apple-darwin" system-configuration)
 	(set-face-font 'default "Monaco-13") ; use Monaco on Mac
       (condition-case nil
-          (set-face-font 'default "Inconsolata-12") ; use Inconsolata if we have it
+          (set-face-font 'default "Inconsolata-14") ; use Inconsolata if we have it
         (error (set-face-font 'default "Monospace-12"))))) ; otherwise default to Monospace
 
 ;; avoid compiz manager rendering bugs
