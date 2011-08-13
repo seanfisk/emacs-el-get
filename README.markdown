@@ -67,7 +67,7 @@ Before installing, make sure that required external packages are also installed 
     <td></td>
     <td></td>
     <td></td>
-    <td><a href="http://jashkenas.github.com/coffee-script/">nmp install coffee-script</a></td>
+    <td><a href="http://jashkenas.github.com/coffee-script/">npm install coffee-script</a></td>
   </tr>
   <tr>
     <td><a href="https://github.com/senny/rvm.el">rvm</a></td>

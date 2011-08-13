@@ -71,15 +71,15 @@
 		   (global-set-key (kbd "C-x C-/") 'goto-last-change)))
    
    ;;; color themes
-   (:name color-theme
+   (:name color-theme			; base for all color themes
 	  :after (lambda ()
 		   (global-set-key (kbd "C-x t") 'color-theme-select)))
-   (:name color-theme-solarized		; awesome color theme
+   (:name color-theme-solarized		; dark and light Solarized color themes
 	  :depends color-theme
 	  :url "git://github.com/sellout/emacs-color-theme-solarized.git") ; https clone takes a long time for some reason - hopefully speed up clone time
-   (:name color-theme-chocolate-rain
+   (:name color-theme-chocolate-rain	; chocolate-colored theme
           :features color-theme-chocolate-rain)
-   (:name color-theme-mac-classic
+   (:name color-theme-mac-classic	; mac classic theme
           :features color-theme-mac-classic)
    
    (:name whole-line-or-region		; use whole line when no region is present
@@ -111,7 +111,7 @@
                                (substitute-called-interactively-p))))))
 	  :after (lambda ()
 	   	   (auto-indent-global-mode t)
-                   (add-to-list 'auto-indent-disabled-modes-list 'coffee-mode)))
+                   (add-to-list 'auto-indent-disabled-modes-list 'coffee-mode))) ; don't use in coffee-mode, causes problems
    (:name autopair			; automatically complete everything that comes in pairs, load auto-indent-mode first
 	  :depends auto-indent-mode
 	  :after (lambda ()
@@ -131,13 +131,13 @@
 	  :features undo-tree
 	  :after (lambda ()
 		   (global-undo-tree-mode t)))
-   (:name textmate			; textmate key emulation, try Command-T or Alt-T
+   (:name textmate			; textmate key emulation, try Command-T or Alt-T for goto file
 	  :after (lambda ()
 		   (textmate-mode t)))
    (:name anything			; "Quicksilver for Emacs"
 	  :before (lambda ()
 		    (defvar org-directory ""))) ; Hack around free variable org-directory issue
-   (:name anything-etags+		; even more etags goodness for anything
+   (:name anything-etags+		; etags history for anything
 	  :type emacswiki
 	  :features anything-etags+
 	  :depends anything)
@@ -148,7 +148,7 @@
 		       (setq ack-executable ack-grep-executable)))
 		   (global-set-key (kbd "C-x C-a") 'ack)
 		   (global-set-key (kbd "C-x a") 'ack-find-file)))
-   (:name flymake-cursor
+   (:name flymake-cursor		; show the syntax error for the line under the cursor in the minibuffer
 	  :type emacswiki
 	  :features flymake-cursor)
    ;; IMPORTANT : magit requires the `makeinfo' executable from the `texinfo' package to compile!!!
@@ -158,8 +158,8 @@
    (:name coffee-mode                   ; major mode for coffee-script
 	  :depends (js2-mode autopair)
 	  :after (lambda ()
-		   (setq coffee-js-mode 'js2-mode))) ; the recipe sets to javascript-mode - so reset to default - js2mode
-   (:name flymake-coffee
+		   (setq coffee-js-mode 'js2-mode))) ; the recipe sets to javascript-mode - so reset to default `js2mode' because we have it
+   (:name flymake-coffee		; flymake support for coffee-script
 	  :type git
           :url "https://github.com/purcell/flymake-coffee.git"
 	  :features flymake-coffee)
@@ -170,7 +170,7 @@
 	  :url "git://github.com/m2ym/rsense.git"
 	  :load-path "etc"
 	  :features rsense
-	  :after (lambda()
+	  :post-init (lambda()
 		   (setq rsense-home (expand-file-name "."))))
    (:name edit-server			; for editing through Google Chrome
 	  :features edit-server
@@ -181,14 +181,13 @@
 (setq
  my:el-get-packages
  '(el-get				; el-get is self-hosting
-   escreen            			; screen for emacs, C-\ C-h
-   switch-window			; takes over C-x o
-   color-theme		                ; nice looking emacs
+   escreen            			; screen for emacs
+   switch-window			; numbered windows for easy switching, takes over C-x o
    dtrt-indent				; foreign indentation detection mode
    dired+				; many extensions to dired directory browser
    zencoding-mode			; http://www.emacswiki.org/emacs/ZenCoding
    nxhtml				; awesome html editing mode
-   php-mode-improved			; if you're into php...
+   php-mode-improved			; better major mode for php
    haml-mode				; major mode for haml
    scss-mode				; major mode for scss
    js2-mode				; major mode for javascript
@@ -325,15 +324,17 @@
 (setq backup-directory-alist `(("." . ,(expand-file-name "~/.emacs.d/auto-saves"))))
 
 ;; general bindings
-(global-set-key (kbd "C-x j") 'kill-this-buffer) ; for ease
+(global-set-key (kbd "C-x j") 'kill-this-buffer) ; an easy shortcut is needed for this common task
 
 ;; bindings and hooks for modes
 
 ;;; auto-complete-mode
 (defun auto-complete-custom ()
   "auto-complete-mode-hook"
+  ; re-assign `dabbrev' to this
   (local-set-key (kbd "M-/") 'auto-complete)
   ; add a tags auto-complete source when we have a tags file
+  ; otherwise we get prompted for a tags file all the time, even when we don't have one
   (when tags-file-name
     (add-to-list 'ac-sources 'ac-source-etags)))
 
@@ -368,7 +369,7 @@
 (defun coffee-custom ()
   "coffee-mode-hook"
   (set (make-local-variable 'tab-width) 2)
-  (coffee-cos-mode nil) ; don't compile on save by default, set this to t to do cos
+  (coffee-cos-mode nil) ; don't compile on save by default, set this to t to do compile-on-save
   (flymake-coffee-load) ; flymake for coffee script
   )
 
@@ -386,9 +387,9 @@
   (when (current-local-map)
     (use-local-map (copy-keymap (current-local-map))))
   (when server-buffer-clients
-    (local-set-key (kbd "C-x j") 'server-edit)))
+    (local-set-key (kbd "C-x j") 'server-edit))) ; use the same shortcut as kill this buffer
 
 (add-hook 'server-switch-hook 'server-custom)
 
 ;;; sh mode
-(add-hook 'sh-mode-hook 'flymake-shell-load)
+(add-hook 'sh-mode-hook 'flymake-shell-load) ; flymake in shell mode
