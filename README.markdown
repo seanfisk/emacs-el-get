@@ -1,7 +1,7 @@
 Emacs config for Sean Fisk
 ==========================
 
-This is my repository for Emacs. It is a fork of the excellent [Emacs Kicker](https://github.com/dimitri/emacs-kicker) by Dimitri Fontaine. As it's based on the Emacs Kicker, it also significantly leverages the might of Dimitri's powerhouse package-grabber for Emacs, [el-get](https://github.com/dimitri/el-get). Thanks Dimitri for both these awesome projects. It is licensed under the terms of the [MIT License](http://www.opensource.org/licenses/mit-license.php).
+This is my repository for Emacs. It is a fork of the excellent [Emacs Kicker](https://github.com/dimitri/emacs-kicker) by [Dimitri Fontaine](https://github.com/dimitri). As it's based on the Emacs Kicker, it also significantly leverages the might of Dimitri's powerhouse package-grabber for Emacs, [el-get](https://github.com/dimitri/el-get). Thanks Dimitri for both these awesome projects. It is licensed under the terms of the [MIT License](http://www.opensource.org/licenses/mit-license.php).
 
 Focus
 -----
@@ -19,7 +19,7 @@ These will be documented better later.
 Compatibility
 -------------
 
-This Emacs config strives to be compatible with GNU Emacs 23 (stable) on Linux and Aquamacs 2.x (based on GNU Emacs 23) on Mac OS X.
+This Emacs config strives to be compatible with [GNU Emacs 23](http://www.gnu.org/software/emacs/) (stable) on GNU/Linux and [Aquamacs 2.x](http://aquamacs.org/) (based on GNU Emacs 23) on Mac OS X. However, I've just given back my loaner Mac so it will be hard for me to test on Aquamacs. Please submit issue reports if you have problems.
 
 Install
 -------
@@ -49,6 +49,13 @@ Before installing, make sure that required external packages are also installed 
     <td></td>
   </tr>
   <tr>
+	<td>rsense</td>
+	<td></td>
+	<td></td>
+	<td></td>
+	<td><a href="http://cx4a.org/software/rsense/manual.html#Installation">See Rsense manual</a></td>
+  </tr>
+  <tr>
     <td><a href="http://www.emacswiki.org/emacs/HamlMode">haml-mode</a></td>
     <td></td>
     <td></td>
@@ -72,11 +79,13 @@ Before installing, make sure that required external packages are also installed 
   <tr>
     <td><a href="https://github.com/senny/rvm.el">rvm</a></td>
     <td></td>
-    <td></td>
+<td></td>
     <td></td>
     <td><a href="http://beginrescueend.com/">rvm</a></td>
   </tr>
 </table>
+
+I've been having trouble getting `magit` to work on Mac OS X. I've therefore created the `sean_no_magit` branch provide the same configuration without `magit`. Any input on this area is appreciated.
 
 I like a simpler install than Dimitri's Emacs Kicker:
 
@@ -105,6 +114,6 @@ Credits
 
 Thanks to Dimitri Fontaine for creating the Emacs Kicker and el-get!
 
-Thanks to my friend Siva for feedback on the config!
+Thanks to my friends Siva and Paul for providing feedback on the config!
 
-And of course, thanks to GNU and RMS for creating this awesome editor!
+And of course, thanks to [GNU](http://www.gnu.org/) and [RMS](http://stallman.org/) for creating this awesome editor!
