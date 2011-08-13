@@ -69,19 +69,14 @@
 	  :after (lambda ()
 		   ;; when using AZERTY keyboard, consider C-x C-_
 		   (global-set-key (kbd "C-x C-/") 'goto-last-change)))
-   
-   ;; color themes
    (:name color-theme			; base for all color themes
 	  :after (lambda ()
 		   (global-set-key (kbd "C-x t") 'color-theme-select)))
    (:name color-theme-solarized		; dark and light Solarized color themes
 	  :depends color-theme
 	  :url "git://github.com/sellout/emacs-color-theme-solarized.git") ; https clone takes a long time for some reason - hopefully speed up clone time
-   (:name color-theme-chocolate-rain	; chocolate-colored theme
-          :features color-theme-chocolate-rain)
    (:name color-theme-mac-classic	; mac classic theme
           :features color-theme-mac-classic)
-   
    (:name whole-line-or-region		; use whole line when no region is present
 	  :features whole-line-or-region
           :after (lambda ()
@@ -173,6 +168,7 @@
    textile-mode				; major mode for textile markup
    markdown-mode			; major mode for markdown markup
    flymake-fringe-icons			; show error icons at side
+   color-theme-chocolate-rain		; chocolate-colored theme	  
    ))
 
 ;;
@@ -184,26 +180,28 @@
 					;  (add-to-list 'my:el-get-packages 'emacs-goodies-el)) ; the debian addons for emacs
 
 (when (el-get-executable-find "svn")
-  
+  ;; subversion plugin for emacs
   (add-to-list 'my:el-get-packages 'psvn)
-  (add-to-list 'el-get-sources
-	       '(:name yasnippet
-		       :depends auto-indent-mode))) ; powerful snippedt mode, load auto-indent-mode first
+  ;; powerful snippet mode, load auto-indent-mode first
+  (push 
+   '(:name yasnippet
+	   :depends auto-indent-mode)
+  el-get-sources))
 
 ;; ruby additions
 (when (executable-find "ruby") ; only if we have ruby
   ;; rinari - rails ide
   (when (and (executable-find "rails") (el-get-executable-find "rake")) ; if we have rails and rake (needed for compiling rinari, error if we don't have it)
     (add-to-list 'my:el-get-packages 'rinari))
+  
   ;; rvm integration
   (when (executable-find "rvm")
-    (add-to-list 'my:el-get-packages))
+    (add-to-list 'my:el-get-packages 'rvm))
+  
   ;; some more ruby niceties
-  (setq my:el-get-packages
-	(append my:el-get-packages
-		(ruby-electric                        ; ruby control structure matching
-		 flymake-ruby                         ; flymake for ruby
-		 )))
+  (add-to-list 'my:el-get-packages 'ruby-electric) ; ruby control structure matching
+  (add-to-list 'my:el-get-packages 'flymake-ruby) ; flymake for ruby
+  
   ;; hook for ruby-mode
   (defun ruby-custom ()
     "ruby-mode-hook"
@@ -219,6 +217,7 @@
 ;; sass / scss additions
 (when (executable-find "sass")
   (add-to-list 'my:el-get-packages 'scss-mode)
+  
   ;; hook for scss mode
   (defun scss-custom ()
     "scss-mode-hook"
@@ -228,17 +227,18 @@
 
 ;; coffee-script additions
 (when (executable-find "coffee")
-  (setq el-get-source
-	(append el-get-sources
-		((:name coffee-mode                   ; major mode for coffee-script
-			:depends (js2-mode autopair)
-			:after (lambda ()
-				 ;; the recipe sets to javascript-mode - so reset to default `js2mode' because we have it
-				 (setq coffee-js-mode 'js2-mode)))
-		 (:name flymake-coffee           ; flymake support for coffee-script
-			:type git
-			:url "https://github.com/purcell/flymake-coffee.git"
-			:features flymake-coffee))))
+  (setq el-get-sources
+	(append 
+	 '((:name coffee-mode                   ; major mode for coffee-script
+		  :depends (js2-mode autopair)
+		  :after (lambda ()
+			   ;; the recipe sets to javascript-mode - so reset to default `js2mode' because we have it
+			   (setq coffee-js-mode 'js2-mode)))
+	   (:name flymake-coffee           ; flymake support for coffee-script
+		  :type git
+		  :url "https://github.com/purcell/flymake-coffee.git"
+		  :features flymake-coffee))
+	 el-get-sources))
   ;; coffee-mode
   (defun coffee-custom ()
     "coffee-mode-hook"
@@ -250,15 +250,16 @@
 
 
 ;; ack - grep replacement
-(let ((ack-grep-executable (executable-find "ack-grep")))
-  (when (or (executable-find "ack") ack-grep-executable)
-    (add-to-list 'el-get-sources
-		 '(:name full-ack
-			 :after (lambda ()
-				  (when ack-grep-executable
-				    (setq ack-executable ack-grep-executable))
-				  (global-set-key (kbd "C-x C-a") 'ack)
-				  (global-set-key (kbd "C-x a") 'ack-find-file))))))
+(when (or (executable-find "ack") (executable-find "ack-grep"))
+  (push
+   '(:name full-ack
+	   :after (lambda ()
+		    (let ((ack-grep-executable (executable-find "ack-grep")))
+		      (when ack-grep-executable
+			(setq ack-executable ack-grep-executable)))
+		    (global-set-key (kbd "C-x C-a") 'ack)
+		    (global-set-key (kbd "C-x a") 'ack-find-file)))
+   el-get-sources))
 
 (setq my:el-get-packages
       (append
@@ -279,11 +280,11 @@
 ;; disable scrollbars
 (scroll-bar-mode -1)
 
-;; choose your own fonts, in a system dependant way
+;; choose your own fonts, in a system dependent way
 (if (window-system)
-    (if (string-match "apple-darwin" system-configuration)
-	(set-face-font 'default "Monaco-13")
-      (set-face-font 'default "Monospace-10")))
+     (if (string-match "apple-darwin" system-configuration)
+	 (set-face-font 'default "Monaco-13")
+       (set-face-font 'default "Monospace-10")))
 
 ;; avoid compiz manager rendering bugs
 (add-to-list 'default-frame-alist '(alpha . 100))
@@ -295,7 +296,7 @@
 (windmove-default-keybindings 'meta)
 (setq windmove-wrap-around t)
 
-					; winner-mode provides C-<left> to get back to previous window layout
+;; winner-mode provides C-<left> to get back to previous window layout
 (winner-mode t)
 
 ;; whenever an external process changes a file underneath emacs, and there
