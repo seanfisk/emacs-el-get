@@ -59,18 +59,18 @@
 		   (global-set-key (kbd "<C-S-down>")   'buf-move-down)
 		   (global-set-key (kbd "<C-S-left>")   'buf-move-left)
 		   (global-set-key (kbd "<C-S-right>")  'buf-move-right)))
-  (:name smex                          ; a better (ido like) M-x
-         :after (lambda ()
-                  (setq smex-save-file "~/.emacs.d/.smex-items")
-                  (global-set-key (kbd "M-x") 'smex)
-                  (global-set-key (kbd "M-X") 'smex-major-mode-commands)
-                  (global-set-key (kbd "C-x C-m") 'smex)))
+   (:name smex                          ; a better (ido like) M-x
+	  :after (lambda ()
+		   (setq smex-save-file "~/.emacs.d/.smex-items")
+		   (global-set-key (kbd "M-x") 'smex)
+		   (global-set-key (kbd "M-X") 'smex-major-mode-commands)
+		   (global-set-key (kbd "C-x C-m") 'smex)))
    (:name goto-last-change              ; move pointer back to last change
 	  :after (lambda ()
 		   ;; when using AZERTY keyboard, consider C-x C-_
 		   (global-set-key (kbd "C-x C-/") 'goto-last-change)))
    
-   ;;; color themes
+   ;; color themes
    (:name color-theme			; base for all color themes
 	  :after (lambda ()
 		   (global-set-key (kbd "C-x t") 'color-theme-select)))
@@ -90,22 +90,22 @@
 	  :type emacswiki
 	  :features auto-indent-mode
  	  :before (lambda ()
-		    			; Work-around for Emacs 23.1 to compile auto-indent-mode
-                                        ; Please see <http://paste.lisp.org/display/115598>
+		    ;; Work-around for Emacs 23.1 to compile auto-indent-mode
+		    ;; Please see <http://paste.lisp.org/display/115598>
 		    
-                                        ; If we have a version of called-interactively-p that doesn't accept            
-                                        ; arguments, redefine it so that it does take arguments. This                   
-                                        ; retains compatibility with packages that pass arguments to                    
-                                        ; called-interactively-p.                                                       
+		    ;; If we have a version of called-interactively-p that doesn't accept            
+		    ;; arguments, redefine it so that it does take arguments. This                   
+		    ;; retains compatibility with packages that pass arguments to                    
+		    ;; called-interactively-p.                                                       
 		    
                     (condition-case nil (called-interactively-p 'interactive)
                       (wrong-number-of-arguments
-                                        ; Save reference to called-interactively-p in
-                                        ; substitute-called-interactively-p                                    
+		       ;; Save reference to called-interactively-p in
+		       ;; substitute-called-interactively-p                                    
                        (fset 'substitute-called-interactively-p
                              (symbol-function 'called-interactively-p))
-                                        ; Define called-interactively-p so that it discards                          
-                                        ; its arguments and calls substitute-called-interactively-p            
+		       ;; Define called-interactively-p so that it discards                          
+		       ;; its arguments and calls substitute-called-interactively-p            
                        (fset 'called-interactively-p
                              (lambda (&rest args)
                                (substitute-called-interactively-p))))))
@@ -124,7 +124,7 @@
    (:name auto-complete			; the best auto-complete extension for emacs!
 	  :after (lambda ()
 		   (ac-set-trigger-key "TAB")
-		   ;(add-to-list 'ac-modes 'scss-mode)
+					;(add-to-list 'ac-modes 'scss-mode)
 		   ))
    (:name auto-complete-etags		; auto-complete source for tags
 	  :features auto-complete-etags
@@ -143,13 +143,6 @@
 	  :type emacswiki
 	  :features anything-etags+
 	  :depends anything)
-   (:name full-ack			; grep replacement
-	  :after (lambda ()
-		   (let ((ack-grep-executable (executable-find "ack-grep")))
-		     (when ack-grep-executable
-		       (setq ack-executable ack-grep-executable)))
-		   (global-set-key (kbd "C-x C-a") 'ack)
-		   (global-set-key (kbd "C-x a") 'ack-find-file)))
    (:name flymake-cursor		; show the syntax error for the line under the cursor in the minibuffer
 	  :type emacswiki
 	  :features flymake-cursor)
@@ -157,23 +150,8 @@
    (:name magit                         ; git meet emacs, and a binding
           :after (lambda ()
                    (global-set-key (kbd "C-x C-z") 'magit-status)))
-   (:name coffee-mode                   ; major mode for coffee-script
-	  :depends (js2-mode autopair)
-	  :after (lambda ()
-		   (setq coffee-js-mode 'js2-mode))) ; the recipe sets to javascript-mode - so reset to default `js2mode' because we have it
-   (:name flymake-coffee		; flymake support for coffee-script
-	  :type git
-          :url "https://github.com/purcell/flymake-coffee.git"
-	  :features flymake-coffee)
    (:name ruby-mode			; major mode for ruby
 	  :depends autopair) ; try not to cause problems with turning off autopair-mode later, in case ruby mode hook is activated
-   (:name rsense                        ; ruby type completion
-	  :type git
-	  :url "git://github.com/m2ym/rsense.git"
-	  :load-path "etc"
-	  :features rsense
-	  :post-init (lambda()
-		   (setq rsense-home (expand-file-name "."))))
    (:name edit-server			; for editing through Google Chrome
 	  :features edit-server
 	  :after (lambda ()
@@ -191,13 +169,9 @@
    nxhtml				; awesome html editing mode
    php-mode-improved			; better major mode for php
    haml-mode				; major mode for haml
-   scss-mode				; major mode for scss
    js2-mode				; major mode for javascript
    textile-mode				; major mode for textile markup
    markdown-mode			; major mode for markdown markup
-   rvm					; rvm compatibility
-   ruby-electric			; ruby control structure matching
-   flymake-ruby				; flymake for ruby
    flymake-fringe-icons			; show error icons at side
    ))
 
@@ -207,7 +181,7 @@
 ;; Note: el-get-install requires git, so we know we have at least that.
 ;;
 					;(when (el-get-executable-find "cvs")
-;  (add-to-list 'my:el-get-packages 'emacs-goodies-el)) ; the debian addons for emacs
+					;  (add-to-list 'my:el-get-packages 'emacs-goodies-el)) ; the debian addons for emacs
 
 (when (el-get-executable-find "svn")
   
@@ -216,8 +190,75 @@
 	       '(:name yasnippet
 		       :depends auto-indent-mode))) ; powerful snippedt mode, load auto-indent-mode first
 
-(when (executable-find "rake")
-  (add-to-list 'my:el-get-packages 'rinari)); rails ide
+;; ruby additions
+(when (executable-find "ruby") ; only if we have ruby
+  ;; rinari - rails ide
+  (when (and (executable-find "rails") (el-get-executable-find "rake")) ; if we have rails and rake (needed for compiling rinari, error if we don't have it)
+    (add-to-list 'my:el-get-packages 'rinari))
+  ;; rvm integration
+  (when (executable-find "rvm")
+    (add-to-list 'my:el-get-packages))
+  ;; some more ruby niceties
+  (setq my:el-get-packages
+	(append my:el-get-packages
+		(ruby-electric                        ; ruby control structure matching
+		 flymake-ruby                         ; flymake for ruby
+		 )))
+  ;; hook for ruby-mode
+  (defun ruby-custom ()
+    "ruby-mode-hook"
+    (local-set-key (kbd "RET") 'reindent-then-newline-and-indent)
+    ;; Rsense + Autocomplete
+    (add-to-list 'ac-sources 'ac-source-rsense-method)
+    (add-to-list 'ac-sources 'ac-source-rsense-constant)
+    ;; superceded in this mode by ruby-electric
+    (setq autopair-dont-activate t))
+  
+  (add-hook 'ruby-mode-hook 'ruby-custom))
+
+;; sass / scss additions
+(when (executable-find "sass")
+  (add-to-list 'my:el-get-packages 'scss-mode)
+  ;; hook for scss mode
+  (defun scss-custom ()
+    "scss-mode-hook"
+    (setq scss-compile-at-save nil)) ; don't do this by default, set to t to compile on save
+  
+  (add-hook 'scss-mode-hook 'scss-custom))
+
+;; coffee-script additions
+(when (executable-find "coffee")
+  (setq el-get-source
+	(append el-get-sources
+		((:name coffee-mode                   ; major mode for coffee-script
+			:depends (js2-mode autopair)
+			:after (lambda ()
+				 ;; the recipe sets to javascript-mode - so reset to default `js2mode' because we have it
+				 (setq coffee-js-mode 'js2-mode)))
+		 (:name flymake-coffee           ; flymake support for coffee-script
+			:type git
+			:url "https://github.com/purcell/flymake-coffee.git"
+			:features flymake-coffee))))
+  ;; coffee-mode
+  (defun coffee-custom ()
+    "coffee-mode-hook"
+    (set (make-local-variable 'tab-width) 2)
+    (coffee-cos-mode nil) ; don't compile on save by default, set this to t to do compile-on-save
+    (flymake-coffee-load)) ; flymake for coffee script
+  
+  (add-hook 'coffee-mode-hook 'coffee-custom))
+
+
+;; ack - grep replacement
+(let ((ack-grep-executable (executable-find "ack-grep")))
+  (when (or (executable-find "ack") ack-grep-executable)
+    (add-to-list 'el-get-sources
+		 '(:name full-ack
+			 :after (lambda ()
+				  (when ack-grep-executable
+				    (setq ack-executable ack-grep-executable))
+				  (global-set-key (kbd "C-x C-a") 'ack)
+				  (global-set-key (kbd "C-x a") 'ack-find-file))))))
 
 (setq my:el-get-packages
       (append
@@ -254,7 +295,7 @@
 (windmove-default-keybindings 'meta)
 (setq windmove-wrap-around t)
 
-; winner-mode provides C-<left> to get back to previous window layout
+					; winner-mode provides C-<left> to get back to previous window layout
 (winner-mode t)
 
 ;; whenever an external process changes a file underneath emacs, and there
@@ -290,7 +331,7 @@
 (setq ido-enable-flex-matching t)
 (setq ido-use-filename-at-point 'guess)
 
-;(setq ido-show-dot-for-dired t)
+					;(setq ido-show-dot-for-dired t)
 
 ;; default key to switch buffer is C-x b, but that's not easy enough
 ;;
@@ -322,6 +363,9 @@
 (setq-default x-stretch-cursor t) ; use a block cursor
 (setq-default cursor-type 'box)
 
+;; paren matching
+(show-paren-mode t) ; show matching parentheses
+
 ;; auto-saves
 (setq backup-directory-alist `(("." . ,(expand-file-name "~/.emacs.d/auto-saves"))))
 
@@ -333,10 +377,10 @@
 ;;; auto-complete-mode
 (defun auto-complete-custom ()
   "auto-complete-mode-hook"
-  ; re-assign `dabbrev' to this
+					; re-assign `dabbrev' to this
   (local-set-key (kbd "M-/") 'auto-complete)
-  ; add a tags auto-complete source when we have a tags file
-  ; otherwise we get prompted for a tags file all the time, even when we don't have one
+					; add a tags auto-complete source when we have a tags file
+					; otherwise we get prompted for a tags file all the time, even when we don't have one
   (when tags-file-name
     (add-to-list 'ac-sources 'ac-source-etags)))
 
@@ -354,36 +398,6 @@
 
 (real-global-auto-complete-mode t)
 
-;;; ruby-mode
-(defun ruby-custom ()
-  "ruby-mode-hook"
-  (local-set-key (kbd "RET") 'reindent-then-newline-and-indent)
-  ; Rsense + Autocomplete
-  (add-to-list 'ac-sources 'ac-source-rsense-method)
-  (add-to-list 'ac-sources 'ac-source-rsense-constant)
-  ; superceded in this mode by ruby-electric
-  (setq autopair-dont-activate t)
-  )
-
-(add-hook 'ruby-mode-hook 'ruby-custom)
-
-;;; coffee-mode
-(defun coffee-custom ()
-  "coffee-mode-hook"
-  (set (make-local-variable 'tab-width) 2)
-  (coffee-cos-mode nil) ; don't compile on save by default, set this to t to do compile-on-save
-  (flymake-coffee-load) ; flymake for coffee script
-  )
-
-(add-hook 'coffee-mode-hook 'coffee-custom)
-
-;;; scss-mode
-(defun scss-custom ()
-  "scss-mode-hook"
-  (setq scss-compile-at-save nil)) ; don't do this by default, set to t to compile on save
-
-(add-hook 'scss-mode-hook 'scss-custom)
-
 ;;; edit-server mode
 (defun server-custom ()
   (when (current-local-map)
@@ -396,5 +410,4 @@
 ;;; sh mode
 (defun sh-custom ()
   (flymake-shell-load) ; flymake in shell mode
-  (setq autopair-dont-activate t) ; pairing doesn't work correctly
-  )
+  (setq autopair-dont-activate t)) ; pairing doesn't work correctly
