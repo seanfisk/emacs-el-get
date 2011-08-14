@@ -1,29 +1,29 @@
-Emacs config for Sean Fisk
+	Emacs config for Sean Fisk
 ==========================
-	
-This is my repository for Emacs. It is a fork of the excellent [Emacs Kicker](https://github.com/dimitri/emacs-kicker) by [Dimitri Fontaine](https://github.com/dimitri). As it's based on the Emacs Kicker, it also significantly leverages the might of Dimitri's powerhouse package-grabber for Emacs, [el-get](https://github.com/dimitri/el-get). Thanks Dimitri for both these awesome projects. My Emacs configuration is licensed under the terms of the [MIT License](http://www.opensource.org/licenses/mit-license.php).
 
+This is my repository for Emacs. It is a fork of the excellent [Emacs Kicker](https://github.com/dimitri/emacs-kicker) by [Dimitri Fontaine](https://github.com/dimitri). As it's based on the Emacs Kicker, it also significantly leverages the might of Dimitri's powerhouse package-grabber for Emacs, [el-get](https://github.com/dimitri/el-get). Thanks Dimitri for both these awesome projects. My Emacs configuration is licensed under the terms of the [MIT License](http://www.opensource.org/licenses/mit-license.php).
+	
 Focus
 -----
-
+	
 My Emacs configuration is geared toward the following purposes:
-
+	
 * Ruby on Rails coding
 * C++ coding
 * Bash and shell coding
 * Elisp coding
 * Writing of various text formats (Markdown, Textile)
-	
-These will be documented in more detail at a later time.
 
+These will be documented in more detail at a later time.
+	
 Compatibility
 -------------
-
+	
 This Emacs config strives to be compatible with [GNU Emacs 23](http://www.gnu.org/software/emacs/) (stable) on GNU/Linux and [Aquamacs 2.x](http://aquamacs.org/) (based on GNU Emacs 23) on Mac OS X. However, I've just given back my loaner Mac so it will be hard for me to test on Aquamacs. Please submit issue reports if you have problems.
-
+	
 Install
 -------
-
+	
 Before installing, make sure that required external packages are also installed if you'd like to use the associated el-get package. Listed are Apt packages for [Debian](http://www.debian.org/distrib/packages) and [Ubuntu](http://packages.ubuntu.com/), [Homebrew](https://github.com/mxcl/homebrew) packages for Mac OS X, [Ruby Gems](http://rubygems.org/), or other installation methods.
 
 <table>
@@ -108,7 +108,7 @@ Here's how to install:
 
 1. Start Emacs with `emacs`. Once it has started, you will probably see a screen similar to this one:
 
-	<a href="http://seanfisk.github.com/emacs/images/screenshots/1-el-get-install.png"><img alt="el-get install" src="http://seanfisk.github.com/emacs/images/screenshots/1-el-get-install.png" style="width:421px;height:448px"></a>
+	<a href="http://seanfisk.github.com/emacs/images/screenshots/1-el-get-install.png"><img alt="el-get install" src="http://seanfisk.github.com/emacs/images/screenshots/1-el-get-install.png" width="421" height="448"></a>
 	
 	This means `el-get` has been installed and is ready to start installing packages.
 
