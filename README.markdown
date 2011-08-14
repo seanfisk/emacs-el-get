@@ -20,9 +20,9 @@ Compatibility
 -------------
 	
 This Emacs config strives to be compatible with [GNU Emacs 23](http://www.gnu.org/software/emacs/) (stable) on GNU/Linux and [Aquamacs 2.x](http://aquamacs.org/) (based on GNU Emacs 23) on Mac OS X. However, I've just given back my loaner Mac so it will be hard for me to test on Aquamacs. Please submit issue reports if you have problems.
-	
-Install
--------
+
+Dependencies
+------------
 	
 Before installing, make sure that required external packages are also installed if you'd like to use the associated el-get package. Listed are Apt packages for [Debian](http://www.debian.org/distrib/packages) and [Ubuntu](http://packages.ubuntu.com/), [Homebrew](https://github.com/mxcl/homebrew) packages for Mac OS X, [Ruby Gems](http://rubygems.org/), or other installation methods. I've tried to do dependency checking, so each package won't be installed unless its dependencies exist (i.e., `coffee-mode` will not get installed if the `coffee` executable is not found).
 	
@@ -42,16 +42,16 @@ Before installing, make sure that required external packages are also installed 
     <td></td>
   </tr>
   <tr>
+  <td><a href="http://www.emacswiki.org/emacs/Magit">magit</a> (required)</td>
+  <td>texinfo (<a href="http://packages.debian.org/search?keywords=texinfo">Debian</a>, <a href="http://packages.ubuntu.com/search?keywords=texinfo">Ubuntu</a>)</td>
+  <td><a href="https://github.com/mxcl/homebrew/blob/master/Library/Formula/texinfo.rb">texinfo</a></td>
+  <td></td>
+  <td></td>
+  </tr>
+  <tr>
     <td><a href="http://www.emacswiki.org/emacs/FullAck">full-ack</a></td>
     <td>ack-grep (<a href="http://packages.debian.org/search?keywords=ack-grep">Debian</a>, <a href="http://packages.ubuntu.com/search?keywords=ack-grep">Ubuntu</a>)</td>
     <td><a href="https://github.com/mxcl/homebrew/blob/master/Library/Formula/ack.rb">ack</a></td>
-    <td></td>
-    <td></td>
-  </tr>
-  <tr>
-    <td><a href="http://www.emacswiki.org/emacs/Magit">magit</a></td>
-    <td>texinfo (<a href="http://packages.debian.org/search?keywords=texinfo">Debian</a>, <a href="http://packages.ubuntu.com/search?keywords=texinfo">Ubuntu</a>)</td>
-    <td><a href="https://github.com/mxcl/homebrew/blob/master/Library/Formula/texinfo.rb">texinfo</a></td>
     <td></td>
     <td></td>
   </tr>
@@ -99,16 +99,18 @@ Before installing, make sure that required external packages are also installed 
 </tr>
 </table>
 	
-I've been having trouble getting `magit` to work on Mac OS X. I've therefore created the `sean_no_magit` branch provide the same configuration without `magit`. Any input on this area is appreciated.
+* The beautiful [Inconsolata font](http://www.levien.com/type/myfonts/inconsolata.html) will be used if it is present. Otherwise, the default is Monaco on Mac and Monospace otherwise. To install Inconsolata on Debian/Ubuntu, simply install the `ttf-inconsolata` package. On Mac, I belive you must drag the [open type file](http://www.levien.com/type/myfonts/Inconsolata.otf) into your [fonts folder](http://support.apple.com/kb/HT2435).
+  
+* I've been having trouble getting `magit` to work on Mac OS X. I've therefore created the `sean_no_magit` branch provide the same configuration without `magit`. Any input on this area is appreciated.
 	
 Here's how to install:
-	
+
 1. Make sure `~/.emacs.d` does not exist, because this repository is intended to replace it.
-   
+
        git clone git://github.com/seanfisk/emacs.git ~/.emacs.d
-   
+
 1. Create your own branch for customization. You will almost certainly want to customize your setup.
-   
+	
 	    bartholomew@compy:~/.emacs.d$ git checkout -b bartholomew
 	
 	If you do decide to customize, the file that you will probably want to edit is `init.el`. It should be well-commented.
