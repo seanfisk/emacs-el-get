@@ -81,6 +81,8 @@
 	  :load "color-theme-chocolate-rain.el")
    (:name color-theme-mac-classic     ; mac classic theme
           :features color-theme-mac-classic)
+   (:name color-theme-railscasts
+	  :load "color-theme-railscasts.el")
    (:name whole-line-or-region		; use whole line when no region is present
 	  :features whole-line-or-region
           :after (lambda ()
