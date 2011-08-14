@@ -77,7 +77,9 @@
 	  :url "git://github.com/sellout/emacs-color-theme-solarized.git" ; https clone takes a long time for some reason - hopefully speed up clone time
 	  :after (lambda ()
 		   (color-theme-solarized-light)))
-   (:name color-theme-mac-classic	; mac classic theme
+   (:name color-theme-chocolate-rain
+	  :load "color-theme-chocolate-rain.el")
+   (:name color-theme-mac-classic     ; mac classic theme
           :features color-theme-mac-classic)
    (:name whole-line-or-region		; use whole line when no region is present
 	  :features whole-line-or-region
@@ -170,7 +172,6 @@
    textile-mode				; major mode for textile markup
    markdown-mode			; major mode for markdown markup
    flymake-fringe-icons			; show error icons at side
-   color-theme-chocolate-rain		; chocolate-colored theme	  
    ))
 
 ;;
