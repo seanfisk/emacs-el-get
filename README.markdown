@@ -1,4 +1,4 @@
-	Emacs config for Sean Fisk
+Emacs config for Sean Fisk
 ==========================
 	
 This is my repository for Emacs. It is a fork of the excellent [Emacs Kicker](https://github.com/dimitri/emacs-kicker) by [Dimitri Fontaine](https://github.com/dimitri). As it's based on the Emacs Kicker, it also significantly leverages the might of Dimitri's powerhouse package-grabber for Emacs, [el-get](https://github.com/dimitri/el-get). Thanks Dimitri for both these awesome projects. My Emacs configuration is licensed under the terms of the [MIT License](http://www.opensource.org/licenses/mit-license.php).
