@@ -123,7 +123,7 @@
    (:name auto-complete			; the best auto-complete extension for emacs!
 	  :after (lambda ()
 		   (ac-set-trigger-key "TAB")
-					;(add-to-list 'ac-modes 'scss-mode)
+		   ;;(add-to-list 'ac-modes 'scss-mode)
 		   ))
    (:name auto-complete-etags		; auto-complete source for tags
 	  :features auto-complete-etags
