@@ -13,7 +13,7 @@ My Emacs configuration is geared toward the following purposes:
 * Bash and shell coding
 * Elisp coding
 * Writing of various text formats (Markdown, Textile)
-
+  
 These will be documented in more detail at a later time.
 	
 Compatibility
@@ -24,8 +24,8 @@ This Emacs config strives to be compatible with [GNU Emacs 23](http://www.gnu.or
 Install
 -------
 	
-Before installing, make sure that required external packages are also installed if you'd like to use the associated el-get package. Listed are Apt packages for [Debian](http://www.debian.org/distrib/packages) and [Ubuntu](http://packages.ubuntu.com/), [Homebrew](https://github.com/mxcl/homebrew) packages for Mac OS X, [Ruby Gems](http://rubygems.org/), or other installation methods.
-
+Before installing, make sure that required external packages are also installed if you'd like to use the associated el-get package. Listed are Apt packages for [Debian](http://www.debian.org/distrib/packages) and [Ubuntu](http://packages.ubuntu.com/), [Homebrew](https://github.com/mxcl/homebrew) packages for Mac OS X, [Ruby Gems](http://rubygems.org/), or other installation methods. I've tried to do dependency checking, so each package won't be installed unless its dependencies exist (i.e., `coffee-mode` will not get installed if the `coffee` executable is not found).
+	
 <table>
   <tr>
     <th>el-get</th>
@@ -33,6 +33,13 @@ Before installing, make sure that required external packages are also installed 
     <th>homebrew</th>
     <th>gem</th>
     <th>other</th>
+  </tr>
+  <tr>
+	<td><a href="http://www.xsteve.at/prg/vc_svn/">psvn</a>, <a href="http://code.google.com/p/yasnippet/">yasnippet</a> (required)</td>
+    <td>subversion (<a href="http://packages.debian.org/search?keywords=subversion">Debian</a>, <a href="http://packages.ubuntu.com/search?keywords=subversion">Ubuntu</a>)</td>
+    <td><a href="https://github.com/mxcl/homebrew/blob/master/Library/Formula/subversion.rb">subversion</a></td>
+    <td></td>
+    <td></td>
   </tr>
   <tr>
     <td><a href="http://www.emacswiki.org/emacs/FullAck">full-ack</a></td>
@@ -89,13 +96,13 @@ Before installing, make sure that required external packages are also installed 
     <td><a href="https://github.com/mxcl/homebrew/blob/master/Library/Formula/markdown.rb">markdown</a></td>
     <td></td>
     <td>Only needed for translating Markdown to HTML</td>
-  </tr>
+</tr>
 </table>
 	
 I've been having trouble getting `magit` to work on Mac OS X. I've therefore created the `sean_no_magit` branch provide the same configuration without `magit`. Any input on this area is appreciated.
-
+	
 Here's how to install:
-
+	
 1. Make sure `~/.emacs.d` does not exist, because this repository is intended to replace it.
    
        git clone git://github.com/seanfisk/emacs.git ~/.emacs.d
@@ -103,7 +110,7 @@ Here's how to install:
 1. Create your own branch for customization. You will almost certainly want to customize your setup.
    
 	    bartholomew@compy:~/.emacs.d$ git checkout -b bartholomew
-		
+	
 	If you do decide to customize, the file that you will probably want to edit is `init.el`. It should be well-commented.
 	
 1. Start Emacs with `emacs`. Once it has started, you will probably see a screen similar to this one:
@@ -111,35 +118,35 @@ Here's how to install:
 	<a href="http://seanfisk.github.com/emacs/images/screenshots/1-el-get-install.png"><img alt="el-get install" src="http://seanfisk.github.com/emacs/images/screenshots/1-el-get-install.png" width="421" height="448"></a>
 	
 	This means `el-get` has been installed and is ready to start installing packages.
-
-1. Next, kill Emacs (`M-x kill-emacs`) and start it back up again. Lots of packages should now begin to be installed. At some point, the package installation may stop and you may be show a screen like this:
 	
+1. Next, kill Emacs (`M-x kill-emacs`) and start it back up again. Lots of packages should now begin to be installed. At some point, the package installation may stop and you may be show a screen like this:
+   
 	<a href="http://seanfisk.github.com/emacs/images/screenshots/2-end-of-buffer.png"><img alt="End of buffer" src="http://seanfisk.github.com/emacs/images/screenshots/2-end-of-buffer.png" width="421" height="448"></a>
 	
 1. Don't worry, this is not unexpected. What you should now do is find the init file with `C-x C-f ~/.emacs.d/init.el`:
-   
+	
 	<a href="http://seanfisk.github.com/emacs/images/screenshots/3-find-file-init.png"><img alt="Find init file" src="http://seanfisk.github.com/emacs/images/screenshots/3-find-file-init.png" width="421" height="448"></a>
 		
 1. Once you have it open, you can now evaluate the init file without having to restart Emacs with `M-x eval-buffer`, like so:
-	
+
 	<a href="http://seanfisk.github.com/emacs/images/screenshots/4-eval-buffer-init.png"><img alt="Eval buffer init" src="http://seanfisk.github.com/emacs/images/screenshots/4-eval-buffer-init.png" width="421" height="448"></a>
 		
 1. If any further errors occur, simply run `eval-buffer` once again. You may have to restart a couple times as well. It should all work out in the end, and you should see a screen similar to the following:
-	
+
 	<a href="http://seanfisk.github.com/emacs/images/screenshots/5-done.png"><img alt="Done" src="http://seanfisk.github.com/emacs/images/screenshots/5-done.png" width="421" height=449"></a>
-	
+		
 1. If the installation errors out permanently, please submit an issue or contact me.
-	
+
 Notes
 -----
-	
+
 Following the Emacs Kicker, I've changed the default shortcut for `kill-emacs` of `C-x C-c` to `ido-switch-buffer`. I've reassigned `kill-emacs` to `C-x q` to keep an easy shortcut. Of course, you can always still close Emacs with `M-x kill-emacs`.
-	
+
 Credits
 -------
-
+	
 Thanks to Dimitri Fontaine for creating the Emacs Kicker and el-get!
-
-Thanks to my friends Siva and Paul for providing feedback on the config!
+	
+Thanks to my friends Siva, Paul, and Jared for providing feedback on the config!
 	
 And of course, thanks to [GNU](http://www.gnu.org/) and [RMS](http://stallman.org/) for creating this awesome editor!
