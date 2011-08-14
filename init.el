@@ -74,7 +74,9 @@
 		   (global-set-key (kbd "C-x t") 'color-theme-select)))
    (:name color-theme-solarized		; dark and light Solarized color themes
 	  :depends color-theme
-	  :url "git://github.com/sellout/emacs-color-theme-solarized.git") ; https clone takes a long time for some reason - hopefully speed up clone time
+	  :url "git://github.com/sellout/emacs-color-theme-solarized.git" ; https clone takes a long time for some reason - hopefully speed up clone time
+	  :after (lambda ()
+		   (color-theme-solarized-light)))
    (:name color-theme-mac-classic	; mac classic theme
           :features color-theme-mac-classic)
    (:name whole-line-or-region		; use whole line when no region is present
