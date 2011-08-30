@@ -2,16 +2,16 @@
 
 (require 'flymake)
 
-(defcustom flymake-shell-of-choice
-  "/bin/bash"
-  "Path of shell.")
+					;(defcustom flymake-shell-of-choice
+;  "/bin/bash"
+;  "Path of shell.")
 
 (defcustom flymake-shell-arguments
   (list "-n")
   "Shell arguments to invoke syntax checking.")
 
 (defconst flymake-allowed-shell-file-name-masks
-  '(("\\.sh$" flymake-shell-init))
+  '(("\\.\\(sh\\|bash\\|zsh\\)$" flymake-shell-init))
   "Filename extensions that switch on flymake-shell mode syntax checks.")
 
 (defcustom flymake-shell-err-line-pattern-re
@@ -24,7 +24,7 @@
          (local-file (file-relative-name
                       temp-file
                       (file-name-directory buffer-file-name))))
-    (list flymake-shell-of-choice (append flymake-shell-arguments (list local-file)))))
+    (list sh-shell-file (append flymake-shell-arguments (list local-file)))))
 
 (defun flymake-shell-load ()
   (setq flymake-allowed-file-name-masks (append flymake-allowed-file-name-masks flymake-allowed-shell-file-name-masks))
