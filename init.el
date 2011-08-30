@@ -125,7 +125,8 @@
    (:name auto-complete			; the best auto-complete extension for emacs!
 	  :after (lambda ()
 		   (ac-set-trigger-key "TAB")
-		   ;;(add-to-list 'ac-modes 'scss-mode)
+		   ;; add to this list when more auto-completion is needed
+		   (setq ac-modes (append '(scss-mode) ac-modes))
 		   ))
    (:name auto-complete-etags		; auto-complete source for tags
 	  :features auto-complete-etags
@@ -399,13 +400,13 @@
 
 ;;;; dirty fix for having AC everywhere
 ;;;; see "Questions and Feedback" on <http://www.emacswiki.org/emacs/AutoComplete>
-(define-globalized-minor-mode real-global-auto-complete-mode
-  auto-complete-mode (lambda ()
-                       (if (not (minibufferp (current-buffer)))
-                           (auto-complete-mode 1))
-                       ))
+;; (define-globalized-minor-mode real-global-auto-complete-mode
+;;   auto-complete-mode (lambda ()
+;;                        (if (not (minibufferp (current-buffer)))
+;;                            (auto-complete-mode 1))
+;;                        ))
 
-(real-global-auto-complete-mode t)
+;; (real-global-auto-complete-mode t)
 
 ;;; edit-server mode
 (defun server-custom ()
