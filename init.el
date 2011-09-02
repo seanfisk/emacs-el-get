@@ -119,7 +119,7 @@
 	  :depends auto-indent-mode
 	  :after (lambda ()
 		   (autopair-global-mode t)))
-   (:name auto-pair+			; add Textmate-like pairing to autopair
+   (:name auto-pair+			; smart quoting of regions for autopair
 	  :depends autopair
 	  :type emacswiki)
    (:name auto-complete			; the best auto-complete extension for emacs!
@@ -383,6 +383,12 @@
 (global-set-key (kbd "C-x j") 'kill-this-buffer) ; an easy shortcut is needed for this common task
 
 ;; bindings and hooks for modes
+
+;;; isearch other end - see <http://www.emacswiki.org/emacs/IsearchOtherEnd>
+(defun isearch-goto-match-beginning ()
+  (when isearch-forward (goto-char isearch-other-end)))
+
+(add-hook 'isearch-mode-end-hook 'isearch-goto-match-beginning)
 
 ;;; auto-complete-mode
 (defun auto-complete-custom ()
