@@ -120,6 +120,7 @@
 	  :after (lambda ()
 		   (autopair-global-mode t)))
    (:name auto-pair+			; smart quoting of regions for autopair
+	  :features auto-pair+
 	  :depends autopair
 	  :type emacswiki)
    (:name auto-complete			; the best auto-complete extension for emacs!
