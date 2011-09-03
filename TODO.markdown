@@ -1,23 +1,20 @@
 TODO for Sean's Emacs Config
 ============================
 
-* Rails
-    * Get rails setup working properly
-    * Document different modes / command
-	* Add flymake-sass
-* Ensure ruby, erb, haml, sass, and coffee modes are working correctly
-* Flymake-shell
-    * Make it work for zsh and sh as well, to be robust
-* ZSH term
-    * The extended charset prompt characters should display correctly
+* C++
+	* Create a good C++ setup
+	* Gotta have flymake
+    * Gotta have completion with auto-complete and/or semantic (cedet)
+    * Preferably work well with STL and Qt
 * Modularize the config
     * Split into different files which get required by init.el
 * Emacs goodies
     * Get this package working again
 * Emacs code browser (ECB) and cedet
     * Get ECB installed and working
-* C++
-    * Create a good C++ setup
-    * Gotta have flymake
-    * Gotta have completion with auto-complete and/or semantic (cedet)
-    * Preferably work well with STL and Qt
+* Rails
+    * Get rails setup working properly
+    * Document different modes / command
+    * Add flymake-sass
+    * Ensure ruby, erb, haml, sass, and coffee modes are working correctly
+	
