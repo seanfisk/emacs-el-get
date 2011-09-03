@@ -2,16 +2,13 @@
 
 (require 'flymake)
 
-(defcustom flymake-shell-of-choice
-  "/bin/bash"
-  "Path of shell.")
-
 (defcustom flymake-shell-arguments
   (list "-n")
   "Shell arguments to invoke syntax checking.")
 
 (defconst flymake-allowed-shell-file-name-masks
-  '(("\\.sh$" flymake-shell-init))
+  ;; just do it on all files, any extension can be a script and sh-mode is smart enough to detect it
+  '((".*" flymake-shell-init))
   "Filename extensions that switch on flymake-shell mode syntax checks.")
 
 (defcustom flymake-shell-err-line-pattern-re
@@ -24,13 +21,12 @@
          (local-file (file-relative-name
                       temp-file
                       (file-name-directory buffer-file-name))))
-    (list flymake-shell-of-choice (append flymake-shell-arguments (list local-file)))))
+    (list (executable-find (symbol-name sh-shell)) (append flymake-shell-arguments (list local-file)))))
 
 (defun flymake-shell-load ()
-  (setq flymake-allowed-file-name-masks (append flymake-allowed-file-name-masks flymake-allowed-shell-file-name-masks))
-  (setq flymake-err-line-patterns (append flymake-err-line-patterns flymake-shell-err-line-pattern-re))
-  (flymake-mode t)
-  (local-set-key (kbd "C-c d") 'flymake-display-err-menu-for-current-line))
+  (set (make-local-variable 'flymake-allowed-file-name-masks) flymake-allowed-shell-file-name-masks)
+  (set (make-local-variable 'flymake-err-line-patterns) flymake-shell-err-line-pattern-re)
+  (flymake-mode t))
 
 (provide 'flymake-shell)
 

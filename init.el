@@ -284,9 +284,11 @@
 
 ;; on to the visual settings
 (setq inhibit-splash-screen t)		; no splash screen, thanks
+(line-number-mode 1)                    ; have line numbers and
+(column-number-mode 1)                  ; column numbers in the mode line
 
-;; disable scrollbars
-(scroll-bar-mode -1)
+(tool-bar-mode -1)                      ; no tool bar with icons
+(scroll-bar-mode -1)			; no scroll bars
 
 ;; choose your own fonts, in a system dependent way
 (if (window-system)
@@ -430,6 +432,9 @@
   (flymake-shell-load) ; flymake in shell mode
   (setq autopair-dont-activate t)) ; pairing doesn't work correctly
 
+(add-hook 'sh-mode-hook 'sh-custom)
+
+;;; term mode
 (defun term-custom ()
   (setq autopair-dont-activate t))
 
