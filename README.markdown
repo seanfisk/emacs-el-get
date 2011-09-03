@@ -98,45 +98,45 @@ Before installing, make sure that required external packages are also installed 
     <td>Only needed for translating Markdown to HTML</td>
 </tr>
 </table>
-	
-* The beautiful [Inconsolata font](http://www.levien.com/type/myfonts/inconsolata.html) will be used if it is present. Otherwise, the default is Monaco on Mac and Monospace otherwise. To install Inconsolata on Debian/Ubuntu, simply install the `ttf-inconsolata` package. On Mac, I belive you must drag the [open type file](http://www.levien.com/type/myfonts/Inconsolata.otf) into your [fonts folder](http://support.apple.com/kb/HT2435).
-  
+
+* The beautiful [Inconsolata font](http://www.levien.com/type/myfonts/inconsolata.html) will be used if it is present. Otherwise, the default is Monaco on Mac and Monospace otherwise. To install Inconsolata on Debian/Ubuntu, simply install the `ttf-inconsolata` package or `levien-inconsolata-fonts` on Fedora. On Mac, I belive you must drag the [open type file](http://www.levien.com/type/myfonts/Inconsolata.otf) into your [fonts folder](http://support.apple.com/kb/HT2435).
+
 * I've been having trouble getting `magit` to work on Mac OS X. I've therefore created the `sean_no_magit` branch provide the same configuration without `magit`. Any input on this area is appreciated.
-	
+
 Here's how to install:
 
 1. Make sure `~/.emacs.d` does not exist, because this repository is intended to replace it.
 
        git clone git://github.com/seanfisk/emacs.git ~/.emacs.d
-
+	   
 1. Create your own branch for customization. You will almost certainly want to customize your setup.
-	
+
 	    bartholomew@compy:~/.emacs.d$ git checkout -b bartholomew
-	
+		
 	If you do decide to customize, the file that you will probably want to edit is `init.el`. It should be well-commented.
 	
 1. Start Emacs with `emacs`. Once it has started, you will probably see a screen similar to this one:
-   
+
 	<a href="http://seanfisk.github.com/emacs/images/screenshots/1-el-get-install.png"><img alt="el-get install" src="http://seanfisk.github.com/emacs/images/screenshots/1-el-get-install.png" width="421" height="448"></a>
 	
 	This means `el-get` has been installed and is ready to start installing packages.
 	
 1. Next, kill Emacs (`M-x kill-emacs`) and start it back up again. Lots of packages should now begin to be installed. At some point, the package installation may stop and you may be show a screen like this:
-   
+
 	<a href="http://seanfisk.github.com/emacs/images/screenshots/2-end-of-buffer.png"><img alt="End of buffer" src="http://seanfisk.github.com/emacs/images/screenshots/2-end-of-buffer.png" width="421" height="448"></a>
 	
 1. Don't worry, this is not unexpected. What you should now do is find the init file with `C-x C-f ~/.emacs.d/init.el`:
-	
+
 	<a href="http://seanfisk.github.com/emacs/images/screenshots/3-find-file-init.png"><img alt="Find init file" src="http://seanfisk.github.com/emacs/images/screenshots/3-find-file-init.png" width="421" height="448"></a>
-		
+	
 1. Once you have it open, you can now evaluate the init file without having to restart Emacs with `M-x eval-buffer`, like so:
 
-	<a href="http://seanfisk.github.com/emacs/images/screenshots/4-eval-buffer-init.png"><img alt="Eval buffer init" src="http://seanfisk.github.com/emacs/images/screenshots/4-eval-buffer-init.png" width="421" height="448"></a>
-		
+<a href="http://seanfisk.github.com/emacs/images/screenshots/4-eval-buffer-init.png"><img alt="Eval buffer init" src="http://seanfisk.github.com/emacs/images/screenshots/4-eval-buffer-init.png" width="421" height="448"></a>
+
 1. If any further errors occur, simply run `eval-buffer` once again. You may have to restart a couple times as well. It should all work out in the end, and you should see a screen similar to the following:
 
 	<a href="http://seanfisk.github.com/emacs/images/screenshots/5-done.png"><img alt="Done" src="http://seanfisk.github.com/emacs/images/screenshots/5-done.png" width="421" height=449"></a>
-		
+	
 1. If the installation errors out permanently, please submit an issue or contact me.
 
 Notes
@@ -146,9 +146,9 @@ Following the Emacs Kicker, I've changed the default shortcut for `kill-emacs` o
 
 Credits
 -------
-	
+
 Thanks to Dimitri Fontaine for creating the Emacs Kicker and el-get!
-	
+
 Thanks to my friends Siva, Paul, and Jared for providing feedback on the config!
-	
+
 And of course, thanks to [GNU](http://www.gnu.org/) and [RMS](http://stallman.org/) for creating this awesome editor!
