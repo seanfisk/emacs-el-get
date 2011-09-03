@@ -71,7 +71,7 @@
 		   (global-set-key (kbd "C-x C-/") 'goto-last-change)))
    (:name color-theme			; base for all color themes
 	  :after (lambda ()
-		   (global-set-key (kbd "C-x t") 'color-theme-select)))
+		   (global-set-key (kbd "C-c t") 'color-theme-select)))
    (:name color-theme-solarized		; dark and light Solarized color themes
 	  :depends color-theme
 	  :url "git://github.com/sellout/emacs-color-theme-solarized.git" ; https clone takes a long time for some reason - hopefully speed up clone time
@@ -155,7 +155,8 @@
 	  :depends autopair) ; try not to cause problems with turning off autopair-mode later, in case ruby mode hook is activated
    (:name multi-term	     ; better version of term
 	  :after (lambda ()
-		   (setq multi-term-program "zsh")))
+		   (setq multi-term-program "zsh")
+		   (global-set-key (kbd "C-x t") 'multi-term)))
    (:name edit-server		   ; for editing through Google Chrome
 	  :features edit-server
 	  :after (lambda ()
