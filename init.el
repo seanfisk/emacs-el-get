@@ -112,9 +112,7 @@
                                (substitute-called-interactively-p))))))
 	  :after (lambda ()
 	   	   (auto-indent-global-mode t)
-                   (add-to-list 'auto-indent-disabled-modes-list 'coffee-mode) ; don't use in coffee-mode, causes problems
-		   (add-to-list 'auto-indent-disabled-modes-list 'shell-mode) ; not needed
-		   ))
+                   (setq auto-indent-disabled-modes-list (append '(coffee-mode shell-mode term-mode) auto-indent-disabled-modes-list))))
    (:name autopair			; automatically complete everything that comes in pairs, load auto-indent-mode first
 	  :depends auto-indent-mode
 	  :after (lambda ()
@@ -428,3 +426,8 @@
 (defun sh-custom ()
   (flymake-shell-load) ; flymake in shell mode
   (setq autopair-dont-activate t)) ; pairing doesn't work correctly
+
+(defun term-custom ()
+  (setq autopair-dont-activate t))
+
+(add-hook 'term-mode-hook 'term-custom)
