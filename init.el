@@ -153,7 +153,10 @@
                    (global-set-key (kbd "C-x C-z") 'magit-status)))
    (:name ruby-mode			; major mode for ruby
 	  :depends autopair) ; try not to cause problems with turning off autopair-mode later, in case ruby mode hook is activated
-   (:name edit-server			; for editing through Google Chrome
+   (:name multi-term	     ; better version of term
+	  :after (lambda ()
+		   (setq multi-term-program "zsh")))
+   (:name edit-server		   ; for editing through Google Chrome
 	  :features edit-server
 	  :after (lambda ()
 		   (edit-server-start)))))
@@ -191,7 +194,7 @@
   (push 
    '(:name yasnippet
 	   :depends auto-indent-mode)
-  el-get-sources))
+   el-get-sources))
 
 ;; ruby additions
 (when (executable-find "ruby") ; only if we have ruby
