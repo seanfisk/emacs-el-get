@@ -21,7 +21,7 @@
          (local-file (file-relative-name
                       temp-file
                       (file-name-directory buffer-file-name))))
-    (list sh-shell-file (append flymake-shell-arguments (list local-file)))))
+    (list (executable-find (symbol-name sh-shell)) (append flymake-shell-arguments (list local-file)))))
 
 (defun flymake-shell-load ()
   (set (make-local-variable 'flymake-allowed-file-name-masks) flymake-allowed-shell-file-name-masks)
