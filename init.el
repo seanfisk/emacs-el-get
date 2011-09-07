@@ -156,8 +156,9 @@
    (:name multi-term	     ; better version of term
 	  :after (lambda ()
 		   ;; don't mess with my terminal keys
-		   (loop for key-to-unbind in '("C-p" "C-n" "C-s" "C-r") do
-			 (setq term-bind-key-alist (assq-delete-all key-to-unbind term-bind-key-alist)))
+		   (setq term-bind-key-alist nil)
+		   ;; (loop for key-to-unbind in '("C-p" "C-n" "C-s" "C-r") do
+		   ;; 	 (setq term-bind-key-alist (assq-delete-all key-to-unbind term-bind-key-alist)))
 		   (setq multi-term-program "zsh") ; use zsh
 		   (global-set-key (kbd "C-x t") 'multi-term))) ; shortcut
    (:name edit-server		   ; for editing through Google Chrome
