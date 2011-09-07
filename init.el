@@ -180,6 +180,7 @@
    js2-mode				; major mode for javascript
    textile-mode				; major mode for textile markup
    markdown-mode			; major mode for markdown markup
+   cmake-mode				; major mode for editing CMake config files
    flymake-fringe-icons			; show error icons at side
    ))
 
@@ -443,15 +444,3 @@
   (setq autopair-dont-activate t))
 
 (add-hook 'term-mode-hook 'term-custom)
-(custom-set-variables
-  ;; custom-set-variables was added by Custom.
-  ;; If you edit it by hand, you could mess it up, so be careful.
-  ;; Your init file should contain only one such instance.
-  ;; If there is more than one, they won't work right.
- '(term-bind-key-alist (quote (("C-m" . term-send-raw) ("M-f" . term-send-forward-word) ("M-b" . term-send-backward-word) ("M-o" . term-send-backspace) ("M-p" . term-send-up) ("M-n" . term-send-down) ("M-M" . term-send-forward-kill-word) ("M-N" . term-send-backward-kill-word) ("M-r" . term-send-reverse-search-history) ("M-," . term-send-input) ("M-." . comint-dynamic-complete)))))
-(custom-set-faces
-  ;; custom-set-faces was added by Custom.
-  ;; If you edit it by hand, you could mess it up, so be careful.
-  ;; Your init file should contain only one such instance.
-  ;; If there is more than one, they won't work right.
- )
