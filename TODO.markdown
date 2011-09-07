@@ -1,9 +1,6 @@
 TODO for Sean's Emacs Config
 ============================
 
-* Term-mode
-	* Fix weirdness in char mode
-	* I want all keystrokes except for a couple being sent to the inferior
 * C++
 	* Create a good C++ setup
 	* Gotta have flymake

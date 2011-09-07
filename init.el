@@ -154,13 +154,13 @@
    (:name ruby-mode			; major mode for ruby
 	  :depends autopair) ; try not to cause problems with turning off autopair-mode later, in case ruby mode hook is activated
    (:name multi-term	     ; better version of term
-	  :after (lambda ()
-		   ;; don't mess with my terminal keys
-		   (setq term-bind-key-alist nil)
-		   ;; (loop for key-to-unbind in '("C-p" "C-n" "C-s" "C-r") do
-		   ;; 	 (setq term-bind-key-alist (assq-delete-all key-to-unbind term-bind-key-alist)))
+   	  :after (lambda ()
+   		   ;; don't mess with my terminal keys
+   		   (setq term-bind-key-alist nil)
+		   (setq term-unbind-key-list nil)
+		   
 		   (setq multi-term-program "zsh") ; use zsh
-		   (global-set-key (kbd "C-x t") 'multi-term))) ; shortcut
+   		   (global-set-key (kbd "C-x t") 'multi-term))) ; shortcut
    (:name edit-server		   ; for editing through Google Chrome
 	  :features edit-server
 	  :after (lambda ()
