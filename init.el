@@ -158,7 +158,7 @@
    		   ;; don't mess with my terminal keys
    		   (setq term-bind-key-alist nil)
 		   (setq term-unbind-key-list nil)
-		   
+
 		   (setq multi-term-program "zsh") ; use zsh
    		   (global-set-key (kbd "C-x t") 'multi-term))) ; shortcut
    (:name edit-server		   ; for editing through Google Chrome
@@ -343,6 +343,9 @@
 ;; Have C-y act as usual in term-mode, to avoid C-' C-y C-'
 ;; Well the real default would be C-c C-j C-y C-c C-k.
 (define-key term-raw-map  (kbd "C-y") 'term-paste)
+
+;; Enable paging in term-mode
+(term-pager-enable)
 
 ;; use ido for minibuffer completion
 (require 'ido)
