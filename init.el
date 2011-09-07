@@ -155,8 +155,11 @@
 	  :depends autopair) ; try not to cause problems with turning off autopair-mode later, in case ruby mode hook is activated
    (:name multi-term	     ; better version of term
 	  :after (lambda ()
-		   (setq multi-term-program "zsh")
-		   (global-set-key (kbd "C-x t") 'multi-term)))
+		   ;; don't mess with my terminal keys
+		   (loop for key-to-unbind in '("C-p" "C-n" "C-s" "C-r") do
+			 (setq term-bind-key-alist (assq-delete-all key-to-unbind term-bind-key-alist)))
+		   (setq multi-term-program "zsh") ; use zsh
+		   (global-set-key (kbd "C-x t") 'multi-term))) ; shortcut
    (:name edit-server		   ; for editing through Google Chrome
 	  :features edit-server
 	  :after (lambda ()
@@ -440,3 +443,15 @@
   (setq autopair-dont-activate t))
 
 (add-hook 'term-mode-hook 'term-custom)
+(custom-set-variables
+  ;; custom-set-variables was added by Custom.
+  ;; If you edit it by hand, you could mess it up, so be careful.
+  ;; Your init file should contain only one such instance.
+  ;; If there is more than one, they won't work right.
+ '(term-bind-key-alist (quote (("C-m" . term-send-raw) ("M-f" . term-send-forward-word) ("M-b" . term-send-backward-word) ("M-o" . term-send-backspace) ("M-p" . term-send-up) ("M-n" . term-send-down) ("M-M" . term-send-forward-kill-word) ("M-N" . term-send-backward-kill-word) ("M-r" . term-send-reverse-search-history) ("M-," . term-send-input) ("M-." . comint-dynamic-complete)))))
+(custom-set-faces
+  ;; custom-set-faces was added by Custom.
+  ;; If you edit it by hand, you could mess it up, so be careful.
+  ;; Your init file should contain only one such instance.
+  ;; If there is more than one, they won't work right.
+ )
