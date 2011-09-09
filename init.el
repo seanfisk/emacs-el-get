@@ -178,7 +178,6 @@
    nxhtml				; awesome html editing mode
    php-mode-improved			; better major mode for php
    haml-mode				; major mode for haml
-   js2-mode				; major mode for javascript
    textile-mode				; major mode for textile markup
    markdown-mode			; major mode for markdown markup
    cmake-mode				; major mode for editing CMake config files
@@ -196,6 +195,8 @@
 (when (el-get-executable-find "svn")
   ;; subversion plugin for emacs
   (add-to-list 'my:el-get-packages 'psvn)
+  ;; javascript ide
+  (add-to-list 'my:el-get-packages 'js2-mode)
   ;; powerful snippet mode, load auto-indent-mode first
   (push 
    '(:name yasnippet
