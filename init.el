@@ -54,7 +54,9 @@
 ;; set local recipes
 (setq
  el-get-sources
- '((:name buffer-move			; have to add your own keys
+ '((:name package24
+	  :url "http://repo.or.cz/w/emacs.git/blob_plain/1a0a666f941c99882093d7bd08ced15033bc3f0c:/lisp/emacs-lisp/package.el")
+   (:name buffer-move			; have to add your own keys
 	  :after (lambda ()
 		   (global-set-key (kbd "<C-S-up>")     'buf-move-up)
 		   (global-set-key (kbd "<C-S-down>")   'buf-move-down)
