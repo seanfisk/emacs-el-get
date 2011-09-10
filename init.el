@@ -50,11 +50,6 @@
 ;; now either el-get is `require'd already, or have been `load'ed by the
 ;; el-get installer.
 
-(el-get 'sync
-	'(:name package24
-		:url "http://repo.or.cz/w/emacs.git/blob_plain/1a0a666f941c99882093d7bd08ced15033bc3f0c:/lisp/emacs-lisp/package.el"))
-(el-get 'wait)
-
 ;; set local recipes
 (setq
  el-get-sources
@@ -181,12 +176,12 @@
    dired+				; many extensions to dired directory browser
    zencoding-mode			; http://www.emacswiki.org/emacs/ZenCoding
    nxhtml				; awesome html editing mode
-   ;;php-mode-improved			; better major mode for php
+   php-mode-improved			; better major mode for php
    haml-mode				; major mode for haml
    textile-mode				; major mode for textile markup
    markdown-mode			; major mode for markdown markup
    cmake-mode				; major mode for editing CMake config files
-   ;;flymake-fringe-icons			; show error icons at side
+   flymake-fringe-icons			; show error icons at side
    ))
 
 ;;
@@ -197,16 +192,16 @@
 					;(when (el-get-executable-find "cvs")
 					;  (add-to-list 'my:el-get-packages 'emacs-goodies-el)) ; the debian addons for emacs
 
-;; (when (el-get-executable-find "svn")
-;;   ;; subversion plugin for emacs
-;;   (add-to-list 'my:el-get-packages 'psvn)
-;;   ;; javascript ide
-;;   (add-to-list 'my:el-get-packages 'js2-mode)
-;;   ;; powerful snippet mode, load auto-indent-mode first
-;;   (push 
-;;    '(:name yasnippet
-;; 	   :depends auto-indent-mode)
-;;    el-get-sources))
+(when (el-get-executable-find "svn")
+  ;; subversion plugin for emacs
+  (add-to-list 'my:el-get-packages 'psvn)
+  ;; javascript ide
+  (add-to-list 'my:el-get-packages 'js2-mode)
+  ;; powerful snippet mode, load auto-indent-mode first
+  (push 
+   '(:name yasnippet
+	   :depends auto-indent-mode)
+   el-get-sources))
 
 ;; ruby additions
 (when (executable-find "ruby") ; only if we have ruby
@@ -288,7 +283,6 @@
 
 ;; install new packages and init already installed packages
 (el-get 'sync my:el-get-packages)
-(el-get 'wait)
 
 ;; other packages in `src' directory
 (add-to-list 'load-path "~/.emacs.d/src")
