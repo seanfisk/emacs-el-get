@@ -42,10 +42,11 @@
 
 (unless (require 'el-get nil t)
   (url-retrieve
-   "https://github.com/dimitri/el-get/raw/master/el-get-install.el"
+   "https://raw.github.com/dimitri/el-get/master/el-get-install.el"
    (lambda (s)
-     (end-of-buffer)
-     (eval-print-last-sexp))))
+     (let (el-get-master-branch)
+       (end-of-buffer)
+       (eval-print-last-sexp)))))
 
 ;; now either el-get is `require'd already, or have been `load'ed by the
 ;; el-get installer.
