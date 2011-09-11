@@ -444,8 +444,7 @@
 
 ;;; sh mode
 (defun sh-custom ()
-  (flymake-shell-load) ; flymake in shell mode
-  (setq autopair-dont-activate t)) ; pairing doesn't work correctly
+  (flymake-shell-load)) ; flymake in shell mode
 
 (add-hook 'sh-mode-hook 'sh-custom)
 
