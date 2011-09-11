@@ -161,7 +161,7 @@
    		   ;; don't mess with my terminal keys
    		   (setq term-bind-key-alist nil)
 		   (setq term-unbind-key-list nil)
-
+		   
 		   (setq multi-term-program "zsh") ; use zsh
    		   (global-set-key (kbd "C-x t") 'multi-term))) ; shortcut
    (:name edit-server		   ; for editing through Google Chrome
@@ -185,6 +185,7 @@
    markdown-mode			; major mode for markdown markup
    cmake-mode				; major mode for editing CMake config files
    flymake-fringe-icons			; show error icons at side
+   ecb					; Emacs Code Browser
    ))
 
 ;;
