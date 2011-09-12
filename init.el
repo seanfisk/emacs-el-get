@@ -156,6 +156,13 @@
                    (global-set-key (kbd "C-x C-z") 'magit-status)))
    (:name ruby-mode			; major mode for ruby
 	  :depends autopair) ; try not to cause problems with turning off autopair-mode later, in case ruby mode hook is activated
+   (:name jdee		     ; Java Development Environment for Emacs, built on ECB and CEDET
+          :url "http://jdee.svn.sourceforge.net/svnroot/jdee/trunk/jdee"
+          :build ("wget http://sourceforge.net/projects/jdee/files/jdee/Dependencies/ant-contrib-1.0b3-bin.tar.bz2/download" "tar -xf ant-contrib-1.0b3-bin.tar.bz2" "CLASSPATH=ant-contrib/ant-contrib-1.0b3.jar ant bindist")
+          :load-path "/home/fiskse/src/svn/jdee/dist/jdee-2.4.1/lisp"
+	  :after (lambda ()
+		   (semantic-mode t)
+		   (load "semantic/edit")))
    (:name multi-term	     ; better version of term
    	  :after (lambda ()
    		   ;; don't mess with my terminal keys
