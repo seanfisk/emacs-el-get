@@ -44,9 +44,8 @@
   (url-retrieve
    "https://raw.github.com/dimitri/el-get/master/el-get-install.el"
    (lambda (s)
-     (let (el-get-master-branch)
-       (end-of-buffer)
-       (eval-print-last-sexp)))))
+     (end-of-buffer)
+     (eval-print-last-sexp))))
 
 ;; now either el-get is `require'd already, or have been `load'ed by the
 ;; el-get installer.
