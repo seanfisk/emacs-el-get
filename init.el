@@ -163,6 +163,12 @@
 		   
 		   (setq multi-term-program "zsh") ; use zsh
    		   (global-set-key (kbd "C-x t") 'multi-term))) ; shortcut
+   (:name misc-cmds                ; Drew Adams' miscellaneous commands
+	  :type emacswiki
+	  :features misc-cmds
+	  :after (lambda ()
+		   (substitute-key-definition 'move-beginning-of-line 'beginning-or-indentation global-map)
+                   (substitute-key-definition 'move-end-of-line 'end-of-line+ global-map)))
    (:name edit-server		   ; for editing through Google Chrome
 	  :features edit-server
 	  :after (lambda ()
