@@ -7,11 +7,12 @@ Focus
 -----
 	
 My Emacs configuration is geared toward the following purposes:
-	
-* Ruby on Rails coding
-* C++ coding
-* Bash and shell coding
-* Elisp coding
+
+* C++ coding	
+* Shell scripting
+* EmacsLisp coding
+* Python coding
+* Ruby coding
 * Writing of various text formats (Markdown, Textile)
   
 These will be documented in more detail at a later time.
@@ -19,82 +20,78 @@ These will be documented in more detail at a later time.
 Compatibility
 -------------
 	
-This Emacs config strives to be compatible with [GNU Emacs 23](http://www.gnu.org/software/emacs/) (stable) on GNU/Linux and [Aquamacs 2.x](http://aquamacs.org/) (based on GNU Emacs 23) on Mac OS X. However, I've just given back my loaner Mac so it will be hard for me to test on Aquamacs. Please submit issue reports if you have problems.
+This Emacs config strives to be compatible with [GNU Emacs 23](http://www.gnu.org/software/emacs/) (stable) on GNU/Linux and [Aquamacs 2.x](http://aquamacs.org/) (based on GNU Emacs 23) on Mac OS X. However, I no longer own a Mac so it will be hard for me to test on Aquamacs. Please submit issue reports if you have problems.
 
 Dependencies
 ------------
 	
-Before installing, make sure that required external packages are also installed if you'd like to use the associated el-get package. Listed are Apt packages for [Debian](http://www.debian.org/distrib/packages) and [Ubuntu](http://packages.ubuntu.com/), [Homebrew](https://github.com/mxcl/homebrew) packages for Mac OS X, [Ruby Gems](http://rubygems.org/), or other installation methods. I've tried to do dependency checking, so each package won't be installed unless its dependencies exist (i.e., `coffee-mode` will not get installed if the `coffee` executable is not found).
-	
+Before installing, make sure that required external packages are also installed if you'd like to use the associated el-get package. Listed are Apt packages for [Debian](http://www.debian.org/distrib/packages) and [Ubuntu](http://packages.ubuntu.com/), [Homebrew](https://github.com/mxcl/homebrew) packages for Mac OS X, [Ruby Gems](http://rubygems.org/), [PyPi Packages](http://pypi.python.org/pypi) or other installation methods. I've tried to do dependency checking, so each package won't be installed unless its dependencies exist (i.e., `coffee-mode` will not get installed if the `coffee` executable is not found).
+
 <table>
   <tr>
     <th>el-get</th>
     <th>apt</th>
     <th>homebrew</th>
     <th>gem</th>
+    <th>pypi</th>
     <th>other</th>
   </tr>
   <tr>
-	<td><a href="http://www.xsteve.at/prg/vc_svn/">psvn</a>, <a href="http://code.google.com/p/yasnippet/">yasnippet</a> (required)</td>
+    <td><a href="http://www.xsteve.at/prg/vc_svn/">psvn</a>, <a href="http://code.google.com/p/yasnippet/">yasnippet</a> (required)</td>
     <td>subversion (<a href="http://packages.debian.org/search?keywords=subversion">Debian</a>, <a href="http://packages.ubuntu.com/search?keywords=subversion">Ubuntu</a>)</td>
     <td><a href="https://github.com/mxcl/homebrew/blob/master/Library/Formula/subversion.rb">subversion</a></td>
-    <td></td>
-    <td></td>
+    <td colspan="3"></td>
   </tr>
   <tr>
-  <td><a href="http://www.emacswiki.org/emacs/Magit">magit</a> (required)</td>
-  <td>texinfo (<a href="http://packages.debian.org/search?keywords=texinfo">Debian</a>, <a href="http://packages.ubuntu.com/search?keywords=texinfo">Ubuntu</a>)</td>
-  <td><a href="https://github.com/mxcl/homebrew/blob/master/Library/Formula/texinfo.rb">texinfo</a></td>
-  <td></td>
-  <td></td>
+    <td><a href="http://www.emacswiki.org/emacs/Magit">magit</a> (required)</td>
+    <td>texinfo (<a href="http://packages.debian.org/search?keywords=texinfo">Debian</a>, <a href="http://packages.ubuntu.com/search?keywords=texinfo">Ubuntu</a>)</td>
+    <td><a href="https://github.com/mxcl/homebrew/blob/master/Library/Formula/texinfo.rb">texinfo</a></td>
+    <td colspan="3"></td>
   </tr>
   <tr>
     <td><a href="http://www.emacswiki.org/emacs/FullAck">full-ack</a></td>
     <td>ack-grep (<a href="http://packages.debian.org/search?keywords=ack-grep">Debian</a>, <a href="http://packages.ubuntu.com/search?keywords=ack-grep">Ubuntu</a>)</td>
     <td><a href="https://github.com/mxcl/homebrew/blob/master/Library/Formula/ack.rb">ack</a></td>
-    <td></td>
+    <td colspan="3"></td>
+  </tr>
+  <tr>
+    <td><a href="http://rope.sourceforge.net/">Rope / Ropemacs (Python refactoring)</a></td>
+    <td colspan="3"></td>
+    <td><a href="http://pymacs.progiciels-bpi.ca/index.html">Pymacs</a>, <a href="http://pypi.python.org/pypi/rope">rope</a>, <a href="http://pypi.python.org/pypi/ropemode">ropemode</a>, <a href="http://pypi.python.org/pypi/ropemacs">ropemacs</a></td>
     <td></td>
   </tr>
   <tr>
     <td><a href="http://cx4a.org/software/rsense/">rsense</a></td>
-    <td></td>
-    <td></td>
-    <td></td>
+    <td colspan="4"></td>
     <td>Ruby 1.8.x, Java 1.5+ (<a href="http://cx4a.org/software/rsense/manual.html#Installation">See Rsense manual</a>)</td>
   </tr>
   <tr>
     <td><a href="http://www.emacswiki.org/emacs/HamlMode">haml-mode</a></td>
-    <td></td>
-    <td></td>
+    <td colspan="2"></td>
     <td><a href="http://rubygems.org/gems/haml">haml</a></td>
-    <td></td>
+    <td colspan="2"></td>
   </tr>
   <tr>
     <td><a href="http://www.emacswiki.org/emacs/ScssMode">scss-mode</a></td>
-    <td></td>
-    <td></td>
+    <td colspan="2"></td>
     <td><a href="http://rubygems.org/gems/sass">sass</a></td>
-    <td></td>
+    <td colspan="2"></td>
   </tr>
   <tr>
     <td><a href="http://ozmm.org/posts/coffee_mode.html">coffee-mode</a></td>
-    <td></td>
-    <td></td>
-    <td></td>
+    <td colspan="4"></td>
     <td><a href="http://jashkenas.github.com/coffee-script/">npm install coffee-script</a></td>
   </tr>
   <tr>
     <td><a href="https://github.com/senny/rvm.el">rvm</a></td>
-    <td></td>
-<td></td>
-    <td></td>
-    <td><a href="http://beginrescueend.com/">rvm</a></td>
+    <td colspan="4"></td>
+	<td><a href="http://beginrescueend.com/">rvm</a></td>
   </tr>
   <tr>
     <td><a href="http://jblevins.org/projects/markdown-mode/">markdown-mode</a></td>
     <td>markdown (<a href="http://packages.debian.org/search?keywords=markdown">Debian</a>, <a href="http://packages.ubuntu.com/search?keywords=markdown">Ubuntu</a>)</td>
     <td><a href="https://github.com/mxcl/homebrew/blob/master/Library/Formula/markdown.rb">markdown</a></td>
-    <td></td>
+    <td colspan="2"></td>
     <td>Only needed for translating Markdown to HTML</td>
 </tr>
 </table>
@@ -131,11 +128,11 @@ Here's how to install:
 	
 1. Once you have it open, you can now evaluate the init file without having to restart Emacs with `M-x eval-buffer`, like so:
 
-<a href="http://seanfisk.github.com/emacs/images/screenshots/4-eval-buffer-init.png"><img alt="Eval buffer init" src="http://seanfisk.github.com/emacs/images/screenshots/4-eval-buffer-init.png" width="421" height="448"></a>
+	<a href="http://seanfisk.github.com/emacs/images/screenshots/4-eval-buffer-init.png"><img alt="Eval buffer init" src="http://seanfisk.github.com/emacs/images/screenshots/4-eval-buffer-init.png" width="421" height="448"></a>
 
 1. If any further errors occur, simply run `eval-buffer` once again. You may have to restart a couple times as well. It should all work out in the end, and you should see a screen similar to the following:
 
-	<a href="http://seanfisk.github.com/emacs/images/screenshots/5-done.png"><img alt="Done" src="http://seanfisk.github.com/emacs/images/screenshots/5-done.png" width="421" height=449"></a>
+	<a href="http://seanfisk.github.com/emacs/images/screenshots/5-done.png"><img alt="Done" src="http://seanfisk.github.com/emacs/images/screenshots/5-done.png" width="421" height="449"></a>
 	
 1. If the installation errors out permanently, please submit an issue or contact me.
 

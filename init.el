@@ -98,7 +98,7 @@
 		    
 		    ;; If we have a version of called-interactively-p that doesn't accept            
 		    ;; arguments, redefine it so that it does take arguments. This                   
-		    ;; retains compatibility with packages that pass arguments to                    
+		    ;; retains compatibility with packages that pass arguments to
 		    ;; called-interactively-p.                                                       
 		    
                     (condition-case nil (called-interactively-p 'interactive)
@@ -155,6 +155,11 @@
                    (global-set-key (kbd "C-x C-z") 'magit-status)))
    (:name ruby-mode			; major mode for ruby
 	  :depends autopair) ; try not to cause problems with turning off autopair-mode later, in case ruby mode hook is activated
+   (:name pymacs	     ; Python-EmacsLisp interface
+	  :features pymacs
+          :after (lambda ()
+                   (pymacs-load "ropemacs" "rope-")
+                   (setq ropemacs-enable-autoimport t)))
    (:name multi-term	     ; better version of term
    	  :after (lambda ()
    		   ;; don't mess with my terminal keys
