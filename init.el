@@ -220,15 +220,19 @@
 
 ;; python additions
 (when (executable-find "python")
-  ;; Python-EmacsLisp interface
+  ;; sources of good information on Python in Emacs
+  ;; http://www.saltycrane.com/blog/2010/05/my-emacs-python-environment/ (also see references)
+  ;; http://janteichmanndevu.ipage.com/wordpress/2010/12/emacs-is-also-a-great-python-editor/
+  ;; http://www.enigmacurry.com/2009/01/21/autocompleteel-python-code-completion-in-emacs/
+  ;; https://github.com/renatoGarcia/auto-complete-rope/blob/master/auto-complete-rope.el
   (setq el-get-sources
-	(append '((:name pymacs
+        (append '((:name pymacs		; Python-EmacsLisp interface
 			 :features pymacs
 			 :after (lambda ()
 				  ;; for this to work, you must have `rope', `ropemacs', and `ropemode' installed through pip
 				  (pymacs-load "ropemacs" "rope-")
 				  (setq ropemacs-enable-autoimport t)))
-		  (:name pythonbrew-mini
+		  (:name pythonbrew-mini ; Emacs interface to pythonbrew
 			 :type git
 			 :url "git://github.com/franckcuny/pythonbrew-mini.el.git"
 			 :features pythonbrew-mini))

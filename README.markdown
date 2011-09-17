@@ -55,11 +55,16 @@ Before installing, make sure that required external packages are also installed 
     <td colspan="3"></td>
   </tr>
   <tr>
-    <td><a href="http://rope.sourceforge.net/">Rope / Ropemacs (Python refactoring)</a></td>
+    <td><a href="http://rope.sourceforge.net/">rope / ropemacs (Python refactoring)</a></td>
     <td colspan="3"></td>
     <td><a href="http://pymacs.progiciels-bpi.ca/index.html">Pymacs</a>, <a href="http://pypi.python.org/pypi/rope">rope</a>, <a href="http://pypi.python.org/pypi/ropemode">ropemode</a>, <a href="http://pypi.python.org/pypi/ropemacs">ropemacs</a></td>
     <td></td>
   </tr>
+  <tr>
+    <td>flymake-python (local package)</td>
+    <td colspan="3"></td>
+    <td><a href="http://pypi.python.org/pypi/pyflakes">pyflakes</a> | <a href="http://pypi.python.org/pypi/pep8">pep8</a> | <a href="http://pypi.python.org/pypi/flake8">flake8</a> | <a href="http://pypi.python.org/pypi/PyChecker">PyChecker</a> (syntax checkers)</td>
+    <td></td>
   <tr>
     <td><a href="http://cx4a.org/software/rsense/">rsense</a></td>
     <td colspan="4"></td>

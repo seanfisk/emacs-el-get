@@ -1,9 +1,13 @@
 TODO for Sean's Emacs Config
 ============================
 
+* Python
+	* Auto-completion using rope
+* Yasnippet
+	* Learn and perfect it
 * C++
 	* Create a good C++ setup
-	* Gotta have flymake
+	* Gotta have flymake (CMake flymake is in place)
     * Gotta have completion with auto-complete and/or semantic (cedet)
     * Preferably work well with STL and Qt
 * Modularize the config
@@ -11,7 +15,7 @@ TODO for Sean's Emacs Config
 * Emacs goodies
     * Get this package working again
 * Emacs code browser (ECB) and cedet
-    * Get ECB installed and working
+    * Get ECB installed and working (current layout error is plaguing me)
 * Rails
     * Get rails setup working properly
     * Document different modes / command
