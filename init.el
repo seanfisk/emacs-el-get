@@ -477,6 +477,10 @@
 
 (add-hook 'sh-mode-hook 'sh-custom)
 
+;;; emacs lisp mode
+(defun emacs-lisp-custom ()
+  (eldoc-mode t))			; nice minibuffer documentation
+
 ;;; term mode
 (defun term-custom ()
   (setq autopair-dont-activate t))
