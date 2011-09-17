@@ -38,6 +38,11 @@
 
 (require 'cl)				; common lisp goodies, loop
 
+;; local packages in `src' directory
+(add-to-list 'load-path "~/.emacs.d/src")
+(require 'open-next-line)
+(require 'flymake-shell)
+
 (add-to-list 'load-path "~/.emacs.d/el-get/el-get")
 
 (unless (require 'el-get nil t)
@@ -155,11 +160,6 @@
                    (global-set-key (kbd "C-x C-z") 'magit-status)))
    (:name ruby-mode			; major mode for ruby
 	  :depends autopair) ; try not to cause problems with turning off autopair-mode later, in case ruby mode hook is activated
-   (:name pymacs	     ; Python-EmacsLisp interface
-	  :features pymacs
-          :after (lambda ()
-                   (pymacs-load "ropemacs" "rope-")
-                   (setq ropemacs-enable-autoimport t)))
    (:name multi-term	     ; better version of term
    	  :after (lambda ()
    		   ;; don't mess with my terminal keys
@@ -217,6 +217,26 @@
    '(:name yasnippet
 	   :depends auto-indent-mode)
    el-get-sources))
+
+;; python additions
+(when (executable-find "python")
+  ;; Python-EmacsLisp interface
+  (setq el-get-sources
+	(append '((:name pymacs
+			 :features pymacs
+			 :after (lambda ()
+				  ;; for this to work, you must have `rope', `ropemacs', and `ropemode' installed through pip
+				  (pymacs-load "ropemacs" "rope-")
+				  (setq ropemacs-enable-autoimport t)))
+		  (:name pythonbrew-mini
+			 :type git
+			 :url "git://github.com/franckcuny/pythonbrew-mini.el.git"
+			 :features pythonbrew-mini))
+		el-get-sources))
+  
+  ;; flymake support
+  (require 'flymake-python)
+  )
 
 ;; ruby additions
 (when (executable-find "ruby") ; only if we have ruby
@@ -298,11 +318,6 @@
 
 ;; install new packages and init already installed packages
 (el-get 'sync my:el-get-packages)
-
-;; other packages in `src' directory
-(add-to-list 'load-path "~/.emacs.d/src")
-(require 'open-next-line)
-(require 'flymake-shell)
 
 ;; on to the visual settings
 (setq inhibit-splash-screen t)		; no splash screen, thanks
@@ -472,3 +487,15 @@
   (setq tab-width 2))			; small tabs
 
 (add-hook 'c-mode-common-hook 'c-mode-common-custom)
+(custom-set-variables
+  ;; custom-set-variables was added by Custom.
+  ;; If you edit it by hand, you could mess it up, so be careful.
+  ;; Your init file should contain only one such instance.
+  ;; If there is more than one, they won't work right.
+ '(flymake-python-syntax-checker "pep8"))
+(custom-set-faces
+  ;; custom-set-faces was added by Custom.
+  ;; If you edit it by hand, you could mess it up, so be careful.
+  ;; Your init file should contain only one such instance.
+  ;; If there is more than one, they won't work right.
+ )
