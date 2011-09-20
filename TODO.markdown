@@ -5,6 +5,8 @@ TODO for Sean's Emacs Config
 	* Auto-completion using rope
 * Yasnippet
 	* Learn and perfect it
+* Flymake shell
+	* Improve it using the structure from flymake-python
 * C++
 	* Create a good C++ setup
 	* Gotta have flymake (CMake flymake is in place)
