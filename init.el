@@ -429,6 +429,7 @@
 
 ;; general bindings
 (global-set-key (kbd "C-x j") 'kill-this-buffer) ; an easy shortcut is needed for this common task
+(global-set-key (kbd "C-c r") 'rename-buffer)	 ; another common task, mostly used for terminals
 
 ;; bindings and hooks for modes
 
