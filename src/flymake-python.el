@@ -1,7 +1,7 @@
 (defconst flymake-allowed-python-file-name-masks '(("\\.py\\'" flymake-python-init)))
 
 ;; syntax checker for Python - examples include `pep8', `pyflakes', `flake8' (combination of pep8, pyflakes, and McCabe), `pychecker', or a custom shell script
-(defcustom flymake-python-syntax-checker "flake8"
+(defcustom flymake-python-syntax-checker "pyflakes"
   "Syntax checker for Flymake Python."
   :type 'string)
 
