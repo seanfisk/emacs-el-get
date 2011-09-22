@@ -230,8 +230,17 @@
 			 :features pymacs
 			 :after (lambda ()
 				  ;; for this to work, you must have `rope', `ropemacs', and `ropemode' installed through pip
-				  (pymacs-load "ropemacs" "rope-")
-				  (setq ropemacs-enable-autoimport t)))
+				  ;; set up auto-complete for ropemacs
+				  ;; this does all the necessary rope setup as well
+                                  (ac-ropemacs-initialize)
+
+                                  ;; redefine this since the `ac-omni-completion-sources' is deprecated
+                                  (defun ac-ropemacs-setup ()
+                                    (ac-ropemacs-require)
+				    (setq ac-sources (append (list 'ac-source-ropemacs) ac-sources))
+                                    ;;(setq ac-omni-completion-sources '(("\\." ac-source-ropemacs)))
+				    )
+				  ))
 		  (:name pythonbrew-mini ; Emacs interface to pythonbrew
 			 :type git
 			 :url "git://github.com/franckcuny/pythonbrew-mini.el.git"
