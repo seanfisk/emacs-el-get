@@ -228,6 +228,7 @@
   (setq el-get-sources
         (append '((:name pymacs		; Python-EmacsLisp interface
 			 :features pymacs
+			 :depends auto-complete ; for the stuff below
 			 :after (lambda ()
 				  ;; for this to work, you must have `rope', `ropemacs', and `ropemode' installed through pip
 				  ;; set up auto-complete for ropemacs
