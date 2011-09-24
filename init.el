@@ -195,7 +195,6 @@
    markdown-mode			; major mode for markdown markup
    cmake-mode				; major mode for editing CMake config files
    flymake-fringe-icons			; show error icons at side
-   ecb					; Emacs Code Browser
    ))
 
 ;;
@@ -205,7 +204,8 @@
 ;;
 
 (when (el-get-executable-find "cvs")
-  (add-to-list 'my:el-get-packages 'emacs-goodies-el)) ; the debian addons for emacs
+  (add-to-list 'my:el-get-packages 'emacs-goodies-el) ; the debian addons for emacs
+  (add-to-list 'my:el-get-packages 'ecb))             ; Emacs Code Browser
 
 (when (el-get-executable-find "svn")
   ;; subversion plugin for emacs
