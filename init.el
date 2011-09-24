@@ -219,7 +219,9 @@
    el-get-sources))
 
 ;; python additions
-(when (executable-find "python")
+;; I use pythonbrew <https://github.com/utahta/pythonbrew> for development,
+;; so this is my indicator to bring in python development packages
+(when (executable-find "pythonbrew")
   ;; sources of good information on Python in Emacs
   ;; http://www.saltycrane.com/blog/2010/05/my-emacs-python-environment/ (also see references)
   ;; http://janteichmanndevu.ipage.com/wordpress/2010/12/emacs-is-also-a-great-python-editor/
