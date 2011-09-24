@@ -204,7 +204,7 @@
 ;;
 
 (when (el-get-executable-find "cvs")
-  (add-to-list 'my:el-get-packages 'emacs-goodies-el) ; the debian addons for emacs
+  ;;(add-to-list 'my:el-get-packages 'emacs-goodies-el) ; the debian addons for emacs
   (add-to-list 'my:el-get-packages 'ecb))             ; Emacs Code Browser
 
 (when (el-get-executable-find "svn")
