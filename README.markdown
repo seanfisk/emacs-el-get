@@ -109,11 +109,13 @@ Here's how to install:
 
 1. Make sure `~/.emacs.d` does not exist, because this repository is intended to replace it.
 
-       git clone git://github.com/seanfisk/emacs.git ~/.emacs.d
+       cd ~/src/git # or your own projects directory
+       git clone git://github.com/seanfisk/emacs.git
+       ./install.bash
 	   
 1. Create your own branch for customization. You will almost certainly want to customize your setup.
 
-	    bartholomew@compy:~/.emacs.d$ git checkout -b bartholomew
+	    $ git checkout -b bartholomew
 		
 	If you do decide to customize, the file that you will probably want to edit is `init.el`. It should be well-commented.
 	
