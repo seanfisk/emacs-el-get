@@ -107,15 +107,20 @@ Before installing, make sure that required external packages are also installed 
 
 Here's how to install:
 
-1. Make sure `~/.emacs.d` does not exist, because this repository is intended to replace it.
+1. Make sure `~/.emacs.d/init.el` does not exist, because this repository is intended to replace it.
 
-       cd ~/src/git # or your own projects directory
-       git clone git://github.com/seanfisk/emacs.git
-       ./install.bash
+		cd ~/src/git # or your own projects directory
+		git clone git://github.com/seanfisk/emacs.git
+		./install.bash install
+		
+	**Mac OS X users!** - this install script uses features specific to the GNU version of the `ln` executable which are not present in Mac OS X's BSD version (I feel the BSD version is severely crippled). To install correctly, either manually link the files, or use [Homebrew](https://github.com/mxcl/homebrew) to install the `coreutils` formula. This installs all the GNU coreutils with a prefix of `g`. Invoke the install script like this:
+
+		brew install coreutils
+		LN_EXECUTABLE=gln ./install.bash install
 	   
 1. Create your own branch for customization. You will almost certainly want to customize your setup.
 
-	    $ git checkout -b bartholomew
+		$ git checkout -b bartholomew
 		
 	If you do decide to customize, the file that you will probably want to edit is `init.el`. It should be well-commented.
 	
