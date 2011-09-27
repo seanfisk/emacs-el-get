@@ -84,12 +84,6 @@
 	  :url "git://github.com/sellout/emacs-color-theme-solarized.git" ; https clone takes a long time for some reason - hopefully speed up clone time
 	  :after (lambda ()
 		   (color-theme-solarized-light)))
-   (:name color-theme-chocolate-rain
-	  :load "color-theme-chocolate-rain.el")
-   (:name color-theme-mac-classic     ; mac classic theme
-          :features color-theme-mac-classic)
-   (:name color-theme-railscasts
-	  :load "color-theme-railscasts.el")
    (:name whole-line-or-region		; use whole line when no region is present
 	  :features whole-line-or-region
           :after (lambda ()
@@ -158,42 +152,29 @@
    (:name magit                         ; git meet emacs, and a binding
           :after (lambda ()
                    (global-set-key (kbd "C-x C-z") 'magit-status)))
-   (:name ruby-mode			; major mode for ruby
-	  :depends autopair) ; try not to cause problems with turning off autopair-mode later, in case ruby mode hook is activated
+    ; try not to cause problems with turning off autopair-mode later, in case ruby mode hook is activated
    (:name multi-term	     ; better version of term
    	  :after (lambda ()
    		   ;; don't mess with my terminal keys
    		   (setq term-bind-key-alist nil)
 		   (setq term-unbind-key-list nil)
 		   
-		   (setq multi-term-program "zsh") ; use zsh
-   		   (global-set-key (kbd "C-x t") 'multi-term))) ; shortcut
+		   (global-set-key (kbd "C-x t") 'multi-term))) ; shortcut
    (:name misc-cmds                ; Drew Adams' miscellaneous commands
 	  :type emacswiki
 	  :features misc-cmds
 	  :after (lambda ()
 		   (substitute-key-definition 'move-beginning-of-line 'beginning-or-indentation global-map)
-                   (substitute-key-definition 'move-end-of-line 'end-of-line+ global-map)))
-   (:name edit-server		   ; for editing through Google Chrome
-	  :features edit-server
-	  :after (lambda ()
-		   (edit-server-start)))))
+                   (substitute-key-definition 'move-end-of-line 'end-of-line+ global-map)))))
 
 ;; now set our own packages
 (setq
  my:el-get-packages
  '(el-get				; el-get is self-hosting
-   escreen            			; screen for emacs
    switch-window			; numbered windows for easy switching, takes over C-x o
    dtrt-indent				; foreign indentation detection mode
    dired+				; many extensions to dired directory browser
-   zencoding-mode			; http://www.emacswiki.org/emacs/ZenCoding
-   nxhtml				; awesome html editing mode
-   php-mode-improved			; better major mode for php
-   haml-mode				; major mode for haml
-   textile-mode				; major mode for textile markup
    markdown-mode			; major mode for markdown markup
-   cmake-mode				; major mode for editing CMake config files
    flymake-fringe-icons			; show error icons at side
    ))
 
@@ -208,10 +189,6 @@
   (add-to-list 'my:el-get-packages 'ecb))             ; Emacs Code Browser
 
 (when (el-get-executable-find "svn")
-  ;; subversion plugin for emacs
-  (add-to-list 'my:el-get-packages 'psvn)
-  ;; javascript ide
-  (add-to-list 'my:el-get-packages 'js2-mode)
   ;; powerful snippet mode, load auto-indent-mode first
   (push 
    '(:name yasnippet
@@ -236,7 +213,7 @@
 				  ;; set up auto-complete for ropemacs
 				  ;; this does all the necessary rope setup as well
                                   (ac-ropemacs-initialize)
-
+				  
                                   ;; redefine this since the `ac-omni-completion-sources' is deprecated
                                   (defun ac-ropemacs-setup ()
                                     (ac-ropemacs-require)
@@ -253,67 +230,6 @@
   ;; flymake support
   (require 'flymake-python)
   )
-
-;; ruby additions
-(when (executable-find "ruby") ; only if we have ruby
-  ;; rinari - rails ide
-  (when (and (executable-find "rails") (el-get-executable-find "rake")) ; if we have rails and rake (needed for compiling rinari, error if we don't have it)
-    (add-to-list 'my:el-get-packages 'rinari))
-  
-  ;; rvm integration
-  (when (executable-find "rvm")
-    (add-to-list 'my:el-get-packages 'rvm))
-  
-  ;; some more ruby niceties
-  (add-to-list 'my:el-get-packages 'ruby-electric) ; ruby control structure matching
-  (add-to-list 'my:el-get-packages 'flymake-ruby) ; flymake for ruby
-  
-  ;; hook for ruby-mode
-  (defun ruby-custom ()
-    "ruby-mode-hook"
-    (local-set-key (kbd "RET") 'reindent-then-newline-and-indent)
-    ;; Rsense + Autocomplete
-    (add-to-list 'ac-sources 'ac-source-rsense-method)
-    (add-to-list 'ac-sources 'ac-source-rsense-constant)
-    ;; superceded in this mode by ruby-electric
-    (setq autopair-dont-activate t))
-  
-  (add-hook 'ruby-mode-hook 'ruby-custom))
-
-;; sass / scss additions
-(when (executable-find "sass")
-  (add-to-list 'my:el-get-packages 'scss-mode)
-  
-  ;; hook for scss mode
-  (defun scss-custom ()
-    "scss-mode-hook"
-    (setq scss-compile-at-save nil)) ; don't do this by default, set to t to compile on save
-  
-  (add-hook 'scss-mode-hook 'scss-custom))
-
-;; coffee-script additions
-(when (executable-find "coffee")
-  (setq el-get-sources
-	(append 
-	 '((:name coffee-mode                   ; major mode for coffee-script
-		  :depends (js2-mode autopair)
-		  :after (lambda ()
-			   ;; the recipe sets to javascript-mode - so reset to default `js2mode' because we have it
-			   (setq coffee-js-mode 'js2-mode)))
-	   (:name flymake-coffee           ; flymake support for coffee-script
-		  :type git
-		  :url "https://github.com/purcell/flymake-coffee.git"
-		  :features flymake-coffee))
-	 el-get-sources))
-  ;; coffee-mode
-  (defun coffee-custom ()
-    "coffee-mode-hook"
-    (set (make-local-variable 'tab-width) 2)
-    (coffee-cos-mode nil) ; don't compile on save by default, set this to t to do compile-on-save
-    (flymake-coffee-load)) ; flymake for coffee script
-  
-  (add-hook 'coffee-mode-hook 'coffee-custom))
-
 
 ;; ack - grep replacement
 (when (or (executable-find "ack") (executable-find "ack-grep"))
@@ -339,9 +255,6 @@
 (setq inhibit-splash-screen t)		; no splash screen, thanks
 (line-number-mode 1)                    ; have line numbers and
 (column-number-mode 1)                  ; column numbers in the mode line
-
-(tool-bar-mode -1)                      ; no tool bar with icons
-(scroll-bar-mode -1)			; no scroll bars
 
 ;; choose your own fonts, in a system dependent way
 (if (window-system)
@@ -391,17 +304,12 @@
 ;; Well the real default would be C-c C-j C-y C-c C-k.
 (define-key term-raw-map  (kbd "C-y") 'term-paste)
 
-;; Enable paging in term-mode
-(term-pager-enable)
-
 ;; use ido for minibuffer completion
 (require 'ido)
 (ido-mode t)
 (setq ido-save-directory-list-file "~/.emacs.d/.ido.last")
 (setq ido-enable-flex-matching t)
 (setq ido-use-filename-at-point 'guess)
-
-					;(setq ido-show-dot-for-dired t)
 
 ;; default key to switch buffer is C-x b, but that's not easy enough
 ;;
@@ -454,35 +362,14 @@
 ;;; auto-complete-mode
 (defun auto-complete-custom ()
   "auto-complete-mode-hook"
-					; re-assign `dabbrev' to this
+  ;; re-assign `dabbrev' to this
   (local-set-key (kbd "M-/") 'auto-complete)
-					; add a tags auto-complete source when we have a tags file
-					; otherwise we get prompted for a tags file all the time, even when we don't have one
+  ;; add a tags auto-complete source when we have a tags file
+  ;; otherwise we get prompted for a tags file all the time, even when we don't have one
   (when tags-file-name
     (add-to-list 'ac-sources 'ac-source-etags)))
 
 (add-hook 'auto-complete-mode-hook 'auto-complete-custom)
-
-;;; real auto-complete global mode
-
-;;;; dirty fix for having AC everywhere
-;;;; see "Questions and Feedback" on <http://www.emacswiki.org/emacs/AutoComplete>
-;; (define-globalized-minor-mode real-global-auto-complete-mode
-;;   auto-complete-mode (lambda ()
-;;                        (if (not (minibufferp (current-buffer)))
-;;                            (auto-complete-mode 1))
-;;                        ))
-
-;; (real-global-auto-complete-mode t)
-
-;;; edit-server mode
-(defun server-custom ()
-  (when (current-local-map)
-    (use-local-map (copy-keymap (current-local-map))))
-  (when server-buffer-clients
-    (local-set-key (kbd "C-x j") 'server-edit))) ; use the same shortcut as kill this buffer
-
-(add-hook 'server-switch-hook 'server-custom)
 
 ;;; emacs lisp mode
 (defun emacs-lisp-custom ()
