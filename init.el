@@ -484,12 +484,6 @@
 
 (add-hook 'server-switch-hook 'server-custom)
 
-;;; sh mode
-(defun sh-custom ()
-  (flymake-shell-load)) ; flymake in shell mode
-
-(add-hook 'sh-mode-hook 'sh-custom)
-
 ;;; emacs lisp mode
 (defun emacs-lisp-custom ()
   (eldoc-mode t))			; nice minibuffer documentation
