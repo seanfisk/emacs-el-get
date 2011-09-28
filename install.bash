@@ -20,7 +20,6 @@ if [[ $# -ne 1 ]]; then
 	usage
 fi
 
-readonly SCRIPT_NAME=$(basename "$0")
 readonly INSTALL_DIR=~/.emacs.d
 
 if [[ $1 == install && ! -d $INSTALL_DIR ]]; then
