@@ -30,7 +30,7 @@
   (defadvice flymake-post-syntax-check (before flymake-force-check-was-interrupted)
     (setq flymake-check-was-interrupted t))
   (ad-activate 'flymake-post-syntax-check)
-  (setq flymake-allowed-file-name-masks flymake-allowed-shell-file-name-masks)
+  (set (make-local-variable 'flymake-allowed-file-name-masks) flymake-allowed-shell-file-name-masks)
   (if (executable-find (flymake-shell-syntax-checker))
       (flymake-mode t)
     (message (concat "Not enabling flymake: " flymake-shell-syntax-checker " command not found"))))
