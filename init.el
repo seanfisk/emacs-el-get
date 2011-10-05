@@ -343,6 +343,12 @@
 (tool-bar-mode -1)                      ; no tool bar with icons
 (scroll-bar-mode -1)			; no scroll bars
 
+;; easy-on-the-eyes flymake
+(require 'flymake)
+(custom-set-faces
+ '(flymake-errline ((((class color)) (:underline "red"))))
+ '(flymake-warnline ((((class color)) (:underline "yellow")))))
+
 ;; choose your own fonts, in a system dependent way
 (if (window-system)
     (condition-case nil
