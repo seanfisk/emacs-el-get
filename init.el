@@ -104,7 +104,7 @@
 		    ;; If we have a version of called-interactively-p that doesn't accept            
 		    ;; arguments, redefine it so that it does take arguments. This                   
 		    ;; retains compatibility with packages that pass arguments to
-		    ;; called-interactively-p.                                                       
+		    ;; called-interactively-p.
 		    
                     (condition-case nil (called-interactively-p 'interactive)
                       (wrong-number-of-arguments
@@ -185,7 +185,7 @@
  '(el-get				; el-get is self-hosting
    escreen            			; screen for emacs
    switch-window			; numbered windows for easy switching, takes over C-x o
-   dtrt-indent				; foreign indentation detection mode
+   ;;dtrt-indent                        ; foreign indentation detection mode
    dired+				; many extensions to dired directory browser
    zencoding-mode			; http://www.emacswiki.org/emacs/ZenCoding
    nxhtml				; awesome html editing mode
