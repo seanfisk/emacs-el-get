@@ -256,6 +256,12 @@
 (line-number-mode 1)                    ; have line numbers and
 (column-number-mode 1)                  ; column numbers in the mode line
 
+;; easy-on-the-eyes flymake
+(require 'flymake)
+(custom-set-faces
+ '(flymake-errline ((((class color)) (:underline "red"))))
+ '(flymake-warnline ((((class color)) (:underline "yellow")))))
+
 ;; choose your own fonts, in a system dependent way
 (if (window-system)
     (condition-case nil
