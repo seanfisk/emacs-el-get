@@ -97,7 +97,7 @@
 		    ;; If we have a version of called-interactively-p that doesn't accept            
 		    ;; arguments, redefine it so that it does take arguments. This                   
 		    ;; retains compatibility with packages that pass arguments to
-		    ;; called-interactively-p.                                                       
+		    ;; called-interactively-p.
 		    
                     (condition-case nil (called-interactively-p 'interactive)
                       (wrong-number-of-arguments
@@ -171,7 +171,7 @@
  my:el-get-packages
  '(el-get				; el-get is self-hosting
    switch-window			; numbered windows for easy switching, takes over C-x o
-   dtrt-indent				; foreign indentation detection mode
+   ;;dtrt-indent                        ; foreign indentation detection mode
    dired+				; many extensions to dired directory browser
    markdown-mode			; major mode for markdown markup
    flymake-fringe-icons			; show error icons at side
