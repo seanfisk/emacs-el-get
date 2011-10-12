@@ -404,7 +404,7 @@
 (setq ido-enable-flex-matching t)
 (setq ido-use-filename-at-point 'guess)
 
-					;(setq ido-show-dot-for-dired t)
+;; (setq ido-show-dot-for-dired t)
 
 ;; default key to switch buffer is C-x b, but that's not easy enough
 ;;
