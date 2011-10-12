@@ -397,9 +397,6 @@
 ;; Well the real default would be C-c C-j C-y C-c C-k.
 (define-key term-raw-map  (kbd "C-y") 'term-paste)
 
-;; Enable paging in term-mode
-(term-pager-enable)
-
 ;; use ido for minibuffer completion
 (require 'ido)
 (ido-mode t)
