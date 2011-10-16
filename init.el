@@ -266,7 +266,12 @@
   
   ;; some more ruby niceties
   (add-to-list 'my:el-get-packages 'ruby-electric) ; ruby control structure matching
-  (add-to-list 'my:el-get-packages 'flymake-ruby) ; flymake for ruby
+  ;; flymake for ruby
+  (push
+   '(:name flymake-ruby
+	   :after (lambda ()
+		    (push '("Buildfile$" flymake-ruby-init) flymake-ruby-allowed-file-name-masks)))
+   el-get-sources)
   
   ;; hook for ruby-mode
   (defun ruby-custom ()
