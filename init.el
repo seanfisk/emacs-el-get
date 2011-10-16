@@ -34,16 +34,14 @@
 ;;
 ;; This file is NOT part of GNU Emacs.
 
-(setq user-emacs-directory (expand-file-name "~/.emacs.d"))
-
 (require 'cl)				; common lisp goodies, loop
 
 ;; local packages in `src' directory
-(add-to-list 'load-path "~/.emacs.d/src")
+(add-to-list 'load-path (concat user-emacs-directory "src"))
 (require 'open-next-line)
 (require 'flymake-shell)
 
-(add-to-list 'load-path "~/.emacs.d/el-get/el-get")
+(add-to-list 'load-path (concat user-emacs-directory "el-get/el-get"))
 
 (unless (require 'el-get nil t)
   (url-retrieve
@@ -68,7 +66,7 @@
 		   (global-set-key (kbd "<C-S-right>")  'buf-move-right)))
    (:name smex                          ; a better (ido like) M-x
 	  :after (lambda ()
-		   (setq smex-save-file "~/.emacs.d/.smex-items")
+		   (setq smex-save-file (concat user-emacs-directory ".smex-items"))
 		   (global-set-key (kbd "M-x") 'smex)
 		   (global-set-key (kbd "M-X") 'smex-major-mode-commands)
 		   (global-set-key (kbd "C-x C-m") 'smex)))
@@ -406,7 +404,7 @@
 ;; use ido for minibuffer completion
 (require 'ido)
 (ido-mode t)
-(setq ido-save-directory-list-file "~/.emacs.d/.ido.last")
+(setq ido-save-directory-list-file (concat user-emacs-directory ".ido.last"))
 (setq ido-enable-flex-matching t)
 (setq ido-use-filename-at-point 'guess)
 
@@ -446,7 +444,7 @@
 (show-paren-mode t) ; show matching parentheses
 
 ;; auto-saves
-(setq backup-directory-alist `(("." . ,(expand-file-name "~/.emacs.d/auto-saves"))))
+(setq backup-directory-alist `(("." . ,(expand-file-name (concat user-emacs-directory "auto-saves")))))
 
 ;; general bindings
 (global-set-key (kbd "C-x j") 'kill-this-buffer) ; an easy shortcut is needed for this common task
