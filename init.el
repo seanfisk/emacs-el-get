@@ -83,7 +83,8 @@
 	  :depends color-theme
 	  :url "git://github.com/sellout/emacs-color-theme-solarized.git" ; https clone takes a long time for some reason - hopefully speed up clone time
 	  :after (lambda ()
-		   (color-theme-solarized-light)))
+		   (when (window-system)
+		     (color-theme-solarized-light))))
    (:name whole-line-or-region		; use whole line when no region is present
 	  :features whole-line-or-region
           :after (lambda ()
