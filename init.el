@@ -357,6 +357,11 @@
 (global-set-key (kbd "C-x j") 'kill-this-buffer) ; an easy shortcut is needed for this common task
 (global-set-key (kbd "C-c r") 'rename-buffer)	 ; another common task, mostly used for terminals
 
+;;; switch buffers like other applications
+(global-set-key (kbd "<C-tab>") 'bury-buffer)
+;;;; override textmate-mode
+(define-key *textmate-mode-map* (kbd "<C-tab>") 'bury-buffer)
+
 ;; bindings and hooks for modes
 
 ;;; isearch other end - see <http://www.emacswiki.org/emacs/IsearchOtherEnd>
