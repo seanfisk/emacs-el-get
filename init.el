@@ -166,7 +166,14 @@
 		   (setq term-unbind-key-list nil)
 		   
 		   (setq multi-term-program "zsh") ; use zsh
-   		   (global-set-key (kbd "C-x t") 'multi-term))) ; shortcut
+
+		   ;; name the terminal immediately - my first real Emacs Lisp function - woohoo!
+                   (defun multi-term-with-name()
+                     (interactive)
+                     (multi-term)
+                     (call-interactively 'rename-buffer))
+		   ;;; give it a shortcut
+   		   (global-set-key (kbd "C-x t") 'multi-term-with-name)))
    (:name misc-cmds                ; Drew Adams' miscellaneous commands
 	  :type emacswiki
 	  :features misc-cmds
