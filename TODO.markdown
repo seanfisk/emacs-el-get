@@ -1,6 +1,10 @@
 TODO for Sean's Emacs Config
 ============================
 
+* flymake-python
+	* Make it start when python-mode is activated
+* Code formatting
+	* Follow Emacs Lisp style guide
 * Yasnippet
 	* Learn and perfect it
 * C++
