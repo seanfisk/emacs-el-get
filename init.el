@@ -248,8 +248,7 @@
                                   
                                   ;; set up auto-complete for ropemacs
 				  ;; this does all the necessary rope setup as well
-                                  ;; (ac-ropemacs-initialize)
-				  ))
+                                  (ac-ropemacs-initialize)))
 		  (:name pythonbrew-mini ; Emacs interface to pythonbrew
 			 :type git
 			 :url "git://github.com/franckcuny/pythonbrew-mini.el.git"
