@@ -148,6 +148,16 @@ Here's how to install:
 	
 1. If the installation errors out permanently, please submit an issue or contact me.
 
+Installing Python Environment
+-----------------------------
+
+Installing my Python environment can be a little tricky. Here are steps to make sure it loads properly:
+
+* Install [pythonbrew](https://github.com/utahta/pythonbrew).
+* `pip install rope ropemode`
+* `pip install http://sourceforge.net/projects/rope/files/ropemacs/0.6/ropemacs-0.6.tar.gz/download`
+* `pip install ~/.emacs.d/el-get/pymacs`
+
 Notes
 -----
 
