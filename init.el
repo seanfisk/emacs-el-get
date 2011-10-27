@@ -157,6 +157,8 @@
    (:name magit                         ; git meet emacs, and a binding
           :after (lambda ()
                    (global-set-key (kbd "C-x C-z") 'magit-status)))
+   (:name dtrt-indent		  ; foreign indentation detection mode
+	  :post-init (lambda ()))
    (:name ruby-mode			; major mode for ruby
 	  :depends autopair) ; try not to cause problems with turning off autopair-mode later, in case ruby mode hook is activated
    (:name multi-term	     ; better version of term
@@ -166,7 +168,7 @@
 		   (setq term-unbind-key-list nil)
 		   
 		   (setq multi-term-program "zsh") ; use zsh
-
+		   
 		   ;; name the terminal immediately - my first real Emacs Lisp function - woohoo!
                    (defun multi-term-with-name()
                      (interactive)
@@ -184,14 +186,13 @@
 	  :features edit-server
 	  :after (lambda ()
 		   (edit-server-start)))))
-
+ 
 ;; now set our own packages
 (setq
  my:el-get-packages
  '(el-get				; el-get is self-hosting
    escreen            			; screen for emacs
    switch-window			; numbered windows for easy switching, takes over C-x o
-   ;;dtrt-indent                        ; foreign indentation detection mode
    dired+				; many extensions to dired directory browser
    zencoding-mode			; http://www.emacswiki.org/emacs/ZenCoding
    nxhtml				; awesome html editing mode
