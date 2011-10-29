@@ -477,7 +477,7 @@
   (local-set-key (kbd "M-/") 'auto-complete)
 					; add a tags auto-complete source when we have a tags file
 					; otherwise we get prompted for a tags file all the time, even when we don't have one
-  (when tags-file-name
+  (when (or tags-file-name tags-table-list)
     (add-to-list 'ac-sources 'ac-source-etags)))
 
 (add-hook 'auto-complete-mode-hook 'auto-complete-custom)
