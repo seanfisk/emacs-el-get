@@ -173,7 +173,8 @@
                    (defun multi-term-with-name()
                      (interactive)
                      (multi-term)
-                     (call-interactively 'rename-buffer))
+                     (call-interactively 'rename-buffer)
+		     (rename-buffer (concat (buffer-name) "-term")))
 		   ;;; give it a shortcut
    		   (global-set-key (kbd "C-x t") 'multi-term-with-name)))
    (:name misc-cmds                ; Drew Adams' miscellaneous commands
