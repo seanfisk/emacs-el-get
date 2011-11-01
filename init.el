@@ -335,8 +335,8 @@
 		    (let ((ack-grep-executable (executable-find "ack-grep")))
 		      (when ack-grep-executable
 			(setq ack-executable ack-grep-executable)))
-		    (global-set-key (kbd "C-x C-a") 'ack)
-		    (global-set-key (kbd "C-x a") 'ack-find-file)))
+		    (global-set-key (kbd "C-x a") 'ack)
+		    (global-set-key (kbd "C-x C-a") 'ack-find-file)))
    el-get-sources))
 
 (setq my:el-get-packages
