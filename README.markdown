@@ -157,6 +157,7 @@ Installing my Python environment can be a little tricky. Here are steps to make 
 * `pip install rope ropemode`
 * `pip install http://sourceforge.net/projects/rope/files/ropemacs/0.6/ropemacs-0.6.tar.gz/download`
 * `pip install ~/.emacs.d/el-get/pymacs`
+* `pip install pyflakes # if you want to use pyflakes with flymake`
 
 Notes
 -----
@@ -168,6 +169,12 @@ Credits
 
 Thanks to Dimitri Fontaine for creating the Emacs Kicker and el-get!
 
-Thanks to my friends Siva, Paul, and Jared for providing feedback on the config!
+Thanks to these people for providing feedback on the config!
+
+* Siva
+* Paul
+* Jared
+* Kurt
+* Dr. Trefftz
 
 And of course, thanks to [GNU](http://www.gnu.org/) and [RMS](http://stallman.org/) for creating this awesome editor!
