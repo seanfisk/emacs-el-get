@@ -183,16 +183,17 @@
 	  :after (lambda ()
 		   (substitute-key-definition 'move-beginning-of-line 'beginning-or-indentation global-map)
                    (substitute-key-definition 'move-end-of-line 'end-of-line+ global-map)))
+   ;; (:name elscreen			; screen for emacs
+   ;; 	  :features elscreen)
    (:name edit-server		   ; for editing through Google Chrome
 	  :features edit-server
 	  :after (lambda ()
 		   (edit-server-start)))))
- 
+
 ;; now set our own packages
 (setq
  my:el-get-packages
  '(el-get				; el-get is self-hosting
-   escreen            			; screen for emacs
    switch-window			; numbered windows for easy switching, takes over C-x o
    dired+				; many extensions to dired directory browser
    zencoding-mode			; http://www.emacswiki.org/emacs/ZenCoding
