@@ -463,6 +463,9 @@
 ;;;; override textmate-mode
 (define-key *textmate-mode-map* (kbd "<C-tab>") 'bury-buffer)
 
+;; short yes or no
+(defalias 'yes-or-no-p 'y-or-n-p)
+
 ;; bindings and hooks for modes
 
 ;;; isearch other end - see <http://www.emacswiki.org/emacs/IsearchOtherEnd>
