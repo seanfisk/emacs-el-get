@@ -22,8 +22,10 @@
   (make-temp-file (or prefix "flymake-shell")))
 
 (defun flymake-shell-init ()
-  (list (executable-find (flymake-shell-syntax-checker)) (list (flymake-init-create-temp-buffer-copy
-								'flymake-shell-create-temp-in-system-tempdir))))
+  (list (executable-find (flymake-shell-syntax-checker))
+	(append flymake-shell-arguments
+		(list (flymake-init-create-temp-buffer-copy 'flymake-shell-create-temp-in-system-tempdir)))))
+
 (defun flymake-shell-load ()
   (interactive)
   (require 'flymake)
