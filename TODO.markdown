@@ -1,16 +1,14 @@
 TODO for Sean's Emacs Config
 ============================
 
-* flymake-python
-	* Make it start when python-mode is activated
 * Code formatting
-	* Follow Emacs Lisp style guide
+	* Follow Emacs Lisp style guide (on flymake-shell and flymake-python)
 * Yasnippet
 	* Learn and perfect it
 * C++
 	* Create a good C++ setup
-	* Gotta have flymake (CMake flymake is in place)
-    * Gotta have completion with auto-complete and/or semantic (cedet)
+	* Flymake (CMake flymake is in place)
+    * Completion with auto-complete and/or semantic (cedet)
     * Preferably work well with STL and Qt
 * Modularize the config
     * Split into different files which get required by init.el
@@ -23,4 +21,3 @@ TODO for Sean's Emacs Config
     * Document different modes / command
     * Add flymake-sass
     * Ensure ruby, erb, haml, sass, and coffee modes are working correctly
-	
