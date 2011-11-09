@@ -440,7 +440,6 @@
 		       (if (frame-parameter nil 'fullscreen) nil 'fullboth)))
 (global-set-key [f11] 'fullscreen)
 
-(server-start) ; boot the emacs server for use with emacsclient
 (desktop-save-mode t) ; save my files for next time
 
 ;; cursor
@@ -536,3 +535,5 @@
   (setq tab-width 2))			; small tabs
 
 (add-hook 'c-mode-common-hook 'c-mode-common-custom)
+
+(server-start) ; boot the emacs server for use with emacsclient
