@@ -454,7 +454,7 @@
 (setq backup-directory-alist
       `(("." . ,(expand-file-name (concat user-emacs-directory "backups")))))
 (setq auto-save-file-name-transforms
-      `(("." ,(expand-file-name (concat user-emacs-directory "auto-saves")) t)))
+      `((".*" ,(expand-file-name (concat user-emacs-directory "auto-saves")) t)))
 
 ;; general bindings
 (global-set-key (kbd "C-x j") 'kill-this-buffer) ; an easy shortcut is needed for this common task
