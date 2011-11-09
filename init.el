@@ -451,8 +451,11 @@
 ;; paren matching
 (show-paren-mode t) ; show matching parentheses
 
-;; auto-saves
-(setq backup-directory-alist `(("." . ,(expand-file-name (concat user-emacs-directory "auto-saves")))))
+;; backups and auto-saves
+(setq backup-directory-alist
+      `(("." . ,(expand-file-name (concat user-emacs-directory "backups")))))
+(setq auto-save-file-name-transforms
+      `(("." ,(expand-file-name (concat user-emacs-directory "auto-saves")) t)))
 
 ;; general bindings
 (global-set-key (kbd "C-x j") 'kill-this-buffer) ; an easy shortcut is needed for this common task
