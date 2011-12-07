@@ -79,16 +79,16 @@
 		   (global-set-key (kbd "C-c t") 'color-theme-select)))
    (:name color-theme-solarized		; dark and light Solarized color themes
 	  :depends color-theme
-	  :url "git://github.com/sellout/emacs-color-theme-solarized.git" ; https clone takes a long time for some reason - hopefully speed up clone time
-	  :after (lambda ()
-		   (when (window-system)
-		     (color-theme-solarized-light))))
+	  :url "git://github.com/sellout/emacs-color-theme-solarized.git") ; https clone takes a long time for some reason - hopefully speed up clone time
    (:name color-theme-chocolate-rain
 	  :load "color-theme-chocolate-rain.el")
    (:name color-theme-mac-classic     ; mac classic theme
           :features color-theme-mac-classic)
    (:name color-theme-railscasts
-	  :load "color-theme-railscasts.el")
+	  :load "color-theme-railscasts.el"
+          :after (lambda ()
+                   (when (window-system)
+                     (color-theme-railscasts))))
    (:name whole-line-or-region		; use whole line when no region is present
 	  :features whole-line-or-region
           :after (lambda ()
