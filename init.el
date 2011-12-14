@@ -77,18 +77,24 @@
    (:name color-theme			; base for all color themes
 	  :after (lambda ()
 		   (global-set-key (kbd "C-c t") 'color-theme-select)))
+   
+   ;; This note is here to remind me of the issue with solarized.
+   ;; Basically, it creates a border around the mode line in the bottom of the screen
+   ;; This border pushes up the mode line and causes certain things (like less in terminal)
+   ;; to cut off a line at the top since the bottom line isn't displayed completely.
+   ;; I will ask the author if he can fix this.
    (:name color-theme-solarized		; dark and light Solarized color themes
 	  :depends color-theme
-	  :url "git://github.com/sellout/emacs-color-theme-solarized.git") ; https clone takes a long time for some reason - hopefully speed up clone time
+	  :url "git://github.com/sellout/emacs-color-theme-solarized.git" ; https clone takes a long time for some reason - hopefully speed up clone time
+          :after (lambda ()
+                   (when (window-system)
+                     (color-theme-solarized-dark))))
    (:name color-theme-chocolate-rain
 	  :load "color-theme-chocolate-rain.el")
    (:name color-theme-mac-classic     ; mac classic theme
           :features color-theme-mac-classic)
    (:name color-theme-railscasts
-	  :load "color-theme-railscasts.el"
-          :after (lambda ()
-                   (when (window-system)
-                     (color-theme-railscasts))))
+	  :load "color-theme-railscasts.el")
    (:name whole-line-or-region		; use whole line when no region is present
 	  :features whole-line-or-region
           :after (lambda ()
