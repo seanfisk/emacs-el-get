@@ -124,7 +124,7 @@
                                (substitute-called-interactively-p))))))
 	  :after (lambda ()
 	   	   (auto-indent-global-mode t)
-                   (setq auto-indent-disabled-modes-list (append '(coffee-mode shell-mode term-mode markdown-mode) auto-indent-disabled-modes-list))))
+                   (setq auto-indent-disabled-modes-list (append '(coffee-mode shell-mode term-mode markdown-mode python-mode) auto-indent-disabled-modes-list))))
    (:name autopair			; automatically complete everything that comes in pairs, load auto-indent-mode first
 	  :depends auto-indent-mode
 	  :after (lambda ()
