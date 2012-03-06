@@ -68,3 +68,4 @@
 (require 'isearch-custom)
 (require 'sh-custom)
 (require 'term-custom)
+(require 'rst-custom)
