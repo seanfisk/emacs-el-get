@@ -44,16 +44,16 @@
 	  :features whole-line-or-region
           :after (lambda ()
 		   (whole-line-or-region-mode t)))
-   (:name auto-indent-mode		; auto-indentation, should be loaded before autopair and yasnippet
-	  :type emacswiki
-	  :features auto-indent-mode
- 	  :before (lambda ()
-		    (require 'auto-indent-mode-workaround))
-	  :after (lambda ()
-	   	   (auto-indent-global-mode t)
-                   (setq auto-indent-disabled-modes-list (append '(coffee-mode shell-mode term-mode markdown-mode python-mode) auto-indent-disabled-modes-list))))
+   ;; (:name auto-indent-mode		; auto-indentation, should be loaded before autopair and yasnippet
+   ;; 	  :type emacswiki
+   ;; 	  :features auto-indent-mode
+   ;; 	  :before (lambda ()
+   ;; 		    (require 'auto-indent-mode-workaround))
+   ;; 	  :after (lambda ()
+   ;; 	   	   (auto-indent-global-mode t)
+   ;;                 (setq auto-indent-disabled-modes-list (append '(coffee-mode shell-mode term-mode markdown-mode python-mode) auto-indent-disabled-modes-list))))
    (:name autopair			; automatically complete everything that comes in pairs, load auto-indent-mode first
-	  :depends auto-indent-mode
+	  ;; :depends auto-indent-mode
 	  :after (lambda ()
 		   (autopair-global-mode t)))
    (:name auto-pair+			; smart quoting of regions for autopair
@@ -65,7 +65,7 @@
 		   (ac-set-trigger-key "TAB")
 		   ;; add to this list when more auto-completion is needed
 		   (setq ac-modes (append '(scss-mode) ac-modes))
-
+		   
 		   (defun auto-complete-custom ()
 		     "auto-complete-mode-hook"
 		     ;; re-assign `dabbrev' to this
@@ -74,7 +74,7 @@
 		     ;; otherwise we get prompted for a tags file all the time, even when we don't have one
 		     (when (or tags-file-name tags-table-list)
 		       (add-to-list 'ac-sources 'ac-source-etags)))
-
+		   
 		   (add-hook 'auto-complete-mode-hook 'auto-complete-custom)))
    (:name auto-complete-etags		; auto-complete source for tags
 	  :features auto-complete-etags
@@ -86,13 +86,13 @@
    (:name textmate			; textmate key emulation, try Command-T or Alt-T for goto file
 	  :after (lambda ()
 		   (textmate-mode t)))
-   (:name anything			; "Quicksilver for Emacs"
-	  :before (lambda ()
-		    (defvar org-directory ""))) ; Hack around free variable org-directory issue
-   (:name anything-etags+		; etags history for anything
-	  :type emacswiki
-	  :features anything-etags+
-	  :depends anything)
+   ;; (:name anything			; "Quicksilver for Emacs"
+   ;; 	  :before (lambda ()
+   ;; 		    (defvar org-directory ""))) ; Hack around free variable org-directory issue
+   ;; (:name anything-etags+		; etags history for anything
+   ;; 	  :type emacswiki
+   ;; 	  :features anything-etags+
+   ;; 	  :depends anything)
    (:name flymake-cursor		; show the syntax error for the line under the cursor in the minibuffer
 	  :type emacswiki
 	  :features flymake-cursor)
@@ -101,26 +101,26 @@
 	  :build/darwin `(,(concat "make " (shell-quote-argument (concat "EMACS=" invocation-directory invocation-name)) " all"))
           :after (lambda ()
                    (global-set-key (kbd "C-x C-z") 'magit-status)))
-   (:name dtrt-indent		  ; foreign indentation detection mode
-	  :post-init (lambda ()))
+   ;; (:name dtrt-indent		  ; foreign indentation detection mode
+   ;; 	  :post-init (lambda ()))
    (:name ruby-mode			; major mode for ruby
 	  :depends autopair) ; try not to cause problems with turning off autopair-mode later, in case ruby mode hook is activated
-   (:name multi-term	     ; better version of term
-   	  :after (lambda ()
-   		   ;; don't mess with my terminal keys
-   		   (setq term-bind-key-alist nil)
-		   (setq term-unbind-key-list nil)
-		   
-		   (setq multi-term-program "zsh") ; use zsh
-		   
-		   ;; name the terminal immediately - my first real Emacs Lisp function - woohoo!
-                   (defun multi-term-with-name()
-                     (interactive)
-                     (multi-term)
-                     (call-interactively 'rename-buffer)
-		     (rename-buffer (concat (buffer-name) "-term")))
-		   ;;; give it a shortcut
-   		   (global-set-key (kbd "C-x t") 'multi-term-with-name)))
+   ;; (:name multi-term	     ; better version of term
+   ;; 	  :after (lambda ()
+   ;; 		   ;; don't mess with my terminal keys
+   ;; 		   (setq term-bind-key-alist nil)
+   ;; 		   (setq term-unbind-key-list nil)
+   
+   ;; 		   (setq multi-term-program "zsh") ; use zsh
+   
+   ;; 		   ;; name the terminal immediately - my first real Emacs Lisp function - woohoo!
+   ;;                 (defun multi-term-with-name()
+   ;;                   (interactive)
+   ;;                   (multi-term)
+   ;;                   (call-interactively 'rename-buffer)
+   ;; 		     (rename-buffer (concat (buffer-name) "-term")))
+   ;; 		   ;;; give it a shortcut
+   ;; 		   (global-set-key (kbd "C-x t") 'multi-term-with-name)))
    (:name misc-cmds                ; Drew Adams' miscellaneous commands
 	  :type emacswiki
 	  :features misc-cmds
