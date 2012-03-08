@@ -199,7 +199,7 @@
 ;; other customizations for specific languages and tools
 (require 'ack-custom)
 (require 'coffee-script-custom)
-(require 'python-custom)
+;; (require 'python-custom)
 (require 'ruby-custom)
 (require 'sass-custom)
 
