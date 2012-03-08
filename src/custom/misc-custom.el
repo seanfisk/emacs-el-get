@@ -101,6 +101,9 @@
 ;; short yes or no
 (defalias 'yes-or-no-p 'y-or-n-p)
 
+;; fill column - stick to 80
+(setq-default fill-column 80)
+
 (provide 'misc-custom)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

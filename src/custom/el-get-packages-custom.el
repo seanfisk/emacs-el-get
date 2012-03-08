@@ -159,6 +159,26 @@
           :description "Support for creation and update of file headers."
           :type emacswiki
           :features "header2")
+   (:name fillcode
+	  :website "http://snarfed.org/fillcode"
+	  :description "Fillcode is an Emacs minor mode that fills, or wraps, some parts of source code."
+	  :type http-tar
+	  :options ("xzf")
+	  :url "http://snarfed.org/fillcode.tar.gz"
+	  :load "fillcode.el"
+	  :features fillcode
+	  :after (lambda ()
+		   (add-hook 'c-mode-common-hook 'fillcode-mode)
+		   (add-hook 'perl-mode-hook 'fillcode-mode)
+		   (add-hook 'python-mode-hook 'fillcode-mode)
+		   (add-hook 'shell-script-mode-hook 'fillcode-mode)
+		   (add-hook 'sql-mode-hook 'fillcode-mode)))
+   (:name fill-column-indicator
+	  :after (lambda ()
+		   ;; always use fci-mode
+		   (define-globalized-minor-mode global-fci-mode fci-mode (lambda () (fci-mode 1)))
+		   (global-fci-mode 1)
+		   ))
    (:name edit-server              ; for editing through Google Chrome
 	  :features edit-server
 	  :after (lambda ()
