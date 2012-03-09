@@ -43,13 +43,22 @@
 				  
 				  (add-hook 'python-mode-hook 'python-ropemacs-custom)
 				  
+				  ;; fix for Pymacs
+				  (defvaralias 'python-mode-map 'py-mode-map)
+				  
                                   ;; set up auto-complete for ropemacs
 				  ;; this does all the necessary rope setup as well
                                   (ac-ropemacs-initialize)
 				  ))
-		  (:name pythonbrew-mini ; Emacs interface to pythonbrew
-			 :type git
-			 :url "git://github.com/franckcuny/pythonbrew-mini.el.git"
+		  ;; pythonbrew-mini helps greatly in correctly loading Pymacs
+		  ;; it sets PATH and exec-path correctly to make the correct
+		  ;; python load
+		  ;; by default it will load the latest python in pythonbrew
+		  (:name pythonbrew-mini
+			 :description "Emacs interface to pythonbrew."
+			 :website "https://github.com/franckcuny/pythonbrew-mini.el"
+			 :type github
+			 :pkgname "franckcuny/pythonbrew-mini.el"
 			 :features pythonbrew-mini))
 		el-get-sources))
   
