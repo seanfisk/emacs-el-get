@@ -59,7 +59,9 @@
 			 :website "https://github.com/franckcuny/pythonbrew-mini.el"
 			 :type github
 			 :pkgname "franckcuny/pythonbrew-mini.el"
-			 :features pythonbrew-mini))
+			 :features pythonbrew-mini
+			 :after (lambda ()
+				  (pythonbrew-mini-use "Python-2.7.2"))))
 		el-get-sources))
   
   ;; flymake support
