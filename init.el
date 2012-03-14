@@ -42,8 +42,10 @@
 (require 'flymake-shell)
 
 ;; load el-get package manager
-(add-to-list 'load-path (concat user-emacs-directory "el-get/el-get"))
-
+;; el-get defaults to storing packages in `~/.emacs.d/el-get', we want to change
+;; that (for Aquamacs)
+(setq el-get-dir (file-name-as-directory (concat user-emacs-directory "el-get")))
+(add-to-list 'load-path (concat el-get-dir "el-get"))
 (unless (require 'el-get nil t)
   (url-retrieve
    "https://raw.github.com/dimitri/el-get/master/el-get-install.el"
