@@ -88,9 +88,12 @@
 	  :type emacswiki)
    (:name auto-complete			; the best auto-complete extension for emacs!
 	  :after (lambda ()
-		   (ac-set-trigger-key "TAB")
+		   ;; (ac-set-trigger-key "TAB")
 		   ;; add to this list when more auto-completion is needed
 		   (setq ac-modes (append '(scss-mode) ac-modes))
+		   
+		   ;; use the default configuration
+		   (ac-config-default)
 		   
 		   (defun auto-complete-custom ()
 		     "auto-complete-mode-hook"
@@ -105,6 +108,54 @@
    (:name auto-complete-etags		; auto-complete source for tags
 	  :features auto-complete-etags
 	  :depends auto-complete)
+   (:name auto-complete-clang
+	  :depends auto-complete
+	  :depends yasnippet
+	  :features auto-complete-clang
+	  :after (lambda ()
+		   (defun auto-complete-clang-custom ()
+		     (setq ac-sources (append '(ac-source-clang) ac-sources)))
+		   (add-hook 'c-mode-common-hook 'auto-complete-clang-custom)))
+   ;; this recipe is stolen directly from el-get's master branch
+   (:name yasnippet
+	  :website "https://github.com/capitaomorte/yasnippet.git"
+	  :description "YASnippet is a template system for Emacs."
+	  :type git
+	  :url "git://github.com/capitaomorte/yasnippet.git"
+	  :features "yasnippet"
+	  ;; Set up the default snippets directory
+	  ;;
+	  ;; Principle: don't override any user settings for
+	  ;; yas/snippet-dirs, whether those were made with setq or
+	  ;; customize. If the user doesn't want the default snippets,
+	  ;; she shouldn't get them!
+	  :pre-init (unless (or (boundp 'yas/snippet-dirs)
+				(get 'yas/snippet-dirs 'customized-value))
+		      (setq yas/snippet-dirs
+			    (list (concat el-get-dir
+					  (file-name-as-directory "yasnippet")
+					  "snippets"))))
+	  ;; Trick customize into believing the standard value includes
+	  ;; the default snippets. yasnippet would probably do this
+	  ;; itself, except that it doesn't include an installation
+	  ;; procedure that sets up the snippets directory, and thus
+	  ;; doesn't know where those snippets will be installed. See
+	  ;; http://code.google.com/p/yasnippet/issues/detail?id=179
+	  :post-init (put 'yas/snippet-dirs 'standard-value
+			  ;; as cus-edit.el specifies, "a cons-cell whose
+			  ;; car evaluates to the standard value"
+			  (list
+			   (list
+			    'quote
+			    (list (concat el-get-dir
+					  (file-name-as-directory "yasnippet")
+					  "snippets")))))
+	  ;; byte-compile load vc-svn and that fails
+	  ;; see https://github.com/dimitri/el-get/issues/200
+	  :compile nil
+	  :submodule nil
+	  :after (lambda ()
+		   (yas/global-mode t)))
    (:name undo-tree	  		; undo history in a tree like vim, try C-x u
 	  :features undo-tree
 	  :after (lambda ()
