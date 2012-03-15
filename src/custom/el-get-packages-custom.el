@@ -94,7 +94,7 @@
 		   (defun auto-complete-custom ()
 		     "auto-complete-mode-hook"
 		     ;; re-assign `dabbrev' to this
-		     (local-set-key (kbd "M-/") 'auto-complete)
+		     (define-key ac-mode-map (kbd "M-/") 'auto-complete)
 		     ;; add a tags auto-complete source when we have a tags file
 		     ;; otherwise we get prompted for a tags file all the time, even when we don't have one
 		     (when (or tags-file-name tags-table-list)
@@ -149,7 +149,8 @@
 	  :features auto-complete-clang
 	  :after (lambda ()
 		   (defun auto-complete-clang-custom ()
-		     (add-to-list 'ac-sources 'ac-source-clang))
+		     (add-to-list 'ac-sources 'ac-source-clang)
+		     (define-key c-mode-base-map [remap auto-complete] 'ac-complete-clang))
 		   (add-hook 'c-mode-common-hook 'auto-complete-clang-custom)))
    (:name undo-tree	  		; undo history in a tree like vim, try C-x u
 	  :features undo-tree
