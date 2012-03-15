@@ -39,7 +39,6 @@
 ;; local packages in `src/lib' directory
 (add-to-list 'load-path (concat user-emacs-directory "src/lib"))
 (require 'open-next-line)
-(require 'flymake-shell)
 
 ;; load el-get package manager
 ;; el-get defaults to storing packages in `~/.emacs.d/el-get', we want to change
@@ -66,8 +65,4 @@
 (add-to-list 'load-path (concat user-emacs-directory "src/custom/modes"))
 (require 'c-common-custom)
 (require 'server-custom)
-(require 'elisp-custom)
 (require 'isearch-custom)
-(require 'sh-custom)
-(require 'term-custom)
-(require 'rst-custom)

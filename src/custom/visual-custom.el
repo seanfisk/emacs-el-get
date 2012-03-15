@@ -31,9 +31,6 @@
 (line-number-mode 1)                    ; have line numbers and
 (column-number-mode 1)                  ; column numbers in the mode line
 
-(tool-bar-mode -1)                      ; no tool bar with icons
-(scroll-bar-mode -1)			; no scroll bars
-
 ;; easy-on-the-eyes flymake
 (require 'flymake)
 (custom-set-faces

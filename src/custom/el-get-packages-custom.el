@@ -58,10 +58,6 @@
    ;; I will ask the author if he can fix this.
    (:name color-theme-solarized		; dark and light Solarized color themes
 	  :url "git://github.com/sellout/emacs-color-theme-solarized.git") ; https clone takes a long time for some reason - hopefully speed up clone time
-   (:name color-theme-chocolate-rain
-	  :load "color-theme-chocolate-rain.el")
-   (:name color-theme-mac-classic     ; mac classic theme
-          :features color-theme-mac-classic)
    (:name color-theme-railscasts
 	  :features color-theme-railscasts ; this automatically activates the theme
 	  :after (lambda ()
@@ -162,53 +158,15 @@
    (:name textmate			; textmate key emulation, try Command-T or Alt-T for goto file
 	  :after (lambda ()
 		   (textmate-mode t)))
-   ;; (:name anything			; "Quicksilver for Emacs"
-   ;; 	  :before (lambda ()
-   ;; 		    (defvar org-directory ""))) ; Hack around free variable org-directory issue
-   ;; (:name anything-etags+		; etags history for anything
-   ;; 	  :type emacswiki
-   ;; 	  :features anything-etags+
-   ;; 	  :depends anything)
    (:name flymake-cursor		; show the syntax error for the line under the cursor in the minibuffer
 	  :type emacswiki
 	  :features flymake-cursor)
-   ;; IMPORTANT : magit requires the `makeinfo' executable from the `texinfo' package to compile!!!
-   (:name magit                         ; git meet emacs, and a binding
-	  :build/darwin `(,(concat "make " (shell-quote-argument (concat "EMACS=" invocation-directory invocation-name)) " all"))
-          :after (lambda ()
-                   (global-set-key (kbd "C-x C-z") 'magit-status)))
-   ;; (:name dtrt-indent		  ; foreign indentation detection mode
-   ;; 	  :post-init (lambda ()))
-   (:name ruby-mode			; major mode for ruby
-	  :depends autopair) ; try not to cause problems with turning off autopair-mode later, in case ruby mode hook is activated
-   ;; (:name multi-term	     ; better version of term
-   ;; 	  :after (lambda ()
-   ;; 		   ;; don't mess with my terminal keys
-   ;; 		   (setq term-bind-key-alist nil)
-   ;; 		   (setq term-unbind-key-list nil)
-   
-   ;; 		   (setq multi-term-program "zsh") ; use zsh
-   
-   ;; 		   ;; name the terminal immediately - my first real Emacs Lisp function - woohoo!
-   ;;                 (defun multi-term-with-name()
-   ;;                   (interactive)
-   ;;                   (multi-term)
-   ;;                   (call-interactively 'rename-buffer)
-   ;; 		     (rename-buffer (concat (buffer-name) "-term")))
-   ;; 		   ;;; give it a shortcut
-   ;; 		   (global-set-key (kbd "C-x t") 'multi-term-with-name)))
    (:name misc-cmds                ; Drew Adams' miscellaneous commands
 	  :type emacswiki
 	  :features misc-cmds
 	  :after (lambda ()
 		   (substitute-key-definition 'move-beginning-of-line 'beginning-or-indentation global-map)
                    (substitute-key-definition 'move-end-of-line 'end-of-line+ global-map)))
-   ;; (:name elscreen			; screen for emacs
-   ;; 	  :features elscreen)
-   (:name header2
-          :description "Support for creation and update of file headers."
-          :type emacswiki
-          :features "header2")
    (:name fillcode
 	  :website "http://snarfed.org/fillcode"
 	  :description "Fillcode is an Emacs minor mode that fills, or wraps, some parts of source code."
@@ -228,25 +186,13 @@
 		   ;; always use fci-mode
 		   (define-globalized-minor-mode global-fci-mode fci-mode (lambda () (fci-mode 1)))
 		   (global-fci-mode 1)
-		   ))
-   (:name edit-server              ; for editing through Google Chrome
-	  :features edit-server
-	  :after (lambda ()
-		   (edit-server-start)))))
+		   ))))
 
 ;; now set our own packages
 (setq
  my:el-get-packages
  '(el-get				; el-get is self-hosting
    switch-window			; numbered windows for easy switching, takes over C-x o
-   dired+				; many extensions to dired directory browser
-   zencoding-mode			; http://www.emacswiki.org/emacs/ZenCoding
-   nxhtml				; awesome html editing mode
-   php-mode-improved			; better major mode for php
-   haml-mode				; major mode for haml
-   textile-mode				; major mode for textile markup
-   markdown-mode			; major mode for markdown markup
-   cmake-mode				; major mode for editing CMake config files
    flymake-fringe-icons			; show error icons at side
    ))
 
@@ -256,22 +202,8 @@
 ;; Note: el-get-install requires git, so we know we have at least that.
 ;;
 
-(when (el-get-executable-find "cvs")
-  ;;(add-to-list 'my:el-get-packages 'emacs-goodies-el) ; the debian addons for emacs
-  (add-to-list 'my:el-get-packages 'ecb))             ; Emacs Code Browser
-
-(when (el-get-executable-find "svn")
-  ;; subversion plugin for emacs
-  (add-to-list 'my:el-get-packages 'psvn)
-  ;; javascript ide
-  (add-to-list 'my:el-get-packages 'js2-mode))
-
 ;; other customizations for specific languages and tools
 (require 'ack-custom)
-(require 'coffee-script-custom)
-(require 'python-custom)
-(require 'ruby-custom)
-(require 'sass-custom)
 
 (setq my:el-get-packages
       (append
