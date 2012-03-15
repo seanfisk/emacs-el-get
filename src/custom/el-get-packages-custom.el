@@ -102,20 +102,12 @@
 		     ;; add a tags auto-complete source when we have a tags file
 		     ;; otherwise we get prompted for a tags file all the time, even when we don't have one
 		     (when (or tags-file-name tags-table-list)
-		       (add-to-list 'ac-sources 'ac-source-etags)))
+		       (add-to-list 'ac-sources 'ac-source-etags t)))
 		   
 		   (add-hook 'auto-complete-mode-hook 'auto-complete-custom)))
    (:name auto-complete-etags		; auto-complete source for tags
 	  :features auto-complete-etags
 	  :depends auto-complete)
-   (:name auto-complete-clang
-	  :depends auto-complete
-	  :depends yasnippet
-	  :features auto-complete-clang
-	  :after (lambda ()
-		   (defun auto-complete-clang-custom ()
-		     (setq ac-sources (append '(ac-source-clang) ac-sources)))
-		   (add-hook 'c-mode-common-hook 'auto-complete-clang-custom)))
    ;; this recipe is stolen directly from el-get's master branch
    (:name yasnippet
 	  :website "https://github.com/capitaomorte/yasnippet.git"
@@ -156,6 +148,13 @@
 	  :submodule nil
 	  :after (lambda ()
 		   (yas/global-mode t)))
+   (:name auto-complete-clang
+	  :depends (auto-complete yasnippet)
+	  :features auto-complete-clang
+	  :after (lambda ()
+		   (defun auto-complete-clang-custom ()
+		     (add-to-list 'ac-sources 'ac-source-clang))
+		   (add-hook 'c-mode-common-hook 'auto-complete-clang-custom)))
    (:name undo-tree	  		; undo history in a tree like vim, try C-x u
 	  :features undo-tree
 	  :after (lambda ()
