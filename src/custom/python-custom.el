@@ -32,6 +32,14 @@
   ;; http://janteichmanndevu.ipage.com/wordpress/2010/12/emacs-is-also-a-great-python-editor/
   ;; http://www.enigmacurry.com/2009/01/21/autocompleteel-python-code-completion-in-emacs/
   ;; https://github.com/renatoGarcia/auto-complete-rope/blob/master/auto-complete-rope.el
+  
+  ;; NOTE TO SELF: Do not let RVM add paths which will cause Emacs to use the
+  ;; wrong version of Python!
+  ;;
+  ;; Example: Using the system Ruby, RVM will add `/usr/bin' to `exec-path',
+  ;; which is used to find executables in Emacs. This will cause Emacs to find
+  ;; the system Python!
+  
   (setq el-get-sources
         (append '((:name pymacs		; Python-EmacsLisp interface
 			 :features pymacs
