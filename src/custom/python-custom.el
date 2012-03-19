@@ -39,25 +39,19 @@
 			 :after (lambda ()
 				  ;; for this to work, you must have `rope', `ropemacs', and `ropemode' installed through pip
 				  
-				  ;; stole this from auto-complete-config code
-				  (defvar ropemacs-loaded nil)
-				  (defun python-ropemacs-custom ()
-				    (unless ac-ropemacs-loaded
-				      (pymacs-load "ropemacs" "rope-")
-				      (setq ropemacs-enable-autoimport t)
-				      (setq ac-ropemacs-loaded t))
-				    (ropemacs-mode t))
-				  
-				  (add-hook 'python-mode-hook 'python-ropemacs-custom)
-				  
 				  ;; fix for Pymacs
-				  (defvaralias 'python-mode-map 'py-mode-map)
+				  ;; (defvaralias 'python-mode-map 'py-mode-map)
+				  
+				  ;; start up ropemacs-mode
+				  (defun python-ropemacs-custom ()
+				    (ropemacs-mode t))
+				  (add-hook 'python-mode-hook 'python-ropemacs-custom)
+				    
+				  (defun ac-ropemacs-setup ()
+				    (ac-ropemacs-require)
+				    (add-to-list 'ac-sources 'ac-source-ropemacs))
 
-				  (autoload 'pymacs-apply "pymacs")
-				  (autoload 'pymacs-call "pymacs")
-				  (autoload 'pymacs-eval "pymacs" nil t)
-				  (autoload 'pymacs-exec "pymacs" nil t)
-				  (autoload 'pymacs-load "pymacs" nil t)))
+				  (ac-ropemacs-initialize)))
 		  ;; pythonbrew-mini helps greatly in correctly loading Pymacs
 		  ;; it sets PATH and exec-path correctly to make the correct
 		  ;; python load
