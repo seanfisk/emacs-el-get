@@ -41,25 +41,7 @@
   ;; the system Python!
   
   (setq el-get-sources
-        (append '((:name pymacs		; Python-EmacsLisp interface
-			 :features pymacs
-			 :depends pythonbrew-mini
-			 :after (lambda ()
-				  ;; for this to work, you must have `rope', `ropemacs', and `ropemode' installed through pip
-				  
-				  ;; fix for Pymacs
-				  ;; (defvaralias 'python-mode-map 'py-mode-map)
-				  
-				  ;; start up ropemacs-mode
-				  (defun python-ropemacs-custom ()
-				    (ropemacs-mode t))
-				  (add-hook 'python-mode-hook 'python-ropemacs-custom)
-				    
-				  (defun ac-ropemacs-setup ()
-				    (ac-ropemacs-require)
-				    (add-to-list 'ac-sources 'ac-source-ropemacs))
-
-				  (ac-ropemacs-initialize)))
+        (append '(
 		  ;; pythonbrew-mini helps greatly in correctly loading Pymacs
 		  ;; it sets PATH and exec-path correctly to make the correct
 		  ;; python load
@@ -71,7 +53,27 @@
 			 :url "git://github.com/franckcuny/pythonbrew-mini.el.git"
 			 :features pythonbrew-mini
 			 :after (lambda ()
-				  (pythonbrew-mini-use "Python-2.7.2"))))
+				  (pythonbrew-mini-use "Python-2.7.2")))
+		  ;; Python-EmacsLisp interface
+		  (:name pymacs
+			 :features pymacs
+			 :depends (pythonbrew-mini auto-complete)
+			 :after (lambda ()
+				  ;; for this to work, you must have `rope', `ropemacs', and `ropemode' installed through pip
+				  
+				  ;; fix for Pymacs
+				  ;; (defvaralias 'python-mode-map 'py-mode-map)
+				  
+				  ;; start up ropemacs-mode
+				  (defun python-ropemacs-custom ()
+				    (ropemacs-mode t))
+				  (add-hook 'python-mode-hook 'python-ropemacs-custom)
+				  
+				  (defun ac-ropemacs-setup ()
+				    (ac-ropemacs-require)
+				    (add-to-list 'ac-sources 'ac-source-ropemacs))
+
+				  (ac-ropemacs-initialize))))
 		el-get-sources))
   
   ;; flymake support
