@@ -67,8 +67,8 @@
 		  (:name pythonbrew-mini
 			 :description "Emacs interface to pythonbrew."
 			 :website "https://github.com/franckcuny/pythonbrew-mini.el"
-			 :type github
-			 :pkgname "franckcuny/pythonbrew-mini.el"
+			 :type git
+			 :url "git://github.com/franckcuny/pythonbrew-mini.el.git"
 			 :features pythonbrew-mini
 			 :after (lambda ()
 				  (pythonbrew-mini-use "Python-2.7.2"))))
