@@ -1,6 +1,12 @@
 TODO for Sean's Emacs Config
 ============================
 
+* Remove unecessary packages
+* Upgrade to the next version of el-get (or master branch) and make sure most,
+  if not all of my packages are set to a stable version. This "so-and-so package
+  doesn't work" is getting very annoying.
+* Fix auto-complete, the application which spurred this.
+
 * Code formatting
 	* Follow Emacs Lisp style guide (on flymake-shell and flymake-python)
 * Yasnippet
