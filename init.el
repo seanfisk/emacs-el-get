@@ -1,7 +1,12 @@
-;; Emacs config for Sean Fisk
-;;
+;;; init.el --- Emacs config for Sean Fisk
+;; 
 ;; Author: Sean Fisk <sean@seanfisk.com>
+;; Maintainer: Sean Fisk <sean@seanfisk.com>
+;; Keywords: local
+;; Compatibility: GNU Emacs: 23.x, Aquamacs: 2.x
 ;; URL: https://github.com/seanfisk/emacs
+;; 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
 ;; Copyright (C) 2011 by Sean Fisk <sean@seanfisk.com>
 ;;
@@ -33,8 +38,13 @@
 ;; Licence: WTFPL, grab your copy here: http://sam.zoy.org/wtfpl/
 ;;
 ;; This file is NOT part of GNU Emacs.
+;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; 
+;;; Code:
 
-(require 'cl)				; common lisp goodies, loop
+;; common lisp goodies, loop
+(require 'cl)
 
 ;; local packages in `src/lib' directory
 (add-to-list 'load-path (concat user-emacs-directory "src/lib"))
@@ -71,3 +81,6 @@
 (require 'sh-custom)
 (require 'term-custom)
 (require 'rst-custom)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; init.el ends here
