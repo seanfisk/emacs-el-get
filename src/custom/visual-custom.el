@@ -43,11 +43,11 @@
 ;; choose your own fonts, in a system dependent way
 (if (window-system)
     (condition-case nil
-        (set-face-font 'default "Inconsolata-18") ; use Inconsolata if we have it
+        (set-face-font 'default "Inconsolata-14") ; use Inconsolata if we have it
       (error
        (if (string-match "apple-darwin" system-configuration)
-	   (set-face-font 'default "Monaco-18") ; use Monaco on Mac
-	 (set-face-font 'default "Monospace-18"))))) ; otherwise default to Monospace
+	   (set-face-font 'default "Monaco-14") ; use Monaco on Mac
+	 (set-face-font 'default "Monospace-14"))))) ; otherwise default to Monospace
 
 ;; avoid compiz manager rendering bugs
 (add-to-list 'default-frame-alist '(alpha . 100))
