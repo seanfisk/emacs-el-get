@@ -54,18 +54,20 @@
 ;; load el-get package manager
 ;; el-get defaults to storing packages in `~/.emacs.d/el-get', we want to change
 ;; that (for Aquamacs)
-(setq el-get-dir (file-name-as-directory (concat user-emacs-directory "el-get")))
+;; However, el-get with elpa flips out if there are spaces in the path - I should look into fixing this
+;; (setq el-get-dir (file-name-as-directory (concat user-emacs-directory "el-get")))
+(setq el-get-dir (file-name-as-directory "~/.emacs.d/el-get"))
 (add-to-list 'load-path (concat el-get-dir "el-get"))
 (unless (require 'el-get nil t)
-  (url-retrieve
-   "https://raw.github.com/dimitri/el-get/master/el-get-install.el"
-   (lambda (s)
+  (with-current-buffer
+   (url-retrieve-synchronously "https://raw.github.com/dimitri/el-get/master/el-get-install.el")
+   (let (el-get-master-branch)
      (end-of-buffer)
      (eval-print-last-sexp))))
 
 ;; now either el-get is `require'd already, or have been `load'ed by the
 ;; el-get installer.
-(add-to-list 'load-path (concat user-emacs-directory "src/custom"))
+;; (add-to-list 'load-path (concat user-emacs-directory "src/custom"))
 (require 'el-get-packages-custom)
 
 ;; other customizations

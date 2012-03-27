@@ -29,16 +29,17 @@
 ;; coffee-script additions
 (when (executable-find "coffee")
   (setq el-get-sources
-	(append 
-	 '((:name coffee-mode                   ; major mode for coffee-script
+	(append
+	 ;; major mode for coffee-script
+	 '((:name coffee-mode
+		  :type elpa
 		  :depends (js2-mode autopair)
-		  :after (lambda ()
+		  :after (progn
 			   ;; the recipe sets to javascript-mode - so reset to default `js2mode' because we have it
 			   (setq coffee-js-mode 'js2-mode)))
-	   (:name flymake-coffee           ; flymake support for coffee-script
-		  :type git
-		  :url "https://github.com/purcell/flymake-coffee.git"
-		  :features flymake-coffee))
+	   ;; flymake support for coffee-script
+	   (:name flymake-coffee
+		  :type elpa))
 	 el-get-sources))
   ;; coffee-mode
   (defun coffee-custom ()

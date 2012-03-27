@@ -96,7 +96,7 @@
 ;;; switch buffers like other applications
 (global-set-key (kbd "<C-tab>") 'bury-buffer)
 ;;;; override textmate-mode
-(define-key *textmate-mode-map* (kbd "<C-tab>") 'bury-buffer)
+;; (define-key *textmate-mode-map* (kbd "<C-tab>") 'bury-buffer)
 
 ;; short yes or no
 (defalias 'yes-or-no-p 'y-or-n-p)

@@ -30,7 +30,8 @@
 (when (or (executable-find "ack") (executable-find "ack-grep"))
   (push
    '(:name full-ack
-	   :after (lambda ()
+	   :type elpa
+	   :after (progn
 		    (let ((ack-grep-executable (executable-find "ack-grep")))
 		      (when ack-grep-executable
 			(setq ack-executable ack-grep-executable)))

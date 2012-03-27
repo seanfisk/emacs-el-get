@@ -29,25 +29,35 @@
 ;; ruby additions
 (when (executable-find "ruby") ; only if we have ruby
   ;; rinari - rails ide
-  (when (and (executable-find "rails") (el-get-executable-find "rake")) ; if we have rails and rake (needed for compiling rinari, error if we don't have it)
-    (add-to-list 'my:el-get-packages 'rinari))
+  ;; if we have rails and rake (needed for compiling rinari, error if we have rails but no rake)
+  ;; (when (and (executable-find "rails") (el-get-executable-find "rake"))
+  ;;   (push
+  ;;    '(:name rinari
+  ;;      :type elpa)
+  ;;    el-get-sources))
   
   ;; rvm integration
   (when (executable-find "rvm")
-    (add-to-list 'my:el-get-packages 'rvm))
+    (push
+     '(:name rvm
+       :type elpa)
+     el-get-sources))
   
   ;; some more ruby niceties
-  (add-to-list 'my:el-get-packages 'ruby-electric) ; ruby control structure matching
+  ;; ruby control structure matching
+  (push '(:name ruby-electric) el-get-sources)
   ;; flymake for ruby
   (push
    '(:name flymake-ruby
-	   :after (lambda ()
-		    (push '("Buildfile$" flymake-ruby-init) flymake-ruby-allowed-file-name-masks)))
+     :type elpa)
    el-get-sources)
   
   ;; hook for ruby-mode
   (defun ruby-custom ()
     "ruby-mode-hook"
+    ;; add Buildfile to flymake
+    (if (boundp 'flymake-ruby-allowed-file-name-masks)
+	(push '("Buildfile$" flymake-ruby-init) flymake-ruby-allowed-file-name-masks))
     (local-set-key (kbd "RET") 'reindent-then-newline-and-indent)
     ;; Rsense + Autocomplete
     (add-to-list 'ac-sources 'ac-source-rsense-method)

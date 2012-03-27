@@ -49,16 +49,18 @@
 		  (:name pythonbrew-mini
 			 :description "Emacs interface to pythonbrew."
 			 :website "https://github.com/franckcuny/pythonbrew-mini.el"
-			 :type git
-			 :url "git://github.com/franckcuny/pythonbrew-mini.el.git"
+			 :type github
+			 :pkgname "franckcuny/pythonbrew-mini.el"
 			 :features pythonbrew-mini
-			 :after (lambda ()
+			 :after (progn
 				  (pythonbrew-mini-use "Python-2.7.2")))
 		  ;; Python-EmacsLisp interface
 		  (:name pymacs
-			 :features pymacs
+			 ;; latest tagged release - 0.24-beta2
+			 ;; ensure that you `make' with this repo for version consistency!
+			 :checkout "016b0bc9c870e1ad564e5885c7df2b7855c0948c"
 			 :depends (pythonbrew-mini auto-complete)
-			 :after (lambda ()
+			 :after (progn
 				  ;; for this to work, you must have `rope', `ropemacs', and `ropemode' installed through pip
 				  
 				  ;; fix for Pymacs

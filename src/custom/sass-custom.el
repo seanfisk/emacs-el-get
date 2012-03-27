@@ -28,7 +28,7 @@
 
 ;; sass / scss additions
 (when (executable-find "sass")
-  (add-to-list 'my:el-get-packages 'scss-mode)
+  (push '(:name scss-mode) el-get-sources)
   
   ;; hook for scss mode
   (defun scss-custom ()
