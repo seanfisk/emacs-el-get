@@ -52,13 +52,16 @@
    (:name buffer-move
 	  :type elpa
 	  :after (progn
+		   (package-initialize)
 		   (global-set-key (kbd "<C-S-up>")     'buf-move-up)
 		   (global-set-key (kbd "<C-S-down>")   'buf-move-down)
 		   (global-set-key (kbd "<C-S-left>")   'buf-move-left)
 		   (global-set-key (kbd "<C-S-right>")  'buf-move-right)))
    ;; a better (ido like) M-x
    (:name smex
+	  :type elpa
 	  :after (progn
+		   (package-initialize)
 		   (setq smex-save-file (concat user-emacs-directory ".smex-items"))
 		   (smex-initialize)
 		   (global-set-key (kbd "C-x C-m") 'execute-extended-command)
@@ -91,9 +94,10 @@
 		   (color-theme-railscasts)))
    ;; use whole line when no region is present
    (:name whole-line-or-region
-	  ;; :type elpa
-	  :features whole-line-or-region
+	  :type elpa
+	  ;; :features whole-line-or-region
           :after (progn
+		   (package-initialize)
 		   (whole-line-or-region-mode t)))
    ;; automatically complete everything that comes in pairs, load auto-indent-mode first
    ;; autopair's author (same as yasnippet) does not really have released versions that aren't really old, just go for latest
@@ -142,13 +146,14 @@
    ;; undo history in a tree like vim, try C-x u
    (:name undo-tree
 	  :type elpa
-	  :features undo-tree
 	  :after (progn
+		   (package-initialize)
 		   (global-undo-tree-mode t)))
    ;; textmate key emulation, try Command-T or Alt-T for goto file
    (:name textmate
 	  :type elpa
 	  :after (progn
+		   (package-initialize)
 		   (textmate-mode t)))
    ;; show the syntax error for the line under the cursor in the minibuffer
    (:name flymake-cursor
@@ -206,10 +211,11 @@
 		   (add-hook 'shell-script-mode-hook 'fillcode-mode)
 		   (add-hook 'sql-mode-hook 'fillcode-mode)))
    (:name fill-column-indicator
-	  ;; :type elpa
+	  :type elpa
 	  ;; this package has no autoloads, so the functions aren't loaded
-	  ;; :features fill-column-indicator
 	  :after (progn
+		   (package-initialize)
+		   (require 'fill-column-indicator)
 		   ;; always use fci-mode
 		   (define-globalized-minor-mode global-fci-mode fci-mode (lambda () (fci-mode 1)))
 		   (global-fci-mode 1)
