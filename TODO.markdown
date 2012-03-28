@@ -1,12 +1,22 @@
 TODO for Sean's Emacs Config
 ============================
 
+Todo
+----
+
+* Use a shallow clone on some of the bigger git repos (nxhtml)
+* Freeze as many packages as possible (most are already frozen)
+* Get auto-complete 1.4 to work
+* Re-do clike-minimal and python-minimal
+
+Done
+----
+
 * Remove unecessary packages
 * Upgrade to the next version of el-get (or master branch) and make sure most,
   if not all of my packages are set to a stable version. This "so-and-so package
   doesn't work" is getting very annoying.
 * Fix auto-complete, the application which spurred this.
-
 * Code formatting
 	* Follow Emacs Lisp style guide (on flymake-shell and flymake-python)
 * Yasnippet
@@ -18,12 +28,20 @@ TODO for Sean's Emacs Config
     * Preferably work well with STL and Qt
 * Modularize the config
     * Split into different files which get required by init.el
-* Emacs goodies
-    * Get this package working again
 * Emacs code browser (ECB) and cedet
     * Get ECB installed and working (current layout error is plaguing me)
+
+Deferred
+--------
+
 * Rails
     * Get rails setup working properly
     * Document different modes / command
     * Add flymake-sass
     * Ensure ruby, erb, haml, sass, and coffee modes are working correctly
+
+Removed
+-------
+
+* Emacs goodies
+    * Get this package working again
