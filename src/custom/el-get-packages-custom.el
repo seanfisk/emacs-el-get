@@ -75,7 +75,6 @@
 		   (global-set-key (kbd "C-x C-/") 'goto-last-change)))
    ;; base for all color themes
    (:name color-theme
-	  :type elpa
 	  :after (progn
 		   (global-set-key (kbd "C-c t") 'color-theme-select)))
    
