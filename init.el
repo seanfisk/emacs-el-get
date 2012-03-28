@@ -67,7 +67,7 @@
 
 ;; now either el-get is `require'd already, or have been `load'ed by the
 ;; el-get installer.
-;; (add-to-list 'load-path (concat user-emacs-directory "src/custom"))
+(add-to-list 'load-path (concat user-emacs-directory "src/custom"))
 (require 'el-get-packages-custom)
 
 ;; other customizations
