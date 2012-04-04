@@ -231,7 +231,8 @@
    ;; Emacs Code Browser
    (:name ecb
 	  :type elpa)
-   ))
+   (:name yaml-mode
+	  :checkout "release-0.0.8")))
 
 ;;
 ;; Some recipes require extra tools to be installed
