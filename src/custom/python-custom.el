@@ -67,15 +67,30 @@
 				  ;; (defvaralias 'python-mode-map 'py-mode-map)
 				  
 				  ;; start up ropemacs-mode
+				  (autoload 'pymacs-apply "pymacs")
+				  (autoload 'pymacs-call "pymacs")
+				  (autoload 'pymacs-eval "pymacs" nil t)
+				  (autoload 'pymacs-exec "pymacs" nil t)
+				  (autoload 'pymacs-load "pymacs" nil t)
+				  
+				  (defvar ropemacs-loaded nil)
 				  (defun python-ropemacs-custom ()
-				    (ropemacs-mode t))
+				      (with-no-warnings
+					(unless ac-ropemacs-loaded
+					  (pymacs-load "ropemacs" "rope-")
+					  (if (boundp 'ropemacs-enable-autoimport)
+					      (setq ropemacs-enable-autoimport t))
+					  (setq ropemacs-loaded t)))
+				      (ropemacs-mode t))
 				  (add-hook 'python-mode-hook 'python-ropemacs-custom)
 				  
-				  (defun ac-ropemacs-setup ()
-				    (ac-ropemacs-require)
-				    (add-to-list 'ac-sources 'ac-source-ropemacs))
+				  ;; (defun ac-ropemacs-setup ()
+				  ;;   (ac-ropemacs-require)
+				  ;;   (add-to-list 'ac-sources 'ac-source-ropemacs)
+				  ;;   )
 
-				  (ac-ropemacs-initialize))))
+				  ;; (ac-ropemacs-initialize)
+				  )))
 		el-get-sources))
   
   ;; flymake support
