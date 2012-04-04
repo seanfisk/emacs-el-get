@@ -30,7 +30,8 @@
   (when (current-local-map)
     (use-local-map (copy-keymap (current-local-map))))
   (when server-buffer-clients
-    (local-set-key (kbd "C-x j") 'server-edit))) ; use the same shortcut as kill this buffer
+    ;; use the same shortcut as kill-this-buffer
+    (local-set-key [remap kill-this-buffer] 'server-edit))) 
 
 (add-hook 'server-switch-hook 'server-custom)
 

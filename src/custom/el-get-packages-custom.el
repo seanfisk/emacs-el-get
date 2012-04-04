@@ -222,7 +222,12 @@
    (:name edit-server              ; for editing through Google Chrome
 	  :features edit-server
 	  :after (progn
-		   (edit-server-start)))
+		   (edit-server-start)
+		   (defun edit-server-edit-custom ()
+		     (define-key edit-server-edit-mode-map [remap kill-this-buffer] 'edit-server-done)
+		     ;; (local-set-key [remap kill-this-buffer] 'edit-server-done)
+		     )
+		   (add-hook 'edit-server-edit-mode 'edit-server-edit-custom)))
    ;; Emacs Code Browser
    (:name ecb
 	  :type elpa)
