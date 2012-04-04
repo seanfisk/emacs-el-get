@@ -219,15 +219,15 @@
 		   (define-globalized-minor-mode global-fci-mode fci-mode (lambda () (fci-mode 1)))
 		   (global-fci-mode 1)
 		   ))
-   (:name edit-server              ; for editing through Google Chrome
+   ;; for editing through Google Chrome
+   (:name edit-server
 	  :features edit-server
 	  :after (progn
-		   (edit-server-start)
 		   (defun edit-server-edit-custom ()
-		     (define-key edit-server-edit-mode-map [remap kill-this-buffer] 'edit-server-done)
-		     ;; (local-set-key [remap kill-this-buffer] 'edit-server-done)
-		     )
-		   (add-hook 'edit-server-edit-mode 'edit-server-edit-custom)))
+		     ;; for the life of me I can't get this to work...
+		     (define-key edit-server-edit-mode-map [remap kill-this-buffer] 'edit-server-done))
+		   (add-hook 'edit-server-edit-mode 'edit-server-edit-custom)
+		   (edit-server-start)))
    ;; Emacs Code Browser
    (:name ecb
 	  :type elpa)
