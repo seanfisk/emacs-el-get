@@ -51,6 +51,20 @@
 (require 'open-next-line)
 (require 'flymake-shell)
 
+;; other customizations
+(require 'visual-custom)
+(require 'misc-custom)
+
+;; bindings and hooks for modes
+(add-to-list 'load-path (concat user-emacs-directory "src/custom/modes"))
+(require 'c-common-custom)
+(require 'server-custom)
+(require 'elisp-custom)
+(require 'isearch-custom)
+(require 'sh-custom)
+(require 'term-custom)
+(require 'rst-custom)
+
 ;; load el-get package manager
 ;; el-get defaults to storing packages in `~/.emacs.d/el-get', we want to change
 ;; that (for Aquamacs)
@@ -69,20 +83,6 @@
 ;; el-get installer.
 (add-to-list 'load-path (concat user-emacs-directory "src/custom"))
 (require 'el-get-packages-custom)
-
-;; other customizations
-(require 'visual-custom)
-(require 'misc-custom)
-
-;; bindings and hooks for modes
-(add-to-list 'load-path (concat user-emacs-directory "src/custom/modes"))
-(require 'c-common-custom)
-(require 'server-custom)
-(require 'elisp-custom)
-(require 'isearch-custom)
-(require 'sh-custom)
-(require 'term-custom)
-(require 'rst-custom)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; init.el ends here
