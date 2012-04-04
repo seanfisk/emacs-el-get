@@ -100,9 +100,9 @@
 		   (whole-line-or-region-mode t)))
    ;; automatically complete everything that comes in pairs, load auto-indent-mode first
    ;; autopair's author (same as yasnippet) does not really have released versions that aren't really old, just go for latest
-   ;; (:name autopair
-   ;; 	  :after (progn
-   ;; 		   (autopair-global-mode 1)))
+   (:name autopair
+   	  :after (progn
+   		   (autopair-global-mode 1)))
    ;; the best auto-complete extension for emacs!
    (:name auto-complete
 	  :branch "1.3"
