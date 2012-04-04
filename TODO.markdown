@@ -12,6 +12,16 @@ Todo
   to hack fillcode)
 * Speed up auto-complete-ropemacs (may not be possible)
 
+Packages to Check Out
+---------------------
+
+* ctags, ctags-update
+* dtrt-indent
+* flymake-shell (to replace my hand-rolled one)
+* magit (through ELPA)
+* smart-operator
+* xclip
+
 Done
 ----
 
