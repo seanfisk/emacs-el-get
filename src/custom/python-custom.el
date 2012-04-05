@@ -76,7 +76,7 @@
 				  (defvar ropemacs-loaded nil)
 				  (defun python-ropemacs-custom ()
 				      (with-no-warnings
-					(unless ac-ropemacs-loaded
+					(unless ropemacs-loaded
 					  (pymacs-load "ropemacs" "rope-")
 					  (if (boundp 'ropemacs-enable-autoimport)
 					      (setq ropemacs-enable-autoimport t))
