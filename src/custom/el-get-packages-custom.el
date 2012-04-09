@@ -32,8 +32,8 @@
  '((:name el-get)
    (:name package)
    ;; numbered windows for easy switching, takes over C-x o
-   (:name switch-window
-	  :type elpa)
+   ;; elpa version has no autoloads, so use the el-get version
+   (:name switch-window)
    ;; produce HTML with CSS-like selectors
    (:name zencoding-mode)
    ;; awesome html editing mode
@@ -254,6 +254,9 @@
 (require 'sass-custom)
 
 (setq my:el-get-packages (loop for src in el-get-sources collect (el-get-source-name src)))
+
+;; use a shallow clone for all git packages
+(setq el-get-git-shallow-clone t)
 
 ;; install new packages and init already installed packages
 (el-get 'sync my:el-get-packages)

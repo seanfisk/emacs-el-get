@@ -51,10 +51,6 @@
 (require 'open-next-line)
 (require 'flymake-shell)
 
-;; other customizations
-(require 'visual-custom)
-(require 'misc-custom)
-
 ;; bindings and hooks for modes
 (add-to-list 'load-path (concat user-emacs-directory "src/custom/modes"))
 (require 'c-common-custom)
@@ -83,6 +79,10 @@
 ;; el-get installer.
 (add-to-list 'load-path (concat user-emacs-directory "src/custom"))
 (require 'el-get-packages-custom)
+
+;; other customizations
+(require 'visual-custom)
+(require 'misc-custom)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; init.el ends here
