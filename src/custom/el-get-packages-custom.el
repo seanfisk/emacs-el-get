@@ -32,8 +32,8 @@
  '((:name el-get)
    (:name package)
    ;; numbered windows for easy switching, takes over C-x o
-   (:name switch-window
-	  :type elpa)
+   ;; elpa version has no autoloads, so use the el-get version
+   (:name switch-window)
    ;; produce HTML with CSS-like selectors
    (:name zencoding-mode)
    ;; awesome html editing mode
