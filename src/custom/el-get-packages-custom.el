@@ -255,6 +255,9 @@
 
 (setq my:el-get-packages (loop for src in el-get-sources collect (el-get-source-name src)))
 
+;; use a shallow clone for all git packages
+(setq el-get-git-shallow-clone t)
+
 ;; install new packages and init already installed packages
 (el-get 'sync my:el-get-packages)
 
