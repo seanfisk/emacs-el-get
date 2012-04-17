@@ -4,6 +4,8 @@ TODO for Sean's Emacs Config
 Todo
 ----
 
+* Get flymake-cursor-mode to be automatically activated with flymake-mode.
+* Get flymake-fringe-icons working again.
 * Freeze as many packages as possible (most are already frozen)
 * Get auto-complete 1.4 to work
 * Re-do clike-minimal and python-minimal
