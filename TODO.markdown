@@ -4,7 +4,6 @@ TODO for Sean's Emacs Config
 Todo
 ----
 
-* Use a shallow clone on some of the bigger git repos (nxhtml)
 * Freeze as many packages as possible (most are already frozen)
 * Get auto-complete 1.4 to work
 * Re-do clike-minimal and python-minimal
@@ -25,6 +24,7 @@ Packages to Check Out
 Done
 ----
 
+* Use a shallow clone on some of the bigger git repos (nxhtml)
 * Remove unecessary packages
 * Upgrade to the next version of el-get (or master branch) and make sure most,
   if not all of my packages are set to a stable version. This "so-and-so package
