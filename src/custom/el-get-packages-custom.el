@@ -156,7 +156,9 @@
 		   (textmate-mode t)))
    ;; show the syntax error for the line under the cursor in the minibuffer
    (:name flymake-cursor
-	  :type elpa)
+	  :type elpa
+	  :after (progn
+		   (eval-after-load 'flymake '(require 'flymake-cursor))))
    ;; IMPORTANT : magit requires the `makeinfo' executable from the `texinfo' package to compile!!!
    ;; git meet emacs, and a binding
    (:name magit
