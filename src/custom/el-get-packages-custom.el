@@ -142,6 +142,9 @@
 		     (add-to-list 'ac-sources 'ac-source-clang)
 		     (define-key c-mode-base-map [remap auto-complete] 'ac-complete-clang))
 		   (add-hook 'c-mode-common-hook 'auto-complete-clang-custom)))
+   ;; add smooth scrolling of buffers
+   (:name smooth-scroll
+	  :type elpa)
    ;; undo history in a tree like vim, try C-x u
    (:name undo-tree
 	  :type elpa
