@@ -4,6 +4,9 @@ TODO for Sean's Emacs Config
 Todo
 ----
 
+* Convert this file to org or rst
+* Include snippets here
+* Improve crappy install script
 * Get flymake-cursor-mode to be automatically activated with flymake-mode.
 * Get flymake-fringe-icons working again.
 * Freeze as many packages as possible (most are already frozen)
@@ -58,5 +61,5 @@ Deferred
 Removed
 -------
 
-* Em√acs goodies
+* Emacs goodies
 	* Get this package working again
