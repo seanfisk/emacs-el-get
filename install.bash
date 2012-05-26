@@ -28,7 +28,7 @@ if [[ $1 == install && ! -d $INSTALL_DIR ]]; then
 	set +o xtrace
 fi
 
-for FILE in init.el src; do
+for FILE in init.el src snippets; do
 	DEST=$INSTALL_DIR/$FILE
 	SOURCE=$(pwd -P)/$FILE
 	case $1 in

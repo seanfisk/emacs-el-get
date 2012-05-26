@@ -1,0 +1,13 @@
+# -*- mode: snippet -*-
+# name: isisci
+# key: isisci
+# --
+ISIS-$1: $2
+
+Task:
+- $3
+
+Change:
+- $4
+
+Reviewed By: $5
