@@ -47,6 +47,23 @@
    ;; major mode for editing CMake config files
    (:name cmake-mode
 	  :type elpa)
+   ;; Anything - candidate selection framework
+   (:name anything
+       :website "http://www.emacswiki.org/emacs/Anything"
+       :description "Open anything / QuickSilver-like candidate-selection framework"
+       :type elpa)
+   (:name anything-config
+	  :website "http://www.emacswiki.org/emacs/Anything"
+	  :description "Handy configurations for Anything."
+	  :depends anything
+	  :type elpa)
+   ;; exuberant ctags integration with Anything
+   (:name anything-exuberant-ctags
+	  :website "https://github.com/k1LoW/anything-exuberant-ctags"
+	  :description "Exuberant ctags anything.el interface"
+	  :depends anything
+	  :load "anything-exuberant-ctags.el"
+	  :type elpa)
    ;; generic project mode
    (:name project-mode
 	  :website "http://code.google.com/p/emacs-project-mode/"
