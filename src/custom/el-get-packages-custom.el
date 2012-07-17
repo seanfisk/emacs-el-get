@@ -274,12 +274,11 @@
 
 (when (executable-find "svn")
   ;; subversion plugin for emacs
-  (push '(:name psvn) el-get-sources)
-  ;; javascript ide
-  (push '(:name js2-mode) el-get-sources))
+  (push '(:name psvn) el-get-sources))
 
 ;; other customizations for specific languages and tools
 (require 'ack-custom)
+(require 'javascript-custom)
 (require 'coffee-script-custom)
 (require 'python-custom)
 (require 'ruby-custom)
