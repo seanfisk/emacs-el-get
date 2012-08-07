@@ -157,14 +157,11 @@
    ;; most recent commit as of 2012-03-27. I wanted versions frozed so
    ;; things don't get broken.
    (:name yasnippet
-	  :checkout "7e3ce48d3c12b8013b0837dc28c5b5ea40808272"
 	  :after (progn
 		   (yas/global-mode t)))
-   ;; current commit as of 2012-03-27
    (:name auto-complete-clang
 	  :depends (auto-complete yasnippet)
 	  :features auto-complete-clang
-	  :checkout "d457ef42ad88148dd4e483d872b0ae483bb6f9f1"
 	  :after (progn
 		   (defun auto-complete-clang-custom ()
 		     (add-to-list 'ac-sources 'ac-source-clang)
