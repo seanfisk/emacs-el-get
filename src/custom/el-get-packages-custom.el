@@ -194,6 +194,9 @@
 	  :type elpa
           :after (progn
                    (global-set-key (kbd "C-x C-z") 'magit-status)))
+   ;; interactive git blame
+   (:name mo-git-blame
+	  :type elpa)
    ;; (:name dtrt-indent		  ; foreign indentation detection mode
    ;; 	  :post-init (progn))
     (:name ruby-mode			; major mode for ruby
