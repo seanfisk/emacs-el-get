@@ -92,6 +92,11 @@
 				  (ac-ropemacs-initialize)
 				  )))
 		el-get-sources))
+
+  ;; width - for pep8 compliance
+  (defun python-custom ()
+    (setq fill-with 79))
+  (add-hook 'python-mode-hook 'python-custom)
   
   ;; flymake support
   (require 'flymake-python))
