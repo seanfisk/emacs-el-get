@@ -73,7 +73,8 @@
 	  :features project-mode
 	  :depends levenshtein
 	  :after (progn
-		   (setq project-mode t)))
+		   (setq project-mode t)
+		   (project-load-all)))
    ;; show flymake error icons at side
    ;; (:name flymake-fringe-icons)
    (:name buffer-move
