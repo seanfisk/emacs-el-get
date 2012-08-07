@@ -261,6 +261,15 @@
 		     (define-key edit-server-edit-mode-map [remap kill-this-buffer] 'edit-server-done))
 		   (add-hook 'edit-server-edit-mode 'edit-server-edit-custom)
 		   (edit-server-start)))
+   ;; highlight symbol
+   (:name highlight-symbol
+	  :type elpa
+	  :after (progn
+		   (define-globalized-minor-mode global-highlight-symbol-mode highlight-symbol-mode
+		     (lambda () (highlight-symbol-mode 1)))
+		   (global-highlight-symbol-mode 1)
+		   (global-set-key (kbd "M-n") 'highlight-symbol-next)
+		   (global-set-key (kbd "M-p") 'highlight-symbol-prev)))
    ;; Emacs Code Browser
    (:name ecb
 	  :type elpa)
