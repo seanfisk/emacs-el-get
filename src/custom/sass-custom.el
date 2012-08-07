@@ -27,17 +27,21 @@
 ;;; Code:
 
 ;; sass / scss additions
-(when (executable-find "sass")
-  (push '(:name scss-mode) el-get-sources)
-  
-  ;; hook for scss mode
-  (defun scss-custom ()
-    "scss-mode-hook"
-    ;; don't do this by default, set to t to compile on save
-    (setq scss-compile-at-save nil)
-    (setq indent-tabs-mode nil))
-  
-  (add-hook 'scss-mode-hook 'scss-custom))
+(push '(:name scss-mode
+	      :after (progn
+		       (eval-after-load
+			   "auto-complete"
+			 (setq ac-modes (append '(scss-mode) ac-modes)))))
+      el-get-sources)
+
+;; hook for scss mode
+(defun scss-custom ()
+  "scss-mode-hook"
+  ;; don't do this by default, set to t to compile on save
+  (setq scss-compile-at-save nil)
+  (setq indent-tabs-mode nil))
+
+(add-hook 'scss-mode-hook 'scss-custom)
 
 (provide 'sass-custom)
 

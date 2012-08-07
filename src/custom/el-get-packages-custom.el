@@ -39,8 +39,8 @@
    ;; awesome html editing mode
    (:name nxhtml)
    ;; major mode for haml
-   (:name haml-mode
-	  :type elpa)
+   ;; (:name haml-mode
+   ;; 	  :type elpa)
    ;; major mode for markdown markup
    (:name markdown-mode
 	  :type elpa)
@@ -48,22 +48,15 @@
    (:name cmake-mode
 	  :type elpa)
    ;; Anything - candidate selection framework
-   (:name anything
-       :website "http://www.emacswiki.org/emacs/Anything"
-       :description "Open anything / QuickSilver-like candidate-selection framework"
-       :type elpa)
-   (:name anything-config
-	  :website "http://www.emacswiki.org/emacs/Anything"
-	  :description "Handy configurations for Anything."
-	  :depends anything
-	  :type elpa)
-   ;; exuberant ctags integration with Anything
-   (:name anything-exuberant-ctags
-	  :website "https://github.com/k1LoW/anything-exuberant-ctags"
-	  :description "Exuberant ctags anything.el interface"
-	  :depends anything
-	  :load "anything-exuberant-ctags.el"
-	  :type elpa)
+   ;; (:name anything
+   ;;     :website "http://www.emacswiki.org/emacs/Anything"
+   ;;     :description "Open anything / QuickSilver-like candidate-selection framework"
+   ;;     :type elpa)
+   ;; (:name anything-config
+   ;; 	  :website "http://www.emacswiki.org/emacs/Anything"
+   ;; 	  :description "Handy configurations for Anything."
+   ;; 	  :depends anything
+   ;; 	  :type elpa)
    ;; generic project mode
    (:name project-mode
 	  :website "http://code.google.com/p/emacs-project-mode/"
@@ -136,9 +129,7 @@
 	  :branch "1.3"
 	  :after (progn
 	  	   ;; (ac-set-trigger-key "TAB")
-	  	   ;; add to this list when more auto-completion is needed
-	  	   (setq ac-modes (append '(scss-mode) ac-modes))
-		   
+	  	   ;; add to this list when more auto-completion is needed		   
 	  	   (defun auto-complete-custom ()
 	  	     ;; re-assign `dabbrev' to this
 	  	     (define-key ac-mode-map (kbd "M-/") 'auto-complete)
@@ -152,13 +143,7 @@
    (:name auto-complete-etags		
 	  :features auto-complete-etags
 	  :depends auto-complete)
-   ;; yasnippet's author does not really provide releases or use tags,
-   ;; and the version on Marmalade is quite old, so I've just put in the
-   ;; most recent commit as of 2012-03-27. I wanted versions frozed so
-   ;; things don't get broken.
-   (:name yasnippet
-	  :after (progn
-		   (yas/global-mode t)))
+   ;; auto-complete source for Clang, C/C++/Obj-C compiler
    (:name auto-complete-clang
 	  :depends (auto-complete yasnippet)
 	  :features auto-complete-clang
@@ -167,6 +152,13 @@
 		     (add-to-list 'ac-sources 'ac-source-clang)
 		     (define-key c-mode-base-map [remap auto-complete] 'ac-complete-clang))
 		   (add-hook 'c-mode-common-hook 'auto-complete-clang-custom)))
+   ;; yasnippet's author does not really provide releases or use tags,
+   ;; and the version on Marmalade is quite old, so I've just put in the
+   ;; most recent commit as of 2012-03-27. I wanted versions frozed so
+   ;; things don't get broken.
+   (:name yasnippet
+	  :after (progn
+		   (yas/global-mode t)))
    ;; add smooth scrolling of buffers
    (:name smooth-scroll
 	  :type elpa)
@@ -177,11 +169,11 @@
 		   (package-initialize)
 		   (global-undo-tree-mode t)))
    ;; textmate key emulation, try Command-T or Alt-T for goto file
-   (:name textmate
-	  :type elpa
-	  :after (progn
-		   (package-initialize)
-		   (textmate-mode t)))
+   ;; (:name textmate
+   ;; 	  :type elpa
+   ;; 	  :after (progn
+   ;; 		   (package-initialize)
+   ;; 		   (textmate-mode t)))
    ;; show the syntax error for the line under the cursor in the minibuffer
    (:name flymake-cursor
 	  :type elpa
@@ -199,9 +191,9 @@
 	  :type elpa)
    ;; (:name dtrt-indent		  ; foreign indentation detection mode
    ;; 	  :post-init (progn))
-    (:name ruby-mode			; major mode for ruby
-	  :type elpa
- 	  :depends autopair) ; try not to cause problems with turning off autopair-mode later, in case ruby mode hook is activated
+   ;; (:name ruby-mode			; major mode for ruby
+   ;; 	  :type elpa
+   ;; 	  :depends autopair) ; try not to cause problems with turning off autopair-mode later, in case ruby mode hook is activated
    ;; (:name multi-term	     ; better version of term
    ;; 	  :after (progn
    ;; 		   ;; don't mess with my terminal keys
@@ -270,13 +262,13 @@
 		   (global-highlight-symbol-mode 1)
 		   (global-set-key (kbd "M-n") 'highlight-symbol-next)
 		   (global-set-key (kbd "M-p") 'highlight-symbol-prev)))
+   ;; Mode for editing Atlassian Confluence wiki pages
+   ;; (:name confluence-el)
    ;; Emacs Code Browser
    (:name ecb
 	  :type elpa)
    (:name yaml-mode
-	  :checkout "release-0.0.8")
-   ;; Mode for editing Atlassian Confluence wiki pages
-   (:name confluence-el)))
+	  :checkout "release-0.0.8")))
 
 ;;
 ;; Some recipes require extra tools to be installed
@@ -284,9 +276,9 @@
 ;; Note: el-get-install requires git, so we know we have at least that.
 ;;
 
-(when (executable-find "svn")
-  ;; subversion plugin for emacs
-  (push '(:name psvn) el-get-sources))
+;; (when (executable-find "svn")
+;;   ;; subversion plugin for emacs
+;;   (push '(:name psvn) el-get-sources))
 
 ;; other customizations for specific languages and tools
 (require 'ack-custom)

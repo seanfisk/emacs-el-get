@@ -30,10 +30,14 @@
 (setq el-get-sources
       (append
        '((:name js2-mode
-               :after (progn
-                        (defun javascript-custom ()
-                          (setq indent-tabs-mode nil))
-                        (add-hook 'js2-mode-hook 'javascript-custom))))
+		;; :features js2-mode
+		:compile "js2-mode.el"
+		:load "js2-mode.elc"
+		:after (progn
+				 ;; (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
+				 (defun javascript-custom ()
+				   (setq indent-tabs-mode nil))
+				 (add-hook 'js2-mode-hook 'javascript-custom))))
       el-get-sources))
 
 ;; stolen directly from <https://github.com/joshwnj/json-mode>
