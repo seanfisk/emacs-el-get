@@ -53,7 +53,9 @@
 				    ;; groovy interpreter
 				    (inf-groovy-keys)
 				    ;; spaces instead of tabs
-				    (setq indent-tabs-mode nil))
+				    (setq indent-tabs-mode nil)
+				    ;; four-space indent
+				    (setq tab-width 4))
 				  (add-hook 'groovy-mode-hook 'groovy-custom)))
 
 		  ;; Groovy eval mode
