@@ -92,6 +92,7 @@
 ;; general bindings
 (global-set-key (kbd "C-x j") 'kill-this-buffer) ; an easy shortcut is needed for this common task
 (global-set-key (kbd "C-c r") 'rename-buffer)	 ; another common task, mostly used for terminals
+(define-key global-map (kbd "RET") 'newline-and-indent)
 
 ;;; switch buffers like other applications
 (global-set-key (kbd "<C-tab>") 'bury-buffer)
