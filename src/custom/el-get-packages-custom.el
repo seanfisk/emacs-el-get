@@ -274,7 +274,9 @@
    (:name ecb
 	  :type elpa)
    (:name yaml-mode
-	  :checkout "release-0.0.8")))
+	  :checkout "release-0.0.8")
+   ;; Mode for editing Atlassian Confluence wiki pages
+   (:name confluence-el)))
 
 ;;
 ;; Some recipes require extra tools to be installed
