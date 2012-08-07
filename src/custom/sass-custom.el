@@ -33,7 +33,9 @@
   ;; hook for scss mode
   (defun scss-custom ()
     "scss-mode-hook"
-    (setq scss-compile-at-save nil)) ; don't do this by default, set to t to compile on save
+    ;; don't do this by default, set to t to compile on save
+    (setq scss-compile-at-save nil)
+    (setq indent-tabs-mode nil))
   
   (add-hook 'scss-mode-hook 'scss-custom))
 
